@@ -7,18 +7,28 @@
             <td>Montant Payé</td>
             <td>Transactions effectuées</td>
             <td>Date de la transaction</td>
-            <td>Montant dû</td>           
+            <td>Montant dû</td>
+            <td>Faire un payement</td>           
         </tr>
         <tr *ngFor="let part of participants">
         <td>{{part.nom}} {{part.prenom}}</td>
-        <td>monant total</td>
-        <td>Montant Payé</td>
+
+        <td *ngIf="part.formations!=null">{{getMontantTolal(part.formations)}}</td>
+        <td *ngIf="part.formations==null">Pas de formation</td>
+
+        <td *ngIf="part.transactions!=null">{{getMontantPaye(part.transactions)}}</td>
+        <td *ngIf="part.transactions==null">Pas de payements effectués</td>
+
         <td><ul *ngFor="let trans of part.transactions"><li>{{trans.montant}}</li></ul></td>
         <td><ul *ngFor="let trans of part.transactions"><li>{{trans.date}}</li></ul></td>
-        <td>Montant dû</td>
-        
-        
-        
+
+        <td *ngIf="part.transactions!=null && part.formations!=null">{{getMontantDu(part.formations, part.transactions)}}</td>
+        <td *ngIf="part.formations==null || (getMontantTolal(part.formations)==getMontantPaye(part.transactions)) ">Pas de montant dû</td>
+
+        <td><button class="btn btn-outline-success  " (click)="faireTransaction(part.id)">Faire un payement</button></td>  
         </table>
     </div>
+
+    <!--<app-commentaire [annonce]="annonce"></app-commentaire>-->
+
    
