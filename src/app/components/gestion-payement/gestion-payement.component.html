@@ -1,1 +1,24 @@
-<p>gestion-payement works!</p>
+
+<div class="container-fluid">  
+    <table class="table table-bordered">
+        <tr>
+            <td>Participant</td>
+            <td>Montant Total</td>
+            <td>Montant Payé</td>
+            <td>Transactions effectuées</td>
+            <td>Date de la transaction</td>
+            <td>Montant dû</td>           
+        </tr>
+        <tr *ngFor="let part of participants">
+        <td>{{part.nom}} {{part.prenom}}</td>
+        <td>monant total</td>
+        <td>Montant Payé</td>
+        <td><ul *ngFor="let trans of part.transactions"><li>{{trans.montant}}</li></ul></td>
+        <td><ul *ngFor="let trans of part.transactions"><li>{{trans.date}}</li></ul></td>
+        <td>Montant dû</td>
+        
+        
+        
+        </table>
+    </div>
+   

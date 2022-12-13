@@ -8,7 +8,8 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { GestionUtilisateurComponent } from './components/gestion-utilisateur/gestion-utilisateur.component';
 import { ListeFormationsComponent } from './components/liste-formations/liste-formations.component';
 import { GestionFormateurComponent } from './components/gestion-formateur/gestion-formateur.component';
-import { GestionPayementComponent } from './components/gestion-payement/gestion-payement.component'
+import { GestionPayementComponent } from './components/gestion-payement/gestion-payement.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { GestionPayementComponent } from './components/gestion-payement/gestion-
     BrowserModule,
     AppRoutingModule, 
     FormsModule, 
-    HttpClientModule, 
+    HttpClientModule, NgbModule, 
 
   ],
   providers: [],
