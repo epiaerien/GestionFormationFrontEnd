@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Formation } from '../models/formation';
+import { Formateur } from '../models/formateur';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,10 @@ export class FormationServiceService {
   add(formation:Formation)
   {
     return this.http.post(`http://localhost:8025/api/formations`,formation)
+  }
+
+  chercherParFormation(formation:Formation)
+  {
+    return this.http.get<Formateur>("http://localhost:8025/api/formateurParFormation")
   }
 }
