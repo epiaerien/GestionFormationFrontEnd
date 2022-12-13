@@ -9,8 +9,10 @@ import { GestionUtilisateurComponent } from './components/gestion-utilisateur/ge
 import { ListeFormationsComponent } from './components/liste-formations/liste-formations.component';
 import { GestionFormateurComponent } from './components/gestion-formateur/gestion-formateur.component';
 import { GestionPayementComponent } from './components/gestion-payement/gestion-payement.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component'
+
 
 
 @NgModule({
