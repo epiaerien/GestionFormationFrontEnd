@@ -1,1 +1,138 @@
-<p>gestion-utilisateur works!</p>
+
+<div class="container-fluid">
+    
+		<form #f="ngForm" (ngSubmit)="add(f)">
+			<fieldset>
+				<div class="row justify-content-md-center">
+					<div class="col-md-auto">
+						<h3>Ajouter un Utilisateur</h3>
+					</div>
+				</div>
+				
+				<div class="row justify-content-md-center">
+
+					<div class="col-md-3">
+						<div class="form-group">
+							<label path="prenom" class="form-label"> Prénom </label>
+							<input type="text" class="form-control" name="utilisateur.prenom" [(ngModel)]="utilisateur.prenom">
+						</div>
+					</div>
+					 
+					<div class="col-md-3">
+						<div class="form-group">
+
+							<label path="nom" class="form-label"> Nom </label>
+							<input type="text" class="form-control" name= "utilisateur.nom" [(ngModel)]="utilisateur.nom">
+							
+						</div>
+					</div>
+
+                    <div class="col-md-3">
+						<div class="form-group">
+
+							<label path="description" class="form-label"> eMail </label>
+							<input type="email" class="form-control" name= "utilisateur.mail" [(ngModel)]="utilisateur.mail">
+							
+						</div>
+					</div>
+				</div>
+
+				<div class="row justify-content-md-center">
+
+					
+					 
+					<div class="col-md-4">
+						<div class="form-group">
+
+							<label name="username" class="form-label"> Username </label>
+							<input type="text" class="form-control" name="utilisateur.username" [(ngModel)]="utilisateur.username">
+						</div>
+					</div>
+
+                    <div class="col-md-4">
+						<div class="form-group">
+
+							<label name="password" class="form-label"> Mot de passe </label>
+							<input type="password" class="form-control" name="utilisateur.password"  [(ngModel)]="utilisateur.password">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row justify-content-md-center">
+					<!-- <div class="col-md-4">
+						<div class="form-group">
+							<label name="Matiere" class="form-label">Attribuer une
+								Catégorie :</label> <select name="id_cat">
+								<div *ngFor="let c of categories">
+
+									<option value="{{c.id_categorie}}">{{c.nomCategorie}}</option>
+                                </div>
+							</select>
+						</div>
+					</div> -->
+					</div>
+
+				<div class="row justify-content-md-center">
+
+					<div class="col-md-auto">
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary btn-lg">Valider Ajout/Modification</button>
+						</div>
+					</div>
+				</div>
+
+
+			</fieldset>
+		</form>
+	</div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> Prénom </th>
+                <th scope="col"> Nom </th>
+                <th scope="col"> date de Naissance </th>
+                <th scope="col"> mail </th>
+                <th scope="col"> username </th>
+                <th scope="col"> password  </th>
+                <th scope="col"> role  </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+
+
+                <tr *ngFor="let u of utilisateurs">
+                    
+                    <td>{{u.prenom}}</td>
+                    <td>{{u.nom}}</td>
+                    <td>{{u.dateNaissance | date:'mediumDate'}}</td>
+                    <td>{{u.mail}}</td>
+                    <td>{{u.username}}</td>
+                    <td>{{u.password}}</td>
+                    <td> role </td>
+            
+                            <td>
+
+                                <!-- <button (click)="modifier(u.id)" class="btn btn-outline-primary">
+
+                                    <i class="bi bi-plus-square-fill"> Plus d'Informations</i>
+                                </button> -->
+                            </td>
+
+                            <td>
+
+                                <!-- <button (click)="supprimer(u.id)" class="btn btn-outline-primary">
+
+                                    <i class="bi bi-plus-square-fill"> Plus d'Informations</i>
+                                </button> -->
+                            </td>
+
+                </tr>
+
+            
+        </tbody>
+
+    </table>

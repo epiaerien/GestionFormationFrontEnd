@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component'
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

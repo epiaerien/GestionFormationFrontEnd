@@ -1,1 +1,25 @@
-<p>liste-formations works!</p>
+<table class="table table-hover">
+
+    <tr>
+        <td>Id </td>
+        <td>Nom de la formation </td>
+        <td> Date de début</td>
+        <td> Date de fin</td>
+
+        <td> Prix </td>
+        <td> Lieu </td>
+        <td> Nom du formateur </td> 
+        <td> Liste des participants </td>
+    </tr>
+
+    <tr *ngFor="let formation of formations ">
+        <td> {{formation.id}} </td>
+        <td> {{formation.nom}}</td>
+        <td> {{formation.dateDebut | date:'mediumDate'}}</td>
+        <td> {{formation.dateFin | date:'mediumDate'}}</td>
+        <td> {{formation.prix}} </td>
+        <td> {{formation.lieu}}</td>
+        <td> {{formation.formateur.nom}}  </td>
+        <td> <button class="btn btn-info"> Participants </button></td>
+    </tr>
+</table>
