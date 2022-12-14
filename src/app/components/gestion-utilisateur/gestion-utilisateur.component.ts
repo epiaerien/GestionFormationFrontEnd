@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Utilisateurs } from 'src/app/models/utilisateurs';
 import { UtilisateurServiceService } from 'src/app/service/utilisateur-service.service';

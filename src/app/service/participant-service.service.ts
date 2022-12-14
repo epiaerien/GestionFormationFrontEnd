@@ -28,4 +28,9 @@ export class ParticipantServiceService {
   {
     return this.http.post(`http://localhost:8025/api/participants`,participant)
   }
+
+  getByIdFormation(id:number)
+  {
+    return this.http.get<Participant[]>(`http://localhost:8025/api/participantsparformation/${id}`)
+  }
 }
