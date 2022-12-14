@@ -12,10 +12,14 @@ import { GestionPayementComponent } from './components/gestion-payement/gestion-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
+import { GestionCommercialComponent } from './components/gestion-commercial/gestion-commercial.component'
+
+
 import { ListeParticipantComponent } from './components/liste-participant/liste-participant.component';
 import { InfoFormateurComponent } from './components/info-formateur/info-formateur.component';
 
 import { GestionFormationComponent } from './components/gestion-formation/gestion-formation.component'
+
 
 
 
@@ -28,16 +32,20 @@ import { GestionFormationComponent } from './components/gestion-formation/gestio
     GestionFormateurComponent,
     GestionPayementComponent,
     NavBarComponent,
+
+    GestionCommercialComponent
+
     ListeParticipantComponent,
     InfoFormateurComponent,
     GestionFormationComponent
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule, 
-    HttpClientModule, NgbModule, 
+    HttpClientModule, NgbModule
 
   ],
   providers: [],
