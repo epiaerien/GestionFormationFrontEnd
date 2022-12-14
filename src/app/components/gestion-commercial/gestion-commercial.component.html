@@ -1,10 +1,10 @@
 <div class="container-fluid">
 
-</div><form (ngSubmit)="addFormateur()">
+</div><form #f="ngForm" (ngSubmit)="addCommercial(f)">
     <fieldset>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
-                <h3>Ajouter un Utilisateur</h3>
+                <h3>Ajouter un Commercial</h3>
             </div>
         </div>
 
@@ -12,7 +12,7 @@
             <div class="form-group">
 
                 <label path="nom" class="form-label"> Nom </label>
-                <input type="text" class="form-control" name= "formateur.nom" [(ngModel)]="formateur.nom">
+                <input type="text" class="form-control" name= "commercial.nom" [(ngModel)]="commercial.nom">
                 
             </div>
         </div>
@@ -20,46 +20,38 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label path="prenom" class="form-label"> Prénom </label>
-                <input type="text" class="form-control" name="formateur.prenom" [(ngModel)]="formateur.prenom">
+                <input type="text" class="form-control" name="commercial.prenom" [(ngModel)]="commercial.prenom">
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="form-group">
                 <label path="adresse" class="form-label"> Adresse</label>
-                <input type="text" class="form-control" name="formateur.adresse" [(ngModel)]="formateur.adresse">
+                <input type="text" class="form-control" name="commercial.adresse" [(ngModel)]="commercial.adresse">
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="form-group">
                 <label path="mail" class="form-label"> Mail</label>
-                <input type="text" class="form-control" name="formateur.mail" [(ngModel)]="formateur.mail">
+                <input type="text" class="form-control" name="commercial.mail" [(ngModel)]="commercial.mail">
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="form-group">
                 <label path="dateNaissance"class="form-label"> Date de Naissance</label>
-                <input type="text" class="form-control" name="formateur.dateNaissance" [(ngModel)]="formateur.dateNaissance">
+                <input type="text" class="form-control" name="commercial.dateNaissance" [(ngModel)]="commercial.dateNaissance">
             </div>
         </div>
 
-        <div class="col-md-3">
-            <div class="checkbox">
-                <label path="dispo"class="form-label"> Disponibilité</label>
-                    
-                        <button type="submit" class="btn btn-primary btn-lg">oui</button>
-                        <button type="submit" class="btn btn-primary btn-lg">non</button>
-                    
-            </div>
-        </div>
+       
 
         <div class="col-md-4">
             <div class="form-group">
 
                 <label name="username" class="form-label"> Username </label>
-                <input type="text" class="form-control" name="formateur.username" [(ngModel)]="formateur.username">
+                <input type="text" class="form-control" name="commercial.username" [(ngModel)]="commercial.username">
             </div>
         </div>
 
@@ -67,7 +59,7 @@
             <div class="form-group">
 
                 <label name="password" class="form-label"> Mot de passe </label>
-                <input type="password" class="form-control" name="formateur.password"  [(ngModel)]="formateur.password">
+                <input type="password" class="form-control" name="commercial.password"  [(ngModel)]="commercial.password">
             </div>
         </div>
 
@@ -83,50 +75,49 @@
                 </div>
             </div>
         </div>
-    </fieldset>
-</form>
+        </fieldset>
+
+        </form>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col"> Id </th>
                     <th scope="col"> Nom </th>
                     <th scope="col"> Prénom </th>
-                    <th scope="col">Adresse </th>
+                    <th scope="col"> Adresse </th>
                     <th scope="col"> Mail </th>
                     <th scope="col"> Date de Naissance </th>
-                    <th scope="col"> Disponibilité</th>
-                    <th scope="col"> username </th>
-                    <th scope="col"> password  </th>
-                    <th scope="col"> role  </th>
+                    <th scope="col"> Username </th>
+                    <th scope="col"> Password  </th>
+                    <th scope="col">Role  </th>
                     
                 </tr>
             </thead>
             <tbody>
                 
-    <tr *ngFor="let form of formateurs">
-        <td>{{form.id}}</td>
-        <td>{{form.nom}}</td>
-        <td>{{form.prenom}}</td>
-        <td>{{form.adresse}}</td>
-        <td>{{form.mail}}</td>
-        <td>{{form.dateNaissance}}</td>
-        <td>{{form.dispo}}</td>
-        <td>{{form.username}}</td>
-        <td>{{form.password}}</td>
+    <tr *ngFor="let com of commercials">
+        <td>{{com.id}}</td>
+        <td>{{com.nom}}</td>
+        <td>{{com.prenom}}</td>
+        <td>{{com.adresse}}</td>
+        <td>{{com.mail}}</td>
+        <td>{{com.dateNaissance}}</td>
+        <td>{{com.username}}</td>
+        <td>{{com.password}}</td>
         <td>
 
          
         <td>
 
-            <button (click)="supprimerFormateur(form.id)" class="btn btn-outline-primary">
+            <button (click)="supprimerCommercial(com.id)" class="btn btn-outline-primary">
 
-                <i class="bi bi-plus-square-fill"> Supprimer</i>
+                <i class="bi bi-plus-square-fill"> Supprimer </i>
             </button>
         </td>
 
         <td>
 
-            <button (click)="modifierFormateur()" class="btn btn-outline-primary">
+            <button (click)="modifier(com.id)" class="btn btn-outline-primary">
 
                 <i class="bi bi-plus-square-fill"> Modifier </i>
             </button>

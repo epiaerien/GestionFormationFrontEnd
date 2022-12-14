@@ -5,12 +5,14 @@ import { ListeFormationsComponent } from './components/liste-formations/liste-fo
 import { GestionUtilisateurComponent } from './components/gestion-utilisateur/gestion-utilisateur.component';
 import { GestionFormateurComponent } from './components/gestion-formateur/gestion-formateur.component';
 import { GestionPayementComponent } from './components/gestion-payement/gestion-payement.component';
+import { GestionCommercialComponent } from './components/gestion-commercial/gestion-commercial.component';
 
 const routes:Routes=[
   {path: 'formations', component:ListeFormationsComponent},
   {path: 'gestionPayements', component:GestionPayementComponent},
   {path: 'gestionUtilisateurs', component:GestionUtilisateurComponent},
-  {path: 'gestionFormateurs', component:GestionFormateurComponent}
+  {path: 'gestionFormateurs', component:GestionFormateurComponent},
+  {path: 'gestionCommercials', component:GestionCommercialComponent}
 ]
 
 @NgModule({

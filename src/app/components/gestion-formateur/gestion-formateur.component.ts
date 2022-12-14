@@ -50,5 +50,11 @@ supprimerFormateur (id:number)
     {this.selectAll()})
 }
 
-
+modifierFormateur ()
+{
+  this.fservice.remove(this.formateur).subscribe(response=>
+    {this.selectAll()})
 }
+}
+
+
