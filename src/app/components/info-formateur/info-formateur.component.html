@@ -1,0 +1,71 @@
+
+<body style="margin: 80px"> 
+
+
+<h2 style="color:#5bc0de">{{formateur.nom}} {{formateur.prenom}}   </h2> 
+
+<div *ngIf="formateur.dispo==true"><span class="badge rounded-pill text-bg-success">Disponible</span> </div> 
+<div *ngIf="formateur.dispo!=true"><span class="badge rounded-pill text-bg-danger">Non disponible</span> </div>
+
+<hr>
+<h3 style="color: #d9534f;"> Informations personnels</h3> 
+<hr>
+<h6>
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+      Date de naissance : {{formateur.dateNaissance}}
+      </div>
+      <div class="col-sm">
+Email : {{formateur.mail}}
+      </div>
+      <div class="col-sm">
+Username : {{formateur.username}}
+      </div>
+    </div>
+  </div></h6>
+
+
+
+
+ 
+
+<hr> 
+<h3 style="color: #d9534f;"> Listes des formations</h3>
+<hr> 
+
+<table class="table table-hover">
+
+
+    <thead>
+        <tr>
+          
+            <th>Id </th>
+            <th>Nom de la formation </th>
+            <th> Date de début</th>
+            <th> Date de fin</th>
+    
+         
+            <th> Lieu </th>
+         
+            <th> Liste des participants </th>
+            
+        </tr>
+        </thead>
+    
+        <tbody>
+        <tr *ngFor="let f of formateur.formations ">
+    
+            <td> {{f.id}} </td>
+            <td> {{f.nom}}</td>
+            <td> {{f.dateDebut | date:'mediumDate'}}</td>
+            <td> {{f.dateFin | date:'mediumDate'}}</td>
+        
+            <td> {{f.lieu}}</td>
+            <td> <button class="btn btn-info" (click)="participantparformation(f.id)"> Participants </button></td>
+        </tr>
+        </tbody>
+</table>
+
+
+</body>
