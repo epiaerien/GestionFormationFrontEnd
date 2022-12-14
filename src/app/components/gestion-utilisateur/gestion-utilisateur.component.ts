@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Role } from 'src/app/models/role';
 
 import { Utilisateurs } from 'src/app/models/utilisateurs';
 import { UtilisateurServiceService } from 'src/app/service/utilisateur-service.service';
@@ -17,14 +18,20 @@ export class GestionUtilisateurComponent implements OnInit{
 
   utilisateur!: Utilisateurs
 
+  idRole!:number
+  roles!:Role[];
+
+
 
   constructor(private utService:UtilisateurServiceService,private route:ActivatedRoute){}
 
   ngOnInit(): void {
    
     this.selectAll()
+    this.selectAllRoles()
     this.utilisateur = new Utilisateurs()
-
+    
+    
   }
 
 
@@ -37,14 +44,50 @@ export class GestionUtilisateurComponent implements OnInit{
 
   add(f:NgForm)
   {
-    this.utService.add(this.utilisateur).subscribe(
+    this.utService.selectRoleById(this.idRole).subscribe(
+    response2 => {
       
-      response=>{this.selectAll();
-        console.log(this.utilisateur.username);
+      this.utilisateur.role = response2
+      
+      this.utService.add(this.utilisateur).subscribe(
+      
+      response=>{
+        this.selectAll();
+        
         f.resetForm();
        }
        
+    )}
     )
+    
+  }
+
+  modifier(id:number)
+  {
+    this.utService.selectById(id).subscribe(
+
+      response=> this.utilisateur = response
+    )
+
+}
+
+delete(id:number)
+  {
+    this.utService.delete(id).subscribe(
+      response=>{this.selectAll()}
+    )
+  }
+
+  selectAllRoles()
+  {
+    this.utService.selectAllRoles().subscribe(
+      response=>{
+        
+        this.roles = response
+        
+
+        }
+      )
   }
 
 
