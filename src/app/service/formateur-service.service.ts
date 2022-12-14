@@ -29,4 +29,17 @@ export class FormateurServiceService {
   {
     return this.http.post(`http://localhost:8025/api/formateurs`,formateurs)
   }
+
+
+  remove(formateurs:Formateur)
+  {
+    return this.http.put('http://localhost:8015/api/formateurs', formateurs);
+  }
+
+
+  formateurparid(id:number)
+  {
+    return this.http.get<Formateur>(`http://localhost:8025/api/formateurs/${id}`)
+  }
+
 }

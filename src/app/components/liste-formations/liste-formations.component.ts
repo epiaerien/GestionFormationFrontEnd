@@ -44,6 +44,15 @@ this.formateur=new Formateur(); ;
       })
   }
 
-  
 
+  participantparformation(id:number)
+  {
+    this.router.navigateByUrl(`afficherParticipantParFormation/${id}`);
+  }
+
+
+  formateurparid(id:number)
+  {
+    this.router.navigateByUrl(`afficherinfoformateur/${id}`); 
+  }
 }

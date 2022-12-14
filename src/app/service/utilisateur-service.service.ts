@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Utilisateurs } from '../models/utilisateurs';
 import { HttpClient } from '@angular/common/http';
+import { Role } from '../models/role';
 
 
 @Injectable({
@@ -29,7 +30,15 @@ export class UtilisateurServiceService {
   {
     return this.http.post(`http://localhost:8025/api/utilisateurs`,utilisateurs)
   }
+  
+  selectAllRoles()
+{
+  return this.http.get<Role[]>('http://localhost:8025/api/roles')
+}
 
-
+selectRoleById(id:number)
+{
+  return this.http.get<Role>(`http://localhost:8025/api/roles/${id}`)
+}
 
 }

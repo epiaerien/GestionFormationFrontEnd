@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    
+    <form #f="ngForm" (ngSubmit)="add(f)">
+        
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                    <h3>Ajouter une Formation</h3>
+                </div>
+            </div>
+            
+            <div class="row justify-content-md-center">
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label path="prenom" class="form-label"> Nom de la Formation </label>
+                        <input type="text" class="form-control" name="formation.nom" [(ngModel)]="formation.nom">
+                    </div>
+                </div>
+                 
+                <div class="col-md-2">
+                    <div class="form-group">
+
+                        <label path="nom" class="form-label"> Date de début </label>
+                        <input type="date" class="form-control" name= "formation.dateDebut" [(ngModel)]="formation.dateDebut">
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+
+                        <label path="description" class="form-label"> Date de Fin </label>
+                        <input type="date" class="form-control" name= "formation.dateFin" [(ngModel)]="formation.dateFin">
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+
+                        <label name="dateNaissance" class="form-label"> Prix de la Formation </label>
+                        <input type="number" class="form-control" name="formation.prix" [(ngModel)]="formation.prix">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row justify-content-md-center">
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label name="roles" class="form-label">Attribuer un Formateur :</label> 
+                        
+                        <select class="form-control" name="idFormateur" [(ngModel)]="idFormateur">
+
+                                
+                                <option *ngFor="let f of formateurs" value="{{f.id}}"> {{f.nom}} </option>
+                            
+                        </select>
+                    </div>
+                    </div>
+                </div>
+
+            <div>
+            </div>
+            
+
+            <div class="row justify-content-md-center">
+
+                <div class="col-md-auto">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg">Valider Ajout/Modification</button>
+                    </div>
+                </div>
+            </div>
+
+
+        
+    </form>
+
+</div>

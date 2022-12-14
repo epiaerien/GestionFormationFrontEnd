@@ -2,7 +2,7 @@
 <div class="container-fluid">
     
 		<form #f="ngForm" (ngSubmit)="add(f)">
-			<fieldset>
+			
 				<div class="row justify-content-md-center">
 					<div class="col-md-auto">
 						<h3>Ajouter un Utilisateur</h3>
@@ -11,14 +11,14 @@
 				
 				<div class="row justify-content-md-center">
 
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<div class="form-group">
 							<label path="prenom" class="form-label"> Prénom </label>
 							<input type="text" class="form-control" name="utilisateur.prenom" [(ngModel)]="utilisateur.prenom">
 						</div>
 					</div>
 					 
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<div class="form-group">
 
 							<label path="nom" class="form-label"> Nom </label>
@@ -27,7 +27,7 @@
 						</div>
 					</div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
 						<div class="form-group">
 
 							<label path="description" class="form-label"> eMail </label>
@@ -35,43 +35,55 @@
 							
 						</div>
 					</div>
+
+                    <div class="col-md-2">
+						<div class="form-group">
+
+							<label name="dateNaissance" class="form-label"> Date de Naissance </label>
+							<input type="date" class="form-control" name="utilisateur.dateNaissance" [(ngModel)]="utilisateur.dateNaissance">
+						</div>
+					</div>
+
 				</div>
 
 				<div class="row justify-content-md-center">
 
-					
-					 
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="form-group">
 
 							<label name="username" class="form-label"> Username </label>
 							<input type="text" class="form-control" name="utilisateur.username" [(ngModel)]="utilisateur.username">
 						</div>
 					</div>
+					 
+					
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
 						<div class="form-group">
 
 							<label name="password" class="form-label"> Mot de passe </label>
 							<input type="password" class="form-control" name="utilisateur.password"  [(ngModel)]="utilisateur.password">
 						</div>
 					</div>
-				</div>
 
-
-				<div class="row justify-content-md-center">
-					<!-- <div class="col-md-4">
+                    <div class="col-md-3">
 						<div class="form-group">
-							<label name="Matiere" class="form-label">Attribuer une
-								Catégorie :</label> <select name="id_cat">
-								<div *ngFor="let c of categories">
-
-									<option value="{{c.id_categorie}}">{{c.nomCategorie}}</option>
-                                </div>
+							<label name="roles" class="form-label">Attribuer Role :</label> 
+                            
+                            <select class="form-control" name="idRole" [(ngModel)]="idRole">
+      
+                                        <option value="{{utilisateur.role}}" selected>  </option>
+                                    
+									<option *ngFor="let r of roles" value="{{r.id}}"> {{r.nom}} </option>
+                                
 							</select>
+                        </div>
 						</div>
-					</div> -->
 					</div>
+
+				<div>
+                </div>
+                
 
 				<div class="row justify-content-md-center">
 
@@ -83,9 +95,9 @@
 				</div>
 
 
-			</fieldset>
+			
 		</form>
-	</div>
+	
 
     <table class="table table-striped">
         <thead>
@@ -97,6 +109,8 @@
                 <th scope="col"> username </th>
                 <th scope="col"> password  </th>
                 <th scope="col"> role  </th>
+                <th scope="col"> Modifier  </th>
+                <th scope="col"> Supprimer  </th>
                 
             </tr>
         </thead>
@@ -112,22 +126,22 @@
                     <td>{{u.mail}}</td>
                     <td>{{u.username}}</td>
                     <td>{{u.password}}</td>
-                    <td> role </td>
+                    <td> {{u.role.nom}} </td>
             
                             <td>
 
-                                <!-- <button (click)="modifier(u.id)" class="btn btn-outline-primary">
+                                <button (click)="modifier(u.id)" class="btn btn-outline-warning">
 
-                                    <i class="bi bi-plus-square-fill"> Plus d'Informations</i>
-                                </button> -->
+                                    <i class="bi bi-pencil-square"> Modifier </i>
+                                </button>
                             </td>
 
                             <td>
 
-                                <!-- <button (click)="supprimer(u.id)" class="btn btn-outline-primary">
+                                <button (click)="delete(u.id)" class="btn btn-outline-danger">
 
-                                    <i class="bi bi-plus-square-fill"> Plus d'Informations</i>
-                                </button> -->
+                                    <i class="bi bi-plus-square-fill">  Supprimer </i>
+                                </button>
                             </td>
 
                 </tr>
