@@ -1,3 +1,5 @@
+import { Formateur } from "./formateur";
+
 export class Formation {
     id!:number;
     nom!:string;
@@ -5,4 +7,5 @@ export class Formation {
     dateFin!:Date;
     prix!:number;
     lieu!:string;
+    formateur!:Formateur
 }

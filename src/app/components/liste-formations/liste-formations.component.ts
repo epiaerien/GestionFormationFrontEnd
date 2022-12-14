@@ -14,7 +14,8 @@ export class ListeFormationsComponent implements OnInit {
 
   formation!:Formation; 
   formations!:Formation[]; 
-  formateur!:Formateur; 
+  formateur!:Formateur;
+  
 
   constructor(private forService:FormationServiceService, private router:Router)
   {
@@ -22,16 +23,26 @@ export class ListeFormationsComponent implements OnInit {
   }
   ngOnInit(): void {
 this.afficherAll();
+this.formateur=new Formateur(); ;
   }
 
 
   afficherAll()
   {
-    this.forService.selectAll().subscribe(Response=>this.formations= Response)
+    this.forService.selectAll().subscribe(
+      Response=>
+      {this.formations= Response
+        for(let f of this.formations)
+        {
+          this.forService.chercherParFormation(f.id).subscribe(Response2=>
+            {
+              f.formateur=Response2}
+            )
+          
+
+        }
+      })
   }
 
- formateurParFormation(formation:Formation)
- {
-  this.forService.chercherParFormation(formation).subscribe(Response=>this.formateur=Response)
- }
+
 }

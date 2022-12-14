@@ -30,8 +30,8 @@ export class FormationServiceService {
     return this.http.post(`http://localhost:8025/api/formations`,formation)
   }
 
-  chercherParFormation(formation:Formation)
+  chercherParFormation(id:number)
   {
-    return this.http.get<Formateur>("http://localhost:8025/api/formateurParFormation")
+    return this.http.get<Formateur>(`http://localhost:8025/api/formateurParFormation/${id}`)
   }
 }

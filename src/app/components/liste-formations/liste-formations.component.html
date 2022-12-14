@@ -17,9 +17,9 @@
         <td> {{formation.nom}}</td>
         <td> {{formation.dateDebut | date:'mediumDate'}}</td>
         <td> {{formation.dateFin | date:'mediumDate'}}</td>
-
+        <td> {{formation.prix}} </td>
         <td> {{formation.lieu}}</td>
-        <td> {{formateurParFormation(formation)}}  </td>
-        <td> <button> Participants </button></td>
+        <td> {{formation.formateur.nom}}  </td>
+        <td> <button class="btn btn-info"> Participants </button></td>
     </tr>
 </table>
