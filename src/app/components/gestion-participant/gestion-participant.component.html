@@ -1,0 +1,68 @@
+<div>
+<form (ngSubmit)="addParticipant()">
+    Nom : <input type="text" name="nom" [(ngModel)]="participant.nom"> <br>
+    Prenom : <input   type="text" name="prenom" [(ngModel)]="participant.prenom"><br>
+    Adresse: <input   type="text" name="adresse" [(ngModel)]="participant.adresse"><br>
+    Mail : <input   type="text" name="mail" [(ngModel)]="participant.mail"><br>
+    Date Naissance: <input   type="text" name="dateNaissance" [(ngModel)]="participant.dateNaissance"><br>
+  <button type="submit">Valider</button>
+</form>
+</div>
+<div>
+    Ajouter Formation : <input   type="text" name="dispo" [(ngModel)]="participant.formations"><br>
+    Ajouter Formation : <input   type="text" name="dispo" [(ngModel)]="participant.formations"><br>
+    Ajouter Formation : <input   type="text" name="dispo" [(ngModel)]="participant.formations"><br>
+</div>
+
+<div>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Adresse</td>
+        <td>Mail</td>
+        <td>Date Naissance</td>
+
+        <td>Formations</td>
+
+        <td>Ajouter Formations</td>
+
+        <td>Réaliser un Transaction</td>
+
+        <td>Diplomes</td>
+
+        <td>Ajouter Diplomes</td>
+
+        <td>Supprimer le participant</td>
+    </tr>
+    <tr *ngFor="let part of participants">
+        <td>{{part.id}}</td>
+        <td>{{part.nom}}</td>
+        <td>{{part.prenom}}</td>
+        <td>{{part.adresse}}</td>
+        <td>{{part.mail}}</td>
+        <td>{{part.dateNaissance}}</td>
+
+        <td *ngIf="part.formations!=null"><ul *ngFor="let form of part.formations"><li>{{form.nom}}</li></ul></td>
+        <td *ngIf="part.formations==null">pas de formations réalisées</td>
+
+        <td><button type="button" label="Click" (click)="ajoutFormationChild(part.id)">{{part.id}} test</button></td>
+        <!--<button (click)="ajoutFormation(part.id)" >ajouter Formation </button>-->
+
+        <td><button (click)="ajoutTransaction(part.id)" >faire une transaction </button></td>
+
+        <td *ngIf="part.diplomes!=null"><ul *ngFor="let dipl of part.diplomes"><li>{{dipl.nom}}</li></ul></td>
+        <td *ngIf="part.diplomes==null">pas de diplomes obtenus</td>
+
+        <td><button (click)="ajoutDiplome(part.id)" >ajouter Formation </button></td>
+
+        <td> <button (click)="supprimerParticipant(part.id)" >Supprimer</button></td>
+    </tr>
+    </table>
+</div>
+<div>
+    <app-ajout-formation  [idParticipant]="idpart" *ngIf="!TrueOrFalseFormation"></app-ajout-formation>
+</div>
+
+ 

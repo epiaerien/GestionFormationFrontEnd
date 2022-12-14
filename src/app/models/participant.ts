@@ -7,5 +7,5 @@ export class Participant  extends Utilisateurs  {
 
     formations! : Formation[];
     transactions! : Transaction[];
-    diplome!: Diplome;
+    diplomes!: Diplome[];
 }
