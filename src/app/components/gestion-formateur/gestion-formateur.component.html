@@ -1,2 +1,30 @@
-<p>gestion-formateur works!</p>
-test test test 
+<form (ngSubmit)="addFormateur()">
+    Nom : <input type="text" name="nom" [(ngModel)]="formateur.nom"> <br>
+    Prenom : <input   type="text" name="prenom" [(ngModel)]="formateur.prenom"><br>
+    Adresse: <input   type="text" name="adresse" [(ngModel)]="formateur.adresse"><br>
+    Mail : <input   type="text" name="mail" [(ngModel)]="formateur.mail"><br>
+    Date Naissance: <input   type="text" name="dateNaissance" [(ngModel)]="formateur.dateNaissance"><br>
+    Disponibilité : <input   type="text" name="dispo" [(ngModel)]="formateur.dispo"><br>
+    <button type="submit">Valider</button>
+</form><table>
+    <tr>
+        <td>Id</td>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Adresse</td>
+        <td>Mail</td>
+        <td>Date Naissance</td>
+        <td>Disponibilité</td>
+        <td>Action 1</td>
+    </tr>
+    <tr *ngFor="let form of formateurs">
+        <td>{{form.id}}</td>
+        <td>{{form.nom}}</td>
+        <td>{{form.prenom}}</td>
+        <td>{{form.adresse}}</td>
+        <td>{{form.mail}}</td>
+        <td>{{form.dateNaissance}}</td>
+        <td>{{form.dispo}}</td>
+        <td> <button (click)="supprimerFormateur(form.id)" >Supprimer </button></td>
+    </tr>
+    </table>
