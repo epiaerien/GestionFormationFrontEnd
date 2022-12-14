@@ -5,6 +5,7 @@ import { ListeFormationsComponent } from './components/liste-formations/liste-fo
 import { GestionUtilisateurComponent } from './components/gestion-utilisateur/gestion-utilisateur.component';
 import { GestionFormateurComponent } from './components/gestion-formateur/gestion-formateur.component';
 import { GestionPayementComponent } from './components/gestion-payement/gestion-payement.component';
+import { GestionParticipantComponent } from './components/gestion-participant/gestion-participant.component';
 
 import { GestionCommercialComponent } from './components/gestion-commercial/gestion-commercial.component';
 
@@ -18,10 +19,15 @@ const routes:Routes=[
   {path: 'gestionUtilisateurs', component:GestionUtilisateurComponent},
   {path: 'gestionFormateurs', component:GestionFormateurComponent},
 
+  {path: 'gestionParticipants', component:GestionParticipantComponent}
+  
+
+
   {path: 'gestionCommercials', component:GestionCommercialComponent}
 
   {path:'afficherParticipantParFormation/:id', component:ListeParticipantComponent}, 
   {path:'afficherinfoformateur/:id', component:InfoFormateurComponent}
+
 
 ]
 
