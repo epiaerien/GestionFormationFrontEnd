@@ -11,12 +11,11 @@ import { ParticipantServiceService } from 'src/app/service/participant-service.s
 })
 export class AjoutFormationComponent implements OnChanges , OnInit{
   
-  @Input() affichezmoi!: Boolean;
   @Input() idParticipant!: number;
 
   formations!:Formation[];
   participant!:Participant;
-  choixformation!:any[];
+  
   
   constructor(private partServ:ParticipantServiceService, private formaionServ:FormationServiceService ){}
   ngOnInit(): void {
@@ -30,17 +29,17 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
   }
 
   
-  selectedIds:Formation[] = [];
+  selectedForms:Formation[] = [];
 
   OnCheckboxSelect(id:Formation, event:any) {
     console.log("bonjour")
     if (event.target.checked === true) {
-      this.selectedIds.push(id);
-      console.log(this.selectedIds)
+      this.selectedForms.push(id);
+      console.log(this.selectedForms)
     }
     if (event.target.checked === false) {
-      this.selectedIds = this.selectedIds.filter((item) => item !== id);
-      console.log(this.selectedIds)
+      this.selectedForms = this.selectedForms.filter((item) => item !== id);
+      console.log(this.selectedForms)
     }
     
   }
@@ -55,22 +54,24 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
   }
 
   ParticipantByid(){
-    console.log("dans fille" +this.idParticipant)
+    
     this.partServ.selectById(this.idParticipant).subscribe(
       resp=>{
         this.participant =resp;
+        this.participant.formations = this.formations;
         console.log(this.participant.nom)
+        console.log(this.participant.formations)
         }
     )
   }
 
   addParticipant()
 {
-  this.participant.formations=this.selectedIds
+  this.participant.formations=this.selectedForms;
   this.partServ.add(this.participant).subscribe(response=>
     {      
-      console.log("test" +this.participant.formations)      
-      this.affichezmoi=false;
+      console.log("test" +this.participant.dateNaissance)
+      console.log(this.participant.formations)
     })
 }
 
