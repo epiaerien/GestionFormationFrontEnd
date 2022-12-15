@@ -38,8 +38,7 @@ ngOnInit(): void {
  
   }
   participantparformation()
-  {
-   
+  {   
     this.parService.getByIdFormation(this.idForm).subscribe(Response=>this.participants=Response)
   }
  

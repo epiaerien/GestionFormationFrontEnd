@@ -14,25 +14,26 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
   @Input() idParticipant!: number;
 
   formations!:Formation[];
+  
   participant!:Participant;
   
   
   constructor(private partServ:ParticipantServiceService, private formaionServ:FormationServiceService ){}
   ngOnInit(): void {
     this.participant = new Participant();
-    this.afficherAllFormations();
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['idParticipant']){
-    this.ParticipantByid(); }  
+    this.ParticipantByid(); 
+    }  
   }
 
   
   selectedForms:Formation[] = [];
 
   OnCheckboxSelect(id:Formation, event:any) {
-    console.log("bonjour")
     if (event.target.checked === true) {
       this.selectedForms.push(id);
       console.log(this.selectedForms)
@@ -43,14 +44,35 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
     }
     
   }
- 
+  
 
-  afficherAllFormations(){
+  
+  formationNonFaites:Formation[] = [];
+  test:boolean = false
+  afficherFormationsNonFaites(){
     this.formaionServ.selectAll().subscribe(
       resp=>{
-        this.formations = resp
-      }
+        this.formations = resp;
+        for(let form of this.formations)
+        {
+          if(this.participant.formations.includes(form)){
+            this.test= true;
+          }
+          else{this.test = false}
+          if(!this.test)
+          {this.formationNonFaites.push(form)}
+          /*form = form.filter(this.participant.formations => form.id !== this.participant.formations.id).concat(prod);
+          
+          this.formaionServ.selectById(form.id).subscribe(
+            resp2=>{
+              this.formationNonFaites.push(form)
+              console.log(this.formationNonFaites)
+            }
+          )*/
+        }
+      }      
     )
+   
   }
 
   ParticipantByid(){
@@ -58,21 +80,33 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
     this.partServ.selectById(this.idParticipant).subscribe(
       resp=>{
         this.participant =resp;
-        this.participant.formations = this.formations;
-        console.log(this.participant.nom)
-        console.log(this.participant.formations)
+        this.formaionServ.getFormationByParti(this.participant.id).subscribe(Response2=>
+          {
+            this.participant.formations=Response2
+            console.log( this.participant.formations)}
+          )
+
+          this.afficherFormationsNonFaites();
         }
     )
   }
 
-  addParticipant()
+  addParticipantinFormation()
 {
-  this.participant.formations=this.selectedForms;
-  this.partServ.add(this.participant).subscribe(response=>
-    {      
-      console.log("test" +this.participant.dateNaissance)
-      console.log(this.participant.formations)
-    })
+  for(let form of this.selectedForms){
+    form.participants= form.participants.filter(participant => participant.id == this.participant.id)
+    console.log(form.participants)
+    /*
+    form.participants.push(this.participant)
+    this.formaionServ.add(form).subscribe(
+      resp=>{
+        console.log("apres ajout")
+        console.log(this.selectedForms)
+
+      }
+    )*/
+  }
+ 
 }
 
 

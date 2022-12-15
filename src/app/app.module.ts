@@ -22,7 +22,8 @@ import { GestionCommercialComponent } from './components/gestion-commercial/gest
 import { ListeParticipantComponent } from './components/liste-participant/liste-participant.component';
 import { InfoFormateurComponent } from './components/info-formateur/info-formateur.component';
 
-import { GestionFormationComponent } from './components/gestion-formation/gestion-formation.component'
+import { GestionFormationComponent } from './components/gestion-formation/gestion-formation.component';
+import { AjoutTransactionComponent } from './components/participant/ajout-transaction/ajout-transaction.component'
 
 
 
@@ -46,7 +47,8 @@ import { GestionFormationComponent } from './components/gestion-formation/gestio
 
     ListeParticipantComponent,
     InfoFormateurComponent,
-    GestionFormationComponent
+    GestionFormationComponent,
+    AjoutTransactionComponent
 
 
   ],

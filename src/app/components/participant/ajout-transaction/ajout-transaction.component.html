@@ -1,0 +1,17 @@
+<div>
+    <h2>Faire une transaction: </h2>
+    <div>
+       <form (ngSubmit)="addParticipant()">
+           
+            
+            <input type="hidden" name="date" [(ngModel)]="transaction.date"> <br>
+            <input   type="text" name="montant" [(ngModel)]="transaction.montant"><br>
+           
+            <input   type="hidden" name="Participant" [(ngModel)]="transaction.participant"><br>
+
+            <input   type="hidden" name="payement" [(ngModel)]="transaction.payement"><br>
+          <button type="submit">Valider</button>
+
+        </form>
+        </div>
+</div> 

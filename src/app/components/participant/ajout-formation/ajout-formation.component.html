@@ -1,15 +1,9 @@
 <div>
-    <h1> seulement quand click on button</h1>
+  <h2>Formations diponibles :</h2>
     <div>
-       <form (ngSubmit)="addParticipant()">
-            <input type="hidden" name="id" [(ngModel)]="participant.id">
-            Nom : <input type="text" name="nom" [(ngModel)]="participant.nom"> <br>
-            Prenom : <input   type="text" name="prenom" [(ngModel)]="participant.prenom"><br>
-            Adresse: <input   type="text" name="adresse" [(ngModel)]="participant.adresse"><br>
-            Mail : <input   type="text" name="mail" [(ngModel)]="participant.mail"><br>
-            Date Naissance: <input   type="text" name="dateNaissance" [(ngModel)]="participant.dateNaissance"><br>
-            Formations: 
-            <div *ngFor="let form of formations">
+       <form (ngSubmit)="addParticipantinFormation()">
+                   
+            <div *ngFor="let form of formationNonFaites">
                 <input type="checkbox" name="item-{{form}}" (change)="OnCheckboxSelect(form, $event)"> {{form.nom}}<br>
             </div>
           <button type="submit">Valider</button>

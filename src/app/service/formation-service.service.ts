@@ -34,4 +34,10 @@ export class FormationServiceService {
   {
     return this.http.get<Formateur>(`http://localhost:8025/api/formateurParFormation/${id}`)
   }
+
+  getFormationByParti(id:number)
+  {
+    return this.http.get<Formation[]>(`http://localhost:8025/api/formationsbyPart/${id}`)
+  }
+  
 }
