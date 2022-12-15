@@ -20,10 +20,15 @@ const routes:Routes=[
   {path: 'gestionFormateurs', component:GestionFormateurComponent},
 
   {path: 'gestionParticipants', component:GestionParticipantComponent},
+  {path: 'gestionCommercials', component:GestionCommercialComponent},
+
+
+  {path: 'gestionParticipants', component:GestionParticipantComponent},
   
 
 
   {path: 'gestionCommercials', component:GestionCommercialComponent},
+
 
   {path:'afficherParticipantParFormation/:id', component:ListeParticipantComponent}, 
   {path:'afficherinfoformateur/:id', component:InfoFormateurComponent}
