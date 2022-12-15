@@ -11,6 +11,7 @@ import { GestionCommercialComponent } from './components/gestion-commercial/gest
 
 import { ListeParticipantComponent } from './components/liste-participant/liste-participant.component';
 import { InfoFormateurComponent } from './components/info-formateur/info-formateur.component';
+import { EspacePersoComponent } from './components/espace-perso/espace-perso.component';
 
 
 const routes:Routes=[
@@ -26,8 +27,8 @@ const routes:Routes=[
   {path: 'gestionCommercials', component:GestionCommercialComponent},
 
   {path:'afficherParticipantParFormation/:id', component:ListeParticipantComponent}, 
-  {path:'afficherinfoformateur/:id', component:InfoFormateurComponent}
-
+  {path:'afficherinfoformateur/:id', component:InfoFormateurComponent},
+  {path:'espaceperso/:id', component:EspacePersoComponent}
 
 ]
 
