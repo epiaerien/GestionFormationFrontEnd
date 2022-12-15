@@ -39,10 +39,10 @@ import { GestionFormationComponent } from './components/gestion-formation/gestio
     NavBarComponent,
 
     GestionParticipantComponent,
-    AjoutFormationComponent
+    AjoutFormationComponent,
 
 
-    GestionCommercialComponent
+    GestionCommercialComponent,
 
     ListeParticipantComponent,
     InfoFormateurComponent,
