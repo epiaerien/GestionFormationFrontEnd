@@ -1,22 +1,32 @@
-<div>
-    <h1> seulement quand click on button</h1>
-    <div>
-       <form (ngSubmit)="addParticipant()">
-            <input type="hidden" name="id" [(ngModel)]="participant.id">
-            Nom : <input type="text" name="nom" [(ngModel)]="participant.nom"> <br>
-            Prenom : <input   type="text" name="prenom" [(ngModel)]="participant.prenom"><br>
-            Adresse: <input   type="text" name="adresse" [(ngModel)]="participant.adresse"><br>
-            Mail : <input   type="text" name="mail" [(ngModel)]="participant.mail"><br>
-            Date Naissance: <input   type="text" name="dateNaissance" [(ngModel)]="participant.dateNaissance"><br>
-            Formations: 
-            <div *ngFor="let form of formations">
+<div class="container-fluid">
+  <div *ngIf="formationNonFaites?.length===0" class="row justify-content-md-center">
+    <div class="col-md-auto">
+  <h3>Plus de foramtions diponibles pour {{participant.nom}} {{participant.prenom}}:</h3>
+</div>
+</div>
+
+<div *ngIf="formationNonFaites?.length!==0">
+  <div  class="row justify-content-md-center">
+    <div class="col-md-auto">
+  <h3>Formations diponibles pour {{participant.nom}} {{participant.prenom}}:</h3>
+</div>
+</div>
+
+    <div   class="row justify-content-md-center">
+       <form (ngSubmit)="addParticipantinFormation()">
+                   
+            <div *ngFor="let form of formationNonFaites">
                 <input type="checkbox" name="item-{{form}}" (change)="OnCheckboxSelect(form, $event)"> {{form.nom}}<br>
             </div>
+
+            <div class="row justify-content-md-center">
+              <div class="col-md-auto">
+                  <div class="form-group">
           <button type="submit">Valider</button>
+        </div>
+      </div>
+  </div>
         </form>
         </div>
+      </div>
 </div> 
-
-<td>
-    
- </td>

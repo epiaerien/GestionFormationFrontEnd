@@ -1,4 +1,5 @@
 import { Formateur } from "./formateur";
+import { Participant } from "./participant";
 
 export class Formation {
     id!:number;
@@ -7,5 +8,6 @@ export class Formation {
     dateFin!:Date;
     prix!:number;
     lieu!:string;
-    formateur!:Formateur
+    formateur!:Formateur;
+    participants!:Participant[]
 }

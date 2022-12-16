@@ -24,6 +24,9 @@ import { InfoFormateurComponent } from './components/info-formateur/info-formate
 
 import { GestionFormationComponent } from './components/gestion-formation/gestion-formation.component';
 
+import { AjoutTransactionComponent } from './components/participant/ajout-transaction/ajout-transaction.component'
+
+
 import { ListeFormateursComponent } from './components/liste-formateurs/liste-formateurs.component';
 import { EspacepersoCommercialComponent } from './components/espaceperso-commercial/espaceperso-commercial.component'
 
@@ -55,8 +58,11 @@ import { EspacePersoFormateurComponent } from './components/espace-perso-formate
     InfoFormateurComponent,
     GestionFormationComponent,
 
+    AjoutTransactionComponent,
+
+
     ListeFormateursComponent,
-    EspacepersoCommercialComponent
+    EspacepersoCommercialComponent,
 
     EspacePersoComponent,
     EspacePersoFormateurComponent

@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
 import { Formation } from 'src/app/models/formation';
 import { Participant } from 'src/app/models/participant';
 import { FormationServiceService } from 'src/app/service/formation-service.service';
@@ -11,68 +12,84 @@ import { ParticipantServiceService } from 'src/app/service/participant-service.s
 })
 export class AjoutFormationComponent implements OnChanges , OnInit{
   
-  @Input() affichezmoi!: Boolean;
   @Input() idParticipant!: number;
 
-  formations!:Formation[];
+  formations!:Formation[];  
   participant!:Participant;
-  choixformation!:any[];
+  formationNonFaites!:Formation[]  
   
-  constructor(private partServ:ParticipantServiceService, private formaionServ:FormationServiceService ){}
+  constructor(private partServ:ParticipantServiceService, private formaionServ:FormationServiceService
+    , private router:Router ){}
   ngOnInit(): void {
     this.participant = new Participant();
-    this.afficherAllFormations();
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['idParticipant']){
-    this.ParticipantByid(); }  
+    this.ParticipantByid();
+    this.formationNonFaites = []; 
+    }  
   }
-
   
-  selectedIds:Formation[] = [];
-
+  selectedForms:Formation[] = [];  
   OnCheckboxSelect(id:Formation, event:any) {
-    console.log("bonjour")
     if (event.target.checked === true) {
-      this.selectedIds.push(id);
-      console.log(this.selectedIds)
+      this.selectedForms.push(id);
+      console.log(this.selectedForms)
     }
     if (event.target.checked === false) {
-      this.selectedIds = this.selectedIds.filter((item) => item !== id);
-      console.log(this.selectedIds)
+      this.selectedForms = this.selectedForms.filter((item) => item !== id);
+      console.log(this.selectedForms)
     }
     
   }
- 
-
-  afficherAllFormations(){
+    
+  
+  afficherFormationsNonFaites(){
     this.formaionServ.selectAll().subscribe(
       resp=>{
-        this.formations = resp
-      }
-    )
+        this.formations = resp;
+        for(let form of this.formations){
+          if(!this.idFormParti.includes(form.id)){
+            this.formationNonFaites.push(form)
+           console.log("non fait" + form.id)
+          }
+          console.log(this.formationNonFaites)
+        }        
+        }            
+    )   
   }
 
-  ParticipantByid(){
-    console.log("dans fille" +this.idParticipant)
+  idFormParti:number[] =[];
+  ParticipantByid(){    
     this.partServ.selectById(this.idParticipant).subscribe(
       resp=>{
         this.participant =resp;
-        console.log(this.participant.nom)
+        this.formaionServ.getFormationByParti(this.participant.id).subscribe(Response2=>
+          {
+            this.participant.formations=Response2
+            console.log( this.participant.formations)
+            this.idFormParti = this.participant.formations.map(forms => forms.id);
+            console.log(this.idFormParti);
+            this.afficherFormationsNonFaites();}            
+          )          
+          
         }
     )
   }
 
-  addParticipant()
-{
-  this.participant.formations=this.selectedIds
-  this.partServ.add(this.participant).subscribe(response=>
-    {      
-      console.log("test" +this.participant.formations)      
-      this.affichezmoi=false;
-    })
+  addParticipantinFormation()
+  {
+  for(let form of this.selectedForms){
+    form.participants.push(this.participant)
+    this.formaionServ.add(form).subscribe(
+      resp=>{
+        console.log("apres ajout")
+        console.log(this.selectedForms)
+        this.router.navigateByUrl('gestionParticipants');
+      }
+    )
+  } 
 }
-
-
 }

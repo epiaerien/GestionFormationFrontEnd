@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Formation } from 'src/app/models/formation';
 import { Participant } from 'src/app/models/participant';
 import { Transaction } from 'src/app/models/transaction';
+import { FormationServiceService } from 'src/app/service/formation-service.service';
 import { ParticipantServiceService } from 'src/app/service/participant-service.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class GestionPayementComponent implements OnInit{
   participant!: Participant;
  
 
-  constructor (private partServ:ParticipantServiceService){}
+  constructor (private partServ:ParticipantServiceService, private formatServ:FormationServiceService){}
 
   ngOnInit(): void {
     this.getAllParticipant();
@@ -24,7 +25,15 @@ export class GestionPayementComponent implements OnInit{
   getAllParticipant()
     {
       this.partServ.selectAll().subscribe(
-        response => {this.participants = response}
+        response => {this.participants = response
+          for(let part of this.participants)
+          {
+            this.formatServ.getFormationByParti(part.id).subscribe(Response2=>
+              {
+                part.formations=Response2
+                console.log(part.formations)}
+              )
+          } }
       )
     }
 
