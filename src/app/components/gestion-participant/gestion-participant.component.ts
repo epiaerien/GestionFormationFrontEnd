@@ -1,5 +1,7 @@
 import { Component , OnInit } from '@angular/core';
+import { Formation } from 'src/app/models/formation';
 import { Participant } from 'src/app/models/participant';
+import { FormationServiceService } from 'src/app/service/formation-service.service';
 import { ParticipantServiceService } from 'src/app/service/participant-service.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { ParticipantServiceService } from 'src/app/service/participant-service.s
 })
 export class GestionParticipantComponent implements OnInit{
 
-  constructor(private partServ:ParticipantServiceService){}
+  constructor(private partServ:ParticipantServiceService, private formationServ:FormationServiceService){}
 
   participants!:Participant[];
   participant!:Participant;
@@ -36,7 +38,14 @@ selectAll()
     {
       console.log(response.length)
       this.participants=response
-      
+      for(let part of this.participants)
+        {
+          this.formationServ.getFormationByParti(part.id).subscribe(Response2=>
+            {
+              part.formations=Response2
+              console.log(part.formations)}
+            )
+        }      
     })
 }
 addParticipant()
@@ -53,6 +62,14 @@ supprimerParticipant (id:number)
   this.partServ.delete(id).subscribe(response=>
     {this.selectAll()})
 }
+
+TrueOrFalsetransaction:Boolean =true;
+ajoutTransactionChild(id:number){
+  console.log("ajouttransactionchild " + id);
+  this.idpart = id;
+  this.TrueOrFalsetransaction=false;
+}
+
 
 ajoutFormation(id:number){
 

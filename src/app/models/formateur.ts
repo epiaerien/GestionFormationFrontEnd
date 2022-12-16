@@ -5,6 +5,6 @@ export class Formateur extends Utilisateurs{
 
 
     dispo!:boolean; 
-    formations!:Formation[]; 
-
+    formations!:Formation[];
+    
 }

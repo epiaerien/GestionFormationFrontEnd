@@ -1,68 +1,127 @@
-<div>
-<form (ngSubmit)="addParticipant()">
-    Nom : <input type="text" name="nom" [(ngModel)]="participant.nom"> <br>
-    Prenom : <input   type="text" name="prenom" [(ngModel)]="participant.prenom"><br>
-    Adresse: <input   type="text" name="adresse" [(ngModel)]="participant.adresse"><br>
-    Mail : <input   type="text" name="mail" [(ngModel)]="participant.mail"><br>
-    Date Naissance: <input   type="text" name="dateNaissance" [(ngModel)]="participant.dateNaissance"><br>
-  <button type="submit">Valider</button>
-</form>
+<div class="container-fluid">
+    
+    <form (ngSubmit)="addParticipant()">
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <h3> Ajouter un participant</h3>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center">
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label path="nom" class="form-label"> Nom </label>
+                    <input type="text" name="participant.nom" [(ngModel)]="participant.nom">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label path="Prenom" class="form-label"> Prenom </label>
+                    <input type="text" name="participant.prenom" [(ngModel)]="participant.prenom">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label path="Adresse" class="form-label"> Adresse </label>
+                    <input type="text" name="participant.adresse" [(ngModel)]="participant.adresse">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label path="Mail" class="form-label"> Mail </label>
+                    <input type="mail" name="participant.mail" [(ngModel)]="participant.mail">
+                </div>
+            </div>
+            
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label path="dateNaissance" class="form-label"> Date Naissance </label>
+                    <input type="date" name="participant.dateNaissance" [(ngModel)]="participant.dateNaissance">
+                </div>
+            </div>
+            <div>
+            </div> <br>
+            
+            
+            <div class="row justify-content-md-center">
+
+                <div class="col-md-auto">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary ">Valider Ajout/Modification</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </form>
 </div>
-<div>
-    Ajouter Formation : <input   type="text" name="dispo" [(ngModel)]="participant.formations"><br>
-    Ajouter Formation : <input   type="text" name="dispo" [(ngModel)]="participant.formations"><br>
-    Ajouter Formation : <input   type="text" name="dispo" [(ngModel)]="participant.formations"><br>
-</div>
+       
+
 
 <div>
-<table>
-    <tr>
-        <td>Id</td>
-        <td>Nom</td>
-        <td>Prenom</td>
-        <td>Adresse</td>
-        <td>Mail</td>
-        <td>Date Naissance</td>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col"> Id </th>
+                <th scope="col"> Nom </th>
+                <th scope="col"> Prenom </th>
+                <th scope="col"> Adresse </th>
+                <th scope="col"> Mail </th>
+                <th scope="col"> Date Naissance  </th>
+                <th scope="col"> Formations  </th>
+                <th scope="col"> Ajouter Formations  </th>
+                <th scope="col"> Réaliser un Transaction  </th>
+                <th scope="col"> Diplomes  </th>
+                <th scope="col"> Ajouter Diplomes  </th>
+                <th scope="col"> Supprimer le participant  </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let part of participants">
+            <td>{{part.id}}</td>
+            <td>{{part.nom}}</td>
+            <td>{{part.prenom}}</td>
+            <td>{{part.adresse}}</td>
+            <td>{{part.mail}}</td>
+            <td>{{part.dateNaissance}}</td>
 
-        <td>Formations</td>
+            <td>
+                <div *ngIf="part.formations!=null">
+                    <ul *ngFor="let form of part.formations ">
+                        <li>{{form.nom}}</li>
+                    </ul>
+                </div>
+                <div *ngIf="part.formations?.length===0">pas de formations réalisées</div>
+            </td>
 
-        <td>Ajouter Formations</td>
+            <td><button type="button" label="Click" (click)="ajoutFormationChild(part.id)">Ajouter des
+                    formation</button></td>
 
-        <td>Réaliser un Transaction</td>
+            <td><button (click)="ajoutTransactionChild(part.id)">Faire une transaction </button></td>
 
-        <td>Diplomes</td>
+            <td>
+                <div *ngIf="part.diplomes!=null">
+                    <ul *ngFor="let dipl of part.diplomes">
+                        <li>{{dipl.nom}}</li>
+                    </ul>
+                </div>
+                <div *ngIf="part.diplomes?.length===0">pas de diplomes obtenus</div>
+            </td>
 
-        <td>Ajouter Diplomes</td>
+            <td><button (click)="ajoutDiplome(part.id)">ajouter Formation </button></td>
 
-        <td>Supprimer le participant</td>
-    </tr>
-    <tr *ngFor="let part of participants">
-        <td>{{part.id}}</td>
-        <td>{{part.nom}}</td>
-        <td>{{part.prenom}}</td>
-        <td>{{part.adresse}}</td>
-        <td>{{part.mail}}</td>
-        <td>{{part.dateNaissance}}</td>
-
-        <td *ngIf="part.formations!=null"><ul *ngFor="let form of part.formations"><li>{{form.nom}}</li></ul></td>
-        <td *ngIf="part.formations==null">pas de formations réalisées</td>
-
-        <td><button type="button" label="Click" (click)="ajoutFormationChild(part.id)">{{part.id}} test</button></td>
-        <!--<button (click)="ajoutFormation(part.id)" >ajouter Formation </button>-->
-
-        <td><button (click)="ajoutTransaction(part.id)" >faire une transaction </button></td>
-
-        <td *ngIf="part.diplomes!=null"><ul *ngFor="let dipl of part.diplomes"><li>{{dipl.nom}}</li></ul></td>
-        <td *ngIf="part.diplomes==null">pas de diplomes obtenus</td>
-
-        <td><button (click)="ajoutDiplome(part.id)" >ajouter Formation </button></td>
-
-        <td> <button (click)="supprimerParticipant(part.id)" >Supprimer</button></td>
-    </tr>
+            <td> <button (click)="supprimerParticipant(part.id)">Supprimer</button></td>
+        </tr>
+    </tbody>
     </table>
 </div>
-<div>
-    <app-ajout-formation  [idParticipant]="idpart" *ngIf="!TrueOrFalseFormation"></app-ajout-formation>
+<div *ngIf="!TrueOrFalseFormation">
+    <app-ajout-formation [idParticipant]="idpart"></app-ajout-formation>
+
 </div>
 
- 
+<div *ngIf="!TrueOrFalsetransaction">
+    <app-ajout-transaction [idParticipant]="idpart"></app-ajout-transaction>
+</div>

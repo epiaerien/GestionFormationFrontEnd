@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Diplome } from '../models/diplome';
 import { Participant } from '../models/participant';
 
 @Injectable({
@@ -26,11 +27,11 @@ export class ParticipantServiceService {
 
   add(participant:Participant)
   {
-    return this.http.post(`http://localhost:8025/api/participants`,participant)
+    return this.http.post('http://localhost:8025/api/participants',participant)
   }
 
-  getByIdFormation(id:number)
-  {
+  getByIdFormation(id:number){
     return this.http.get<Participant[]>(`http://localhost:8025/api/participantsparformation/${id}`)
   }
+
 }
