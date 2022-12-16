@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
 import { Formation } from 'src/app/models/formation';
 import { Participant } from 'src/app/models/participant';
 import { FormationServiceService } from 'src/app/service/formation-service.service';
@@ -17,7 +18,8 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
   participant!:Participant;
   formationNonFaites!:Formation[]  
   
-  constructor(private partServ:ParticipantServiceService, private formaionServ:FormationServiceService ){}
+  constructor(private partServ:ParticipantServiceService, private formaionServ:FormationServiceService
+    , private router:Router ){}
   ngOnInit(): void {
     this.participant = new Participant();
     
@@ -85,6 +87,7 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
       resp=>{
         console.log("apres ajout")
         console.log(this.selectedForms)
+        this.router.navigateByUrl('gestionParticipants');
       }
     )
   } 
