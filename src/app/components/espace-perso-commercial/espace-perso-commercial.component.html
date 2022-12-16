@@ -1,0 +1,29 @@
+<hr> 
+<h3> Listes des Appels</h3>
+<hr> 
+
+<table class="table table-hover">
+
+
+    <thead>
+        <tr>
+          
+            <th>Id </th>
+            <th>Prospect </th>
+            <th> Date de l'appel</th>
+            <th> Commentaire/th>
+        </tr>
+        </thead>
+    
+        <tbody>
+        <tr *ngFor="let app of commercial.appels ">
+    
+            <td> {{app.id}} </td>
+            <td> {{app.prospect}}</td>
+            <td> {{app.date}}</td>
+            <td> {{app.commentaire}} </td>
+        
+          
+        </tr>
+        </tbody>
+</table>

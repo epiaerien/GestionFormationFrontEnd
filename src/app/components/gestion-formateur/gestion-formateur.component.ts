@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Formateur } from 'src/app/models/formateur';
+import { Formation } from 'src/app/models/formation';
 import { FormateurServiceService } from 'src/app/service/formateur-service.service';
+import { FormationServiceService } from 'src/app/service/formation-service.service';
 
 
 
@@ -16,7 +18,12 @@ export class GestionFormateurComponent {
 
   formateur! : Formateur;
 
-  constructor(private fservice:FormateurServiceService, private route:ActivatedRoute)
+  idFormation!:number
+  formation!:Formation
+  formations!:Formation[]
+ 
+
+  constructor(private fservice:FormateurServiceService, private formationservice:FormationServiceService)
   {
     
   }
@@ -24,6 +31,7 @@ export class GestionFormateurComponent {
 ngOnInit():void{
   this.selectAll()
   this.formateur = new Formateur()
+  this.selectAllFormation()
 }
 
 
@@ -59,6 +67,15 @@ modifierFormateur (id:number)
 
     response=> this.formateur = response)
 }
+
+
+selectAllFormation(){
+
+  this.formationservice.selectAll().subscribe(
+    response => {
+      this.formations = response
+    }
+  )
+
 }
-
-
+}

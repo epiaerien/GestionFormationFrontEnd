@@ -1,0 +1,29 @@
+<body> 
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col"> Prospect</th>
+                <th scope="col"> Date Appel </th>
+                <th scope="col"> Commentaire </th>
+                
+              
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+    
+    
+                <tr *ngFor="let app of appels">
+                    
+                    <td>{{app.prospect}}</td>
+                    <td>{{app.date| date:'mediumDate'}}</td>
+                    <td>{{app.commentaire}}</td>
+                  
+                </tr>
+    
+            
+        </tbody>
+    </table>
+    </body>
+    
