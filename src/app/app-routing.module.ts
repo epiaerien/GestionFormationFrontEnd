@@ -11,6 +11,7 @@ import { GestionCommercialComponent } from './components/gestion-commercial/gest
 
 import { ListeParticipantComponent } from './components/liste-participant/liste-participant.component';
 import { InfoFormateurComponent } from './components/info-formateur/info-formateur.component';
+import { ListeFormateursComponent } from './components/liste-formateurs/liste-formateurs.component';
 
 
 const routes:Routes=[
@@ -18,7 +19,7 @@ const routes:Routes=[
   {path: 'gestionPayements', component:GestionPayementComponent},
   {path: 'gestionUtilisateurs', component:GestionUtilisateurComponent},
   {path: 'gestionFormateurs', component:GestionFormateurComponent},
-
+  {path: 'formateurs', component:ListeFormateursComponent},
   {path: 'gestionParticipants', component:GestionParticipantComponent},
   {path: 'gestionCommercials', component:GestionCommercialComponent},
 

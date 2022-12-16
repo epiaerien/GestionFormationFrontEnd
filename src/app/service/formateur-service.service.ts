@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Formateur } from '../models/formateur';
+import { Formation } from '../models/formation';
 
 
 @Injectable({
@@ -42,4 +43,10 @@ export class FormateurServiceService {
     return this.http.get<Formateur>(`http://localhost:8025/api/formateurs/${id}`)
   }
 
+  chercherParFormateur(id:number)
+  {
+    return this.http.get<Formation>(`http://localhost:8025/api/formationParFormateur/${id}`)
+  }
+
+ 
 }

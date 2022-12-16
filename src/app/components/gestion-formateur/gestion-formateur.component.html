@@ -4,7 +4,7 @@
     <fieldset>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
-                <h3>Ajouter un Utilisateur</h3>
+                <h3>Ajouter un Formateur</h3>
             </div>
         </div>
 
@@ -46,12 +46,22 @@
         </div>
 
         <div class="col-md-3">
-            <div class="checkbox">
+            <div class="form-group">
                 <label path="dispo"class="form-label"> Disponibilité</label>
                     
-                        <button type="submit" class="btn btn-primary btn-lg">oui</button>
-                        <button type="submit" class="btn btn-primary btn-lg">non</button>
-                    
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="food" [(ngModel)]="formateur.dispo" [value]="true">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                    Oui
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="food" [(ngModel)]="formateur.dispo" [value]="false">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                    Non
+                    </label>
+                  </div>
+                
             </div>
         </div>
 
@@ -79,7 +89,7 @@
 
             <div class="col-md-auto">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg">Valider Ajout/Modification</button>
+                    <button type="submit" class="btn btn-primary">Valider Ajout/Modification</button>
                 </div>
             </div>
         </div>
@@ -126,7 +136,7 @@
 
         <td>
 
-            <button (click)="modifierFormateur()" class="btn btn-outline-primary">
+            <button (click)="modifierFormateur(form.id)" class="btn btn-outline-primary">
 
                 <i class="bi bi-plus-square-fill"> Modifier </i>
             </button>

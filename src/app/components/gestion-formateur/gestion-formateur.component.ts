@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Formateur } from 'src/app/models/formateur';
 import { FormateurServiceService } from 'src/app/service/formateur-service.service';
 
+
+
 @Component({
   selector: 'app-gestion-formateur',
   templateUrl: './gestion-formateur.component.html',
@@ -32,6 +34,7 @@ selectAll()
       console.log(response.length)
       this.formateurs=response
     })
+
 }
 addFormateur()
 {
@@ -50,10 +53,11 @@ supprimerFormateur (id:number)
     {this.selectAll()})
 }
 
-modifierFormateur ()
+modifierFormateur (id:number)
 {
-  this.fservice.remove(this.formateur).subscribe(response=>
-    {this.selectAll()})
+  this.fservice.selectById(id).subscribe(
+
+    response=> this.formateur = response)
 }
 }
 
