@@ -16,7 +16,6 @@ export class ListeFormateursComponent implements OnInit
 
   formateur!:Formateur;
   formateurs!:Formateur[];
-  formations!:Formation;
   formation!:Formation;
 
   constructor(private fservice:FormateurServiceService, private router:Router, private formservice:FormationServiceService)
@@ -48,8 +47,7 @@ export class ListeFormateursComponent implements OnInit
 
   formationparid(id:number)
   {
-    this.formservice.formationparid(id).subscribe(response=>
-      {this.formations= response}
-      );
+    this.router.navigateByUrl(`afficherinfoformation/${id}`); 
   }
-}
+  }
+
