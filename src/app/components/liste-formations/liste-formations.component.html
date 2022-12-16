@@ -1,6 +1,6 @@
 <body >
 
-    <app-gestion-formation></app-gestion-formation>
+    <app-gestion-formation [formation]="formation" (newItemEvent)="onSubmitChange($event)"></app-gestion-formation>
 
     <h3 style="color: #d9534f;"> Listes des formations</h3>
 <hr> 
@@ -17,6 +17,8 @@
         <th> Lieu </th>
         <th> Nom du formateur </th> 
         <th> Liste des participants </th>
+        <th> Modification </th>
+        <th> Suppression </th>
         
     </tr>
     </thead>
@@ -32,6 +34,22 @@
         <td> {{formation.lieu}}</td>
         <td> <button class="btn btn-info" (click)="formateurparid(formation.formateur.id)" > {{formation.formateur.nom}} </button></td>
         <td> <button class="btn btn-info" (click)="participantparformation(formation.id)"> Participants </button></td>
+        
+        <td>
+            <button (click)="modifier(formation.id)" class="btn btn-outline-warning">
+
+                <i class="bi bi-pencil-square"> Modifier </i>
+            </button>
+        </td>
+
+        <td>
+
+            <button (click)="delete(formation.id)" class="btn btn-outline-danger">
+
+                <i class="bi bi-plus-square-fill">  Supprimer </i>
+            </button>
+        </td>
+
     </tr>
     </tbody>
 </table>
