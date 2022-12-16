@@ -15,6 +15,7 @@ export class EspacePersoFormateurComponent implements OnInit {
   formateurs!:Formateur[]; 
   idForm!:number; 
   formations!:Formation[]; 
+   
 
   constructor(private forService:FormateurServiceService, private router:ActivatedRoute, private route:Router, private formationService:FormationServiceService){}
   
@@ -50,6 +51,19 @@ export class EspacePersoFormateurComponent implements OnInit {
   participantparformation(id:number)
   {
     this.route.navigateByUrl(`afficherParticipantParFormation/${id}`);
+  }
+
+  changedispo(){
+    if (this.formateur.dispo==true ){
+      this.formateur.dispo=false; 
+    }
+    else 
+    {
+      this.formateur.dispo=true; 
+    }
+    
+    
+    
   }
 }
 
