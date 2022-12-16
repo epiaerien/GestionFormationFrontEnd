@@ -14,6 +14,7 @@ export class GestionFormationComponent implements OnInit {
   
 
   formation!:Formation
+  formations!:Formation[]
 
   idFormateur!:number
   formateur!:Formateur
@@ -22,6 +23,8 @@ export class GestionFormationComponent implements OnInit {
   constructor(private formService:FormationServiceService, private formateurService:FormateurServiceService){}
   
   ngOnInit(): void {
+
+    this.formation = new Formation()
     this.selectAllFormateur()
    
     
@@ -43,6 +46,23 @@ export class GestionFormationComponent implements OnInit {
   }
     )
     
+  }
+
+  afficherAll()
+  {
+    this.formService.selectAll().subscribe(
+      Response=>
+      {this.formations= Response
+        for(let f of this.formations)
+        {
+          this.formService.chercherParFormation(f.id).subscribe(Response2=>
+            {
+              f.formateur=Response2}
+            )
+          
+
+        }
+      })
   }
 
 
