@@ -141,6 +141,19 @@ export class GestionUtilisateurComponent implements OnInit{
     )
   }
 
+  getStatut(id:number):string
+  {
+    
+    let utType = "Utilisateur"; 
+
+    this.utMap.forEach((value, key) => {
+    
+      if(value.some(item => item == id)){utType = key}
+    }
+    )
+    return utType
+  }
+
   add(f:NgForm)
   {
     this.utService.selectRoleById(this.idRole).subscribe(
