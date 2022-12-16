@@ -1,12 +1,25 @@
-<div>
-  <h2>Formations diponibles :</h2>
-    <div>
+<div class="container-fluid">
+  
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+  <h3>Formations diponibles pour {{participant.nom}} {{participant.prenom}}:</h3>
+</div>
+</div>
+
+    <div class="row justify-content-md-center">
        <form (ngSubmit)="addParticipantinFormation()">
                    
             <div *ngFor="let form of formationNonFaites">
                 <input type="checkbox" name="item-{{form}}" (change)="OnCheckboxSelect(form, $event)"> {{form.nom}}<br>
             </div>
+
+            <div class="row justify-content-md-center">
+              <div class="col-md-auto">
+                  <div class="form-group">
           <button type="submit">Valider</button>
+        </div>
+      </div>
+  </div>
         </form>
         </div>
 </div> 
