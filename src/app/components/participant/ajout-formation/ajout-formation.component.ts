@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { Formation } from 'src/app/models/formation';
 import { Participant } from 'src/app/models/participant';
@@ -14,14 +14,19 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
   
   @Input() idParticipant!: number;
 
+  @Output() formToPart = new EventEmitter<string>();
+
   formations!:Formation[];  
   participant!:Participant;
   formationNonFaites!:Formation[]  
-  
+  TrueOrFalseFormation!:string;
   constructor(private partServ:ParticipantServiceService, private formaionServ:FormationServiceService
     , private router:Router ){}
+
+    
   ngOnInit(): void {
     this.participant = new Participant();
+    this.TrueOrFalseFormation="false";
     
   }
 
@@ -36,11 +41,11 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
   OnCheckboxSelect(id:Formation, event:any) {
     if (event.target.checked === true) {
       this.selectedForms.push(id);
-      console.log(this.selectedForms)
+      
     }
     if (event.target.checked === false) {
       this.selectedForms = this.selectedForms.filter((item) => item !== id);
-      console.log(this.selectedForms)
+      
     }
     
   }
@@ -53,10 +58,8 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
         for(let form of this.formations){
           if(!this.idFormParti.includes(form.id)){
             this.formationNonFaites.push(form)
-           console.log("non fait" + form.id)
-          }
-          console.log(this.formationNonFaites)
-        }        
+           }
+          }        
         }            
     )   
   }
@@ -69,9 +72,7 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
         this.formaionServ.getFormationByParti(this.participant.id).subscribe(Response2=>
           {
             this.participant.formations=Response2
-            console.log( this.participant.formations)
             this.idFormParti = this.participant.formations.map(forms => forms.id);
-            console.log(this.idFormParti);
             this.afficherFormationsNonFaites();}            
           )          
           
@@ -85,11 +86,13 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
     form.participants.push(this.participant)
     this.formaionServ.add(form).subscribe(
       resp=>{
-        console.log("apres ajout")
-        console.log(this.selectedForms)
-        this.router.navigateByUrl('gestionParticipants');
+        this.formToPart.emit(this.TrueOrFalseFormation)
       }
     )
   } 
+}
+
+annuler(){
+  this.formToPart.emit(this.TrueOrFalseFormation)
 }
 }
