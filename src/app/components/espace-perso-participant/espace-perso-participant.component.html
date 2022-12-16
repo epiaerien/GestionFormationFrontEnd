@@ -1,0 +1,36 @@
+<hr> 
+<h3 style="color: #d9534f;"> Listes des formations</h3>
+<hr> 
+
+<table class="table table-hover">
+
+
+    <thead>
+        <tr>
+          
+            <th>Id </th>
+            <th>Nom de la formation </th>
+            <th> Date de début</th>
+            <th> Date de fin</th>
+    
+         
+            <th> Lieu </th>
+         
+           <th> Nom du formateur</th>
+            
+        </tr>
+        </thead>
+    
+        <tbody>
+        <tr *ngFor="let p of formations ">
+    
+            <td> {{p.id}} </td>
+            <td> {{p.nom}}</td>
+            <td>{{p.dateDebut | date:'mediumDate'}}</td>
+            <td> {{p.dateFin | date:'mediumDate'}}</td>
+        
+            <td> {{p.lieu}}</td>
+            <td> {{p.formateur.nom}}</td>
+        </tr>
+        </tbody>
+</table>

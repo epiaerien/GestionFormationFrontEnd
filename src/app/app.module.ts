@@ -33,6 +33,7 @@ import { EspacepersoCommercialComponent } from './components/espaceperso-commerc
 
 import { EspacePersoComponent } from './components/espace-perso/espace-perso.component';
 import { EspacePersoFormateurComponent } from './components/espace-perso-formateur/espace-perso-formateur.component';
+import { EspacePersoParticipantComponent } from './components/espace-perso-participant/espace-perso-participant.component';
 
 
 
@@ -65,7 +66,8 @@ import { EspacePersoFormateurComponent } from './components/espace-perso-formate
     EspacepersoCommercialComponent,
 
     EspacePersoComponent,
-    EspacePersoFormateurComponent
+    EspacePersoFormateurComponent,
+    EspacePersoParticipantComponent
 
 
 

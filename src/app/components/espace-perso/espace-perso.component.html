@@ -129,5 +129,8 @@ Username : {{utilisateur.username}}
 
       </div>
     </div>
+<div *ngIf="utilisateur.role.id==3">
+  <app-espace-perso-formateur></app-espace-perso-formateur></div>
 
-  <app-espace-perso-formateur></app-espace-perso-formateur>
+  <div *ngIf="utilisateur.role.id==4">
+  <app-espace-perso-participant></app-espace-perso-participant></div>
