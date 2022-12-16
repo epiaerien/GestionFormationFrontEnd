@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output,EventEmitter, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Formateur } from 'src/app/models/formateur';
 import { Formation } from 'src/app/models/formation';
@@ -10,63 +10,71 @@ import { FormationServiceService } from 'src/app/service/formation-service.servi
   templateUrl: './gestion-formation.component.html',
   styleUrls: ['./gestion-formation.component.css']
 })
+
+
 export class GestionFormationComponent implements OnInit {
+
+
+  @Input() formation!: Formation
+
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  formations!: Formation[]
+
+  idFormateur!: number
+  formateur!: Formateur
+  formateurs!: Formateur[]
   
 
-  formation!:Formation
-  formations!:Formation[]
-
-  idFormateur!:number
-  formateur!:Formateur
-  formateurs!:Formateur[]
-
-  constructor(private formService:FormationServiceService, private formateurService:FormateurServiceService){}
+  constructor(private formService: FormationServiceService, private formateurService: FormateurServiceService) { }
   
+
   ngOnInit(): void {
 
-    this.formation = new Formation()
+    this.afficherAll()
     this.selectAllFormateur()
-   
-    
   }
 
-  add(f:NgForm)
-  {
-    
+
+
+  add(f: NgForm) {
+
     this.formateurService.selectById(this.idFormateur).subscribe(
       response => {
         this.formation.formateur = response
-      this.formService.add(this.formation).subscribe(
-      
-      response2=>{
-        f.resetForm();
-       }
-       
+        
+
+        this.formService.add(this.formation).subscribe(
+          response2 => { console.log(response.formations)
+          f.resetForm()
+        
+          this.newItemEvent.emit("refresh")}
+        );
+        
+      }
     )
-  }
-    )
+    
+
     
   }
 
-  afficherAll()
-  {
+  afficherAll() {
     this.formService.selectAll().subscribe(
-      Response=>
-      {this.formations= Response
-        for(let f of this.formations)
-        {
-          this.formService.chercherParFormation(f.id).subscribe(Response2=>
-            {
-              f.formateur=Response2}
-            )
-          
+      Response => {
+        this.formations = Response
+        for (let f of this.formations) {
+          this.formService.chercherParFormation(f.id).subscribe(Response2 => {
+            f.formateur = Response2
+          }
+          )
+
 
         }
       })
   }
 
 
-  selectAllFormateur(){
+  selectAllFormateur() {
 
     this.formateurService.selectAll().subscribe(
       response => {

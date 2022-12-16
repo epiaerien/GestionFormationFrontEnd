@@ -1,4 +1,11 @@
 
+<div class="d-flex justify-content-center" >
+
+<div *ngIf="formateur.dispo==true"><span (click)="changedispo()" class="badge rounded-pill text-bg-success">Disponible</span> </div> 
+<div *ngIf="formateur.dispo!=true"><span (click)="changedispo()" class="badge rounded-pill text-bg-danger">Non disponible</span> </div> <br>
+
+
+</div>
 
 <hr> 
 <h3 style="color: #d9534f;"> Listes des formations</h3>

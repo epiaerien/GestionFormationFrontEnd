@@ -31,11 +31,15 @@ import { ListeFormateursComponent } from './components/liste-formateurs/liste-fo
 
 import { EspacePersoComponent } from './components/espace-perso/espace-perso.component';
 import { EspacePersoFormateurComponent } from './components/espace-perso-formateur/espace-perso-formateur.component';
+
 import { InfoFormationComponent } from './components/info-formation/info-formation.component';
 import { GestionAppeletRdvComponent } from './components/gestion-appelet-rdv/gestion-appelet-rdv.component';
 import { ListeAppelComponent } from './components/liste-appel/liste-appel.component';
 import { ListeRdvComponent } from './components/liste-rdv/liste-rdv.component';
 import { EspacePersoCommercialComponent } from './components/espace-perso-commercial/espace-perso-commercial.component';
+
+import { EspacePersoParticipantComponent } from './components/espace-perso-participant/espace-perso-participant.component';
+
 
 
 
@@ -68,11 +72,15 @@ import { EspacePersoCommercialComponent } from './components/espace-perso-commer
 
     EspacePersoComponent,
     EspacePersoFormateurComponent,
+
     InfoFormationComponent,
     GestionAppeletRdvComponent,
     ListeAppelComponent,
     ListeRdvComponent,
     EspacePersoCommercialComponent
+
+    EspacePersoParticipantComponent
+
 
 
 

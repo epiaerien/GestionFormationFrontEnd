@@ -102,13 +102,15 @@
     <table class="table table-hover">
         <thead>
             <tr>
+				<th scope="col"> Id </th>
                 <th scope="col"> Prénom </th>
                 <th scope="col"> Nom </th>
-                <th scope="col"> date de Naissance </th>
-                <th scope="col"> mail </th>
-                <th scope="col"> username </th>
-                <th scope="col"> password  </th>
-                <th scope="col"> role  </th>
+                <th scope="col"> Date de Naissance </th>
+                <th scope="col"> Mail </th>
+                <th scope="col"> Username </th>
+                <th scope="col"> Password  </th>
+				<th scope="col"> Statut </th>
+                <th scope="col"> Role  </th>
                 <th scope="col"> Modifier  </th>
                 <th scope="col"> Supprimer  </th>
                 
@@ -119,13 +121,14 @@
 
 
                 <tr *ngFor="let u of utilisateurs">
-                    
+                    <td>{{u.id}}</td>
                     <td>{{u.prenom}}</td>
                     <td>{{u.nom}}</td>
-                    <td>{{u.dateNaissance | date:'mediumDate'}}</td>
+                    <td>{{u.dateNaissance | date:'mediumDate':'fr'}}</td>
                     <td>{{u.mail}}</td>
                     <td>{{u.username}}</td>
                     <td>{{u.password}}</td>
+					<td> <button class="btn btn-outline-primary">{{getStatut(u.id)}}</button> </td>
                     <td><div *ngIf="u.role!=null"> {{u.role.nom}} </div> </td>
             
                             <td>
