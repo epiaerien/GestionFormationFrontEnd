@@ -24,13 +24,23 @@ export class GestionParticipantComponent implements OnInit{
     
   }
 
-TrueOrFalseFormation:Boolean =true;
+TrueOrFalseFormation:Boolean =false;
 idpart:number = 0;
 ajoutFormationChild(id:number){
   console.log("ajoutformationchild " + id);
   this.idpart = id;
-  this.TrueOrFalseFormation=false;
+  this.TrueOrFalseFormation=!this.TrueOrFalseFormation; 
 }
+
+modTrueFalseForm(bool:string){
+this.TrueOrFalseFormation=(bool== "true");
+this.selectAll();
+}
+
+modTrueFalseTrans(bool:string){
+  this.TrueOrFalsetransaction=(bool== "true");
+  this.selectAll();
+  }
 
 selectAll()
 {
@@ -63,11 +73,12 @@ supprimerParticipant (id:number)
     {this.selectAll()})
 }
 
-TrueOrFalsetransaction:Boolean =true;
+TrueOrFalsetransaction:Boolean =false;
 ajoutTransactionChild(id:number){
-  console.log("ajouttransactionchild " + id);
+  this.TrueOrFalseFormation=false
   this.idpart = id;
-  this.TrueOrFalsetransaction=false;
+  this.TrueOrFalsetransaction=!this.TrueOrFalsetransaction;
+
 }
 
 

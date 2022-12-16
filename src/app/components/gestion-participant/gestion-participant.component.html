@@ -117,11 +117,11 @@
     </tbody>
     </table>
 </div>
-<div *ngIf="!TrueOrFalseFormation">
-    <app-ajout-formation [idParticipant]="idpart"></app-ajout-formation>
+<div *ngIf="TrueOrFalseFormation">
+    <app-ajout-formation [idParticipant]="idpart" (formToPart)="modTrueFalseForm($event)"></app-ajout-formation>
 
 </div>
 
-<div *ngIf="!TrueOrFalsetransaction">
-    <app-ajout-transaction [idParticipant]="idpart"></app-ajout-transaction>
+<div *ngIf="TrueOrFalsetransaction">
+    <app-ajout-transaction [idParticipant]="idpart" (transToPart)="modTrueFalseTrans($event)"></app-ajout-transaction>
 </div>

@@ -1,17 +1,59 @@
-<div>
-    <h2>Faire une transaction: </h2>
-    <div>
-       <form (ngSubmit)="addParticipant()">
-           
-            
-            <input type="hidden" name="date" [(ngModel)]="transaction.date"> <br>
-            <input   type="text" name="montant" [(ngModel)]="transaction.montant"><br>
-           
-            <input   type="hidden" name="Participant" [(ngModel)]="transaction.participant"><br>
+<div class="container-fluid">
+    
+  <form (ngSubmit)="addTansaction()">
 
-            <input   type="hidden" name="payement" [(ngModel)]="transaction.payement"><br>
-          <button type="submit">Valider</button>
+      <div class="row justify-content-md-center">
+          <div class="col-md-auto">
+              <h3> Faire une transaction</h3>
+          </div>
+      </div>
 
-        </form>
-        </div>
-</div> 
+      <div class="row justify-content-md-center">
+
+          <div class="col-md-2">
+              <div class="form-group">
+                  <label path="Date" class="form-label"> Date </label>
+                  <input type="date" name="transaction.date" [(ngModel)]="transaction.date">
+              </div>
+          </div>
+
+          <div class="col-md-2">
+              <div class="form-group">
+                  <label path="Montant" class="form-label"> Montant </label>
+                  <input type="text" name="transaction.montant" [(ngModel)]="transaction.montant">
+              </div>
+          </div>
+
+          <div class="col-md-2">
+            <div *ngIf="transactionParti.payement.id!=null">
+              <div class="form-group">
+                  <label path="payement" class="form-label"> payement </label>
+                  <input type="text" name="transactionParti.payement" [(ngModel)]="transactionParti.payement">
+              </div>
+            </div>
+
+            <div *ngIf="transactionParti.payement.id==null">
+                premiere transaction
+            </div>
+
+          </div>
+          <div>
+          </div> <br>
+          
+          
+          <div class="row justify-content-md-center">
+
+              <div class="col-md-auto">
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary ">Valider</button>
+                  </div>
+              </div>
+          </div>
+          </div>
+  </form>
+  <div class="col-md-auto">
+    <div class="form-group">
+<button (click)="getFirstTransactionOfPart()">Annuler </button>
+</div>
+</div>
+</div>
