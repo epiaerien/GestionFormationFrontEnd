@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Formateur } from 'src/app/models/formateur';
 import { Formation } from 'src/app/models/formation';
 import { FormateurServiceService } from 'src/app/service/formateur-service.service';
 import { FormationServiceService } from 'src/app/service/formation-service.service';
 
 @Component({
-  selector: 'app-info-formateur',
-  templateUrl: './info-formateur.component.html',
-  styleUrls: ['./info-formateur.component.css']
+  selector: 'app-espace-perso-formateur',
+  templateUrl: './espace-perso-formateur.component.html',
+  styleUrls: ['./espace-perso-formateur.component.css']
 })
-export class InfoFormateurComponent implements OnInit {
+export class EspacePersoFormateurComponent implements OnInit {
   formateur!:Formateur;
   formateurs!:Formateur[]; 
   idForm!:number; 
   formations!:Formation[]; 
 
-  constructor(private forService:FormateurServiceService, private router:ActivatedRoute, private route:Router, private formationService:FormationServiceService)
-  {
+  constructor(private forService:FormateurServiceService, private router:ActivatedRoute, private route:Router, private formationService:FormationServiceService){}
+  
 
-  }
   ngOnInit(): void {
     this.idForm= this.router.snapshot.params['id'];
     
 
-   
-    
-
+  
     if(this.idForm!= undefined)
     {
      this.formateurparid();
@@ -55,3 +52,6 @@ export class InfoFormateurComponent implements OnInit {
     this.route.navigateByUrl(`afficherParticipantParFormation/${id}`);
   }
 }
+
+
+
