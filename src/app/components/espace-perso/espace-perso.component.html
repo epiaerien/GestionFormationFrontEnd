@@ -124,13 +124,13 @@ Username : {{utilisateur.username}}
     </form>
     <br>
     <div  *ngIf="modifok==true"  class="alert alert-success" role="alert" >
-     
+        <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
         Modification validée
 
       </div>
     </div>
 <div *ngIf="utilisateur.role.id==3">
-  <app-espace-perso-formateur></app-espace-perso-formateur></div>
+  <app-espace-perso-formateur [idForm]="id"> </app-espace-perso-formateur></div>
 
   <div *ngIf="utilisateur.role.id==4">
   <app-espace-perso-participant></app-espace-perso-participant></div>
