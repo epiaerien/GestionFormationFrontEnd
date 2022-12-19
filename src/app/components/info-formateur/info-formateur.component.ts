@@ -23,7 +23,8 @@ export class InfoFormateurComponent implements OnInit {
   ngOnInit(): void {
     this.idForm= this.router.snapshot.params['id'];
     
-
+    this.formationparformateur(); 
+    this.formations =[]; 
    
     
 
@@ -54,4 +55,20 @@ export class InfoFormateurComponent implements OnInit {
   {
     this.route.navigateByUrl(`afficherParticipantParFormation/${id}`);
   }
+
+  formationparformateur()
+  {
+    this.formationService.formationparformateur(this.idForm).subscribe(Response=> 
+      {
+        this.formations=Response
+        console.log(this.formations[0].nom)
+      },
+      error=>
+      {
+         console.log("non oooooooooook")
+      })
+    
+  }
+
+
 }

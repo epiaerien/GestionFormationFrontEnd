@@ -77,7 +77,7 @@ import { EspacePersoParticipantComponent } from './components/espace-perso-parti
     GestionAppeletRdvComponent,
     ListeAppelComponent,
     ListeRdvComponent,
-    EspacePersoCommercialComponent
+    EspacePersoCommercialComponent,
 
     EspacePersoParticipantComponent
 
