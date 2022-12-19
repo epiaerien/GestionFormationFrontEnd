@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div *ngIf="diplomesNonFaits?.length===0" class="row justify-content-md-center">
+      <div class="col-md-auto">
+    <h3>Pas de diplomes existant pour {{participant.nom}} {{participant.prenom}}:</h3>
+  </div>
+  </div>
+  
+  <div *ngIf="diplomesNonFaits?.length!==0">
+    <div  class="row justify-content-md-center">
+      <div class="col-md-auto">
+    <h3>Diplomes attribuable pour {{participant.nom}} {{participant.prenom}}:</h3>
+  </div>
+  </div>
+  
+      <div   class="row justify-content-md-center">
+         <form (ngSubmit)="addDiplomes()">
+                     
+              <div *ngFor="let dipl of diplomesNonFaits">
+                  <input type="checkbox" name="item-{{dipl}}" (change)="OnCheckboxSelect(dipl, $event)"> {{dipl.nom}}<br>
+              </div>
+  
+              <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                    <div class="form-group">
+            <button type="submit">Valider</button>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">  
+  
+  </div>
+    </div>
+          </form>
+          <div class="col-md-auto">
+            <div class="form-group">
+   <button (click)="annuler()">Annuler </button>
+  </div>
+        </div>
+          </div>
+        </div>
+  </div> 
+  

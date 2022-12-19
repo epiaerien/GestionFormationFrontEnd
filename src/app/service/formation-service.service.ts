@@ -46,4 +46,9 @@ export class FormationServiceService {
     return this.http.get<Formation>(`http://localhost:8025/api/formations/${id}`)
   }
 
+  formationparDiplid(id:number)
+  {
+    return this.http.get<Formation>(`http://localhost:8025/api/formationsbyDipl/${id}`)
+  }
+
 }

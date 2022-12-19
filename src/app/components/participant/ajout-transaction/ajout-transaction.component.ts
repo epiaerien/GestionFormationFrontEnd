@@ -16,9 +16,10 @@ import { TransactionServiceService } from 'src/app/service/transaction-service.s
 export class AjoutTransactionComponent implements OnInit, OnChanges {
 
   @Input() idParticipant!: number;
+  @Input() transaction!:Transaction;
   @Output() transToPart = new EventEmitter<string>();
 
-  transaction!:Transaction;
+  
   participant!:Participant;
   TrueOrFalseTransaction!:string;
   payements!:Payement[];
@@ -30,9 +31,13 @@ constructor(private partServ:ParticipantServiceService, private formaionServ:For
    private transServ:TransactionServiceService,  private payeServ:PayementServiceService){}
 
   ngOnInit(): void {
+    this.participant= new Participant();
     this.transaction = new Transaction();
     this.TrueOrFalseTransaction="false";
     this.payement= new Payement();
+    this.transaction.payement =new Payement();
+    this.transactionParti = new Transaction();
+    this.transactionParti.payement =new Payement();
     
     }
 
@@ -49,20 +54,13 @@ constructor(private partServ:ParticipantServiceService, private formaionServ:For
 
   addTansaction()
   {
+    
+    this.transaction.payement = this.transactionParti.payement
+    this.participant.transactions.push(this.transaction)   
     this.partServ.add(this.participant).subscribe(response=>
       {      
-        console.log("test" +this.participant.dateNaissance)
-        console.log(this.participant.formations)
         this.transToPart.emit(this.TrueOrFalseTransaction)
       })
-  }
-
-  getFirstTransactionOfPart(){
-    /*this.transServ.selectById(this.participant.transactions[0].id).subscribe(
-      resp=>{
-        this.transactionParti = resp;        
-      }
-    )*/
   }
 
   ParticipantByid(){    
@@ -72,11 +70,18 @@ constructor(private partServ:ParticipantServiceService, private formaionServ:For
         this.formaionServ.getFormationByParti(this.participant.id).subscribe(Response2=>
           {
             this.participant.formations=Response2;
-            this.transServ.selectById(this.participant.transactions[0].id).subscribe(
-              resp3=>{
-                this.transactionParti = resp3;        
-              }
-            )
+            if(this.participant.transactions.length!=0){
+              this.transServ.selectById(this.participant.transactions[0].id).subscribe(
+                resp3=>{
+                  this.transactionParti = resp3;  
+                  console.log("avant ajout transaction")
+                  console.log(this.transactionParti)      
+                },
+               
+              )
+            }
+            
+            
           }
         )
         }

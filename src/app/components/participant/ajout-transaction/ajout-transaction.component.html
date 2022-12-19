@@ -12,7 +12,7 @@
 
           <div class="col-md-2">
               <div class="form-group">
-                  <label path="Date" class="form-label"> Date </label>
+                  <label path="Date" class="form-label"> Date </label> <br>
                   <input type="date" name="transaction.date" [(ngModel)]="transaction.date">
               </div>
           </div>
@@ -24,19 +24,26 @@
               </div>
           </div>
 
-          <div class="col-md-2">
-            <div *ngIf="transactionParti.payement.id!=null">
+          <div class="col-md-2" *ngIf="participant.transactions?.length!=0">
+            
               <div class="form-group">
                   <label path="payement" class="form-label"> payement </label>
                   <input type="text" name="transactionParti.payement" [(ngModel)]="transactionParti.payement">
               </div>
-            </div>
+            
+          </div>
 
-            <div *ngIf="transactionParti.payement.id==null">
+        <div class="col-md-2" *ngIf=" participant.transactions?.length==0">
+            
+                <div class="form-group">            
+                <label  class="form-label"> payement </label> <br>
                 premiere transaction
             </div>
+            
+        </div>
+      
 
-          </div>
+          
           <div>
           </div> <br>
           
@@ -53,7 +60,7 @@
   </form>
   <div class="col-md-auto">
     <div class="form-group">
-<button (click)="getFirstTransactionOfPart()">Annuler </button>
+<button (click)=" annuler()">Annuler </button>
 </div>
 </div>
 </div>
