@@ -52,4 +52,5 @@ export class FormationServiceService {
     return this.http.get<Formation[]>(`http://localhost:8025/api/formationparformateur/${id}`)
                                                                 
   }
+
 }

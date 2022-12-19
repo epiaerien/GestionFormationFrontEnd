@@ -15,7 +15,7 @@ export class ListeFormationsComponent implements OnInit {
 
   formation!:Formation; 
   formations!:Formation[]; 
-  
+
   formateur!:Formateur;
   change!:boolean
   
