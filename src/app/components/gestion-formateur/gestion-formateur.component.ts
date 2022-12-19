@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import { Component} from '@angular/core';
+import { discardPeriodicTasks } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { Formateur } from 'src/app/models/formateur';
 import { Formation } from 'src/app/models/formation';
@@ -21,17 +23,20 @@ export class GestionFormateurComponent {
   idFormation!:number
   formation!:Formation
   formations!:Formation[]
- 
+  dispo! : boolean;
 
   constructor(private fservice:FormateurServiceService, private formationservice:FormationServiceService)
   {
     
   }
-
+ 
+  
 ngOnInit():void{
   this.selectAll()
   this.formateur = new Formateur()
   this.selectAllFormation()
+  this.dispo = false;
+  
 }
 
 
@@ -76,6 +81,7 @@ selectAllFormation(){
       this.formations = response
     }
   )
-
 }
+
+
 }
