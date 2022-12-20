@@ -10,39 +10,44 @@
 
         <div class="row justify-content-md-center">
 
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label path="nom" class="form-label"> Nom </label>
-                    <input type="text" name="participant.nom" [(ngModel)]="participant.nom">
+                    <input type="text" class="form-control" name="participant.nom" [(ngModel)]="participant.nom">
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label path="Prenom" class="form-label"> Prenom </label>
-                    <input type="text" name="participant.prenom" [(ngModel)]="participant.prenom">
+                    <input type="text" class="form-control" name="participant.prenom" [(ngModel)]="participant.prenom">
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label path="Adresse" class="form-label"> Adresse </label>
-                    <input type="text" name="participant.adresse" [(ngModel)]="participant.adresse">
+                    <input type="text" class="form-control" name="participant.adresse" [(ngModel)]="participant.adresse">
                 </div>
             </div>
-            <div class="col-md-2">
+
+    </div>
+    <div class="row justify-content-md-center">
+
+
+            <div class="col-md-4">
                 <div class="form-group">
                     <label path="Mail" class="form-label"> Mail </label>
-                    <input type="mail" name="participant.mail" [(ngModel)]="participant.mail">
+                    <input type="mail" class="form-control" name="participant.mail" [(ngModel)]="participant.mail">
                 </div>
             </div>
             
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label path="dateNaissance" class="form-label"> Date Naissance </label>
-                    <input type="date" name="participant.dateNaissance" [(ngModel)]="participant.dateNaissance">
+                    <input type="date" class="form-control" name="participant.dateNaissance" [(ngModel)]="participant.dateNaissance">
                 </div>
             </div>
-            <div>
-            </div> <br>
+            
+        </div><br>
             
             
             <div class="row justify-content-md-center">
@@ -52,7 +57,6 @@
                         <button type="submit" class="btn btn-primary ">Valider Ajout/Modification</button>
                     </div>
                 </div>
-            </div>
             </div>
     </form>
 </div>

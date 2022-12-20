@@ -1,13 +1,13 @@
 <div class="container-fluid">
 
-</div><form (ngSubmit)="addFormateur()">
+</div><form #f="ngForm" (ngSubmit)="addFormateur(f)">
     <fieldset>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
                 <h3>Ajouter un Formateur</h3>
             </div>
         </div>
-
+        <div class="row justify-content-md-center">
         <div class="col-md-3">
             <div class="form-group">
 
@@ -30,7 +30,9 @@
                 <input type="text" class="form-control" name="formateur.adresse" [(ngModel)]="formateur.adresse">
             </div>
         </div>
+</div>
 
+<div class="row justify-content-md-center">
         <div class="col-md-3">
             <div class="form-group">
                 <label path="mail" class="form-label"> Mail</label>
@@ -47,7 +49,7 @@
 
         <div class="col-md-3">
             <div class="form-group">
-                <label path="dispo"class="form-label"> Disponibilité</label>
+                <label path="dispo" class="form-label"> Disponibilité</label>
                     
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="food" [(ngModel)]="formateur.dispo" [value]="true">
@@ -64,7 +66,10 @@
                 
             </div>
         </div>
+    </div>
 
+    <div class="row justify-content-md-center">
+        
         <div class="col-md-4">
             <div class="form-group">
 
@@ -80,11 +85,8 @@
                 <input type="password" class="form-control" name="formateur.password"  [(ngModel)]="formateur.password">
             </div>
         </div>
-
-        <div class="row justify-content-md-center">
-           
-            </div>
-
+    </div>
+    <br>
         <div class="row justify-content-md-center">
 
             <div class="col-md-auto">
