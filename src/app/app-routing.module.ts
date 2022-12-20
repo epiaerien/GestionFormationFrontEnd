@@ -21,6 +21,7 @@ import { InfoFormationComponent } from './components/info-formation/info-formati
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { GestionFormationComponent } from './components/gestion-formation/gestion-formation.component';
+import { GestionProspectComponent } from './components/gestion-prospect/gestion-prospect.component';
 
 
 
@@ -43,7 +44,8 @@ const routes:Routes=[
   {path:'afficherinfoformateur/:id', component:InfoFormateurComponent, canActivate : [AuthGuardService]},
   {path:'afficherAppelParCommercial/:id', component:ListeAppelComponent, canActivate : [AuthGuardService]},
   {path:'espaceperso/:id', component:EspacePersoComponent, canActivate : [AuthGuardService]},
-  {path:'login', component:LoginComponent}
+  {path:'login', component:LoginComponent},
+  {path:'gestionProspect', component:GestionProspectComponent}
 
 
 ]
