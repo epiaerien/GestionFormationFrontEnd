@@ -34,6 +34,7 @@ export class InfoFormationComponent {
      this.afficherAll(); 
     }
   }
+  
   afficherAll()
   {
     this.formationService.selectAll().subscribe(Response=>this.formations=Response);
