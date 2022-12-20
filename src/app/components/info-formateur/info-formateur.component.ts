@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Formateur } from 'src/app/models/formateur';
 import { Formation } from 'src/app/models/formation';
@@ -15,6 +15,7 @@ export class InfoFormateurComponent implements OnInit {
   formateurs!:Formateur[]; 
   idForm!:number; 
   formations!:Formation[]; 
+  
 
   constructor(private forService:FormateurServiceService, private router:ActivatedRoute, private route:Router, private formationService:FormationServiceService)
   {
