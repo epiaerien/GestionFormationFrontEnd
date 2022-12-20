@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Formateur } from 'src/app/models/formateur';
 import { Formation } from 'src/app/models/formation';
@@ -18,6 +18,7 @@ export class ListeFormateursComponent implements OnInit
   formateurs!:Formateur[];
   formation!:Formation;
   formations! : Formation [];
+  @Input() idF!:number;
 
   constructor(private fservice:FormateurServiceService, private router:Router, private formservice:FormationServiceService)
   {
