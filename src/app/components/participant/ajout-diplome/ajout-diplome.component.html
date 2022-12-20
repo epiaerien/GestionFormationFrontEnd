@@ -1,11 +1,11 @@
 <div class="container-fluid">
-    <div *ngIf="formationNonFaites?.length===0" class="row justify-content-md-center">
+    <div *ngIf="diplomesNonEus?.length===0" class="row justify-content-md-center">
       <div class="col-md-auto">
     <h3>Pas de diplomes existant pour {{participant.nom}} {{participant.prenom}}:</h3>
   </div>
   </div>
   
-  <div *ngIf="formationNonFaites?.length!==0">
+  <div *ngIf="diplomesNonEus?.length!==0">
     <div  class="row justify-content-md-center">
       <div class="col-md-auto">
     <h3>Diplomes attribuable pour {{participant.nom}} {{participant.prenom}}:</h3>
@@ -13,10 +13,9 @@
   </div>
   
       <div   class="row justify-content-md-center">
-         <form (ngSubmit)="addDiplomes()">
-                     
-              <div *ngFor="let form of formationNonFaites">
-                  <input type="checkbox" name="item-{{form}}" (change)="OnCheckboxSelect(form.nom, $event)"> Diplome de {{form.nom}}<br>
+         <form (ngSubmit)="addDiplomes()">                     
+              <div *ngFor="let dipl of diplomesNonEus">
+                  <input type="checkbox" name="item-{{dipl}}" (change)="OnCheckboxSelect(dipl, $event)"> Diplome de {{dipl.nom}}<br>
               </div>
   
               <div class="row justify-content-md-center">
