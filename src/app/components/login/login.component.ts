@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ReplaySubject } from 'rxjs';
 import { AuthRequest } from 'src/app/models/auth-request';
 import { Utilisateurs } from 'src/app/models/utilisateurs';
 import { AuthentificationService } from 'src/app/service/authentification.service';
@@ -19,7 +20,7 @@ export class LoginComponent {
 
   authRequest!: AuthRequest
 
-  test!:boolean;
+  @Output() activate = new EventEmitter<string>();
 
 
   constructor(private authService:AuthentificationService, private route:Router){}
@@ -49,22 +50,29 @@ export class LoginComponent {
           response2 => {
             this.utilisateur = response2;
             sessionStorage.setItem('userDetails', JSON.stringify(this.utilisateur));
-
+            //this.logged.next(true);
             //var header: NavbarComponent = new NavbarComponent(this.route);
             // header.reload();
+            
+            this.activate.emit("refresh")
 
-            this.route.navigateByUrl('formations')
-            this.test = false;
+            //this.route.navigateByUrl('formations')
+            
           }
         )
-      },
-     
-     error=>{
-        console.log('cnx non ok')
-        this.test = true;
-  
-      }  )
+      }
+
+
+    )
 
   }
+
+//   checkStatus() {
+//     if (localStorage.getItem('token')) {
+//       this.logged.next(true);
+//     } else {
+//       this.logged.next(false);
+//     }
+// }
 
 }

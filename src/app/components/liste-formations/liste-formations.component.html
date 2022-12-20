@@ -43,7 +43,7 @@
         
         </td>
         <td>
-            <div *ngIf="formation.participants != undefined && formation.participants != null">
+            <div *ngIf="formation.participants?.length !== 0">
             <button class="btn btn-info" (click)="participantparformation(formation.id)"> Participants </button>
         </div>
             <div *ngIf="formation.participants?.length === 0"> Pas de participants </div>

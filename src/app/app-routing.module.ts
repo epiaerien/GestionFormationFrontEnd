@@ -27,7 +27,7 @@ import { GestionFormationComponent } from './components/gestion-formation/gestio
 const routes:Routes=[
   {path: 'formations', component:ListeFormationsComponent, },
   {path: 'gestionPayements', component:GestionPayementComponent, canActivate : [AuthGuardService]},
-  {path: 'gestionUtilisateurs', component:GestionUtilisateurComponent, canActivate : [AuthGuardService]},
+  {path: 'gestionUtilisateurs', component:GestionUtilisateurComponent, canActivate : [AuthGuardService], data : {role:'Admin'}},
   {path: 'gestionFormateurs', component:GestionFormateurComponent, canActivate : [AuthGuardService]},
   {path: 'gestionFormation', component:GestionFormationComponent, canActivate : [AuthGuardService]},
 

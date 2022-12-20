@@ -15,11 +15,21 @@
 			<!-- <li class="nav-item active"><a class="nav-link" href="#">
 					<span class="sr-only">(current)</span>
 			</a></li> -->
+
 			<li class="nav-item"><a class="nav-link"
 				href="/formations"> Formations </a></li>
-			
-			<!-- <li class="nav-item"><button (click)="afficherPersonne(3)"> Afficher Personne </button> </li> -->
-			
+
+
+		</ul>	
+			<!-- ADMIN	 -->
+		<div *ngIf="utilisateur && utilisateur.role.nom==='Admin'">
+			<ul class="navbar-nav mr-auto">
+				<!-- <li class="nav-item active"><a class="nav-link" href="#">
+						<span class="sr-only">(current)</span>
+				</a></li> -->
+	
+				<li class="nav-item"><a class="nav-link"
+					href="/formations"> Formations </a></li>
 			
 			<li class="nav-item"><a class="nav-link"
 				href="/gestionPayements"> Gestion Payements </a></li>
@@ -49,43 +59,107 @@
 			<li class="nav-item"><a class="nav-link" 
 				href="/gestionAppeletRdv"> Gestion appels et rdv</a>
 			</li>
-			
-			</ul>
+		</ul>
+		</div>
 
-			
-
-          <div *ngIf="utilisateur!=null; then ut else noUt" class="form-inline my-2 my-lg-0"></div>
-                <ng-template #ut>
-                
-                    <li  class="nav-item">  <span class="navbar-text text-warning" > {{utilisateur.prenom}} {{utilisateur.nom}} Username : {{utilisateur.username}}</span>  
-                    
-                    
-                    </li>
-                    <li>
-                        <button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="logout()"> Déconnexion </button>
-
-                    </li>
-
-                
-            </ng-template>
-
-                <ng-template #noUt>
-              
-                        
-                        <li>
-                            <button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="toLogIn()"> Connexion </button>
-    
-                        </li>
-    
-                 
-                </ng-template>
-           
-
-
-			
-			
+		<!-- COMMERCIAL -->
+		<div *ngIf="utilisateur && utilisateur.role.nom==='Commercial'">
+			<ul class="navbar-nav mr-auto">
+				<!-- <li class="nav-item active"><a class="nav-link" href="#">
+						<span class="sr-only">(current)</span>
+				</a></li> -->
 	
-    </div> 
+				<li class="nav-item"><a class="nav-link"
+					href="/formations"> Formations </a></li>
+
+			<li class="nav-item"><a class="nav-link" 
+				href="/gestionCommercials"> Gestion commercial</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" 
+				href="/gestionAppeletRdv"> Gestion appels et rdv</a>
+			</li>
+		</ul>
+		</div>
+
+		<!-- Formateur -->
+		<div *ngIf="utilisateur && utilisateur.role.nom==='Formateur'">
+			<ul class="navbar-nav mr-auto">
+				<!-- <li class="nav-item active"><a class="nav-link" href="#">
+						<span class="sr-only">(current)</span>
+				</a></li> -->
+	
+				<li class="nav-item"><a class="nav-link"
+					href="/formations"> Formations </a></li>
+			
+			
+                <li class="nav-item"><a class="nav-link" 
+                    href="/gestionFormateurs"> Gestion Formateurs </a>
+                </li>
+
+				<li class="nav-item"><a class="nav-link"
+					href="/formateurs"> Formateurs </a></li>
+    
+
+			
+			<li class="nav-item"><a class="nav-link" 
+				href="/gestionParticipants"> Gestion Participants </a>
+			</li>
+		</ul>
+	
+		</div>
+
+		<!-- ADMIN	 -->
+		<div *ngIf="utilisateur &&  utilisateur.role.nom==='Participant'">
+			<ul class="navbar-nav mr-auto">
+				<!-- <li class="nav-item active"><a class="nav-link" href="#">
+						<span class="sr-only">(current)</span>
+				</a></li> -->
+	
+				<li class="nav-item"><a class="nav-link"
+					href="/formations"> Formations </a></li>
+			
+			<li class="nav-item"><a class="nav-link"
+				href="/gestionPayements"> Gestion Payements </a></li>
+			
+		</ul>
+		</div>
+
+			
+
+			
+
+		<div *ngIf="utilisateur!=null; then ut else noUt" class="form-inline my-2 my-lg-0"></div>
+			<ng-template #ut>
+			
+				<li  class="nav-item">  <span class="navbar-text text-warning" > {{utilisateur.prenom}} {{utilisateur.nom}} Username : {{utilisateur.username}}</span>  
+				
+				
+				</li>
+				<li>
+					<button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="logout()"> Déconnexion </button>
+
+				</li>
+
+			
+		</ng-template>
+
+			<ng-template #noUt>
+			
+					
+					<li>
+						<button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="toLogIn()"> Connexion </button>
+
+					</li>
+
+				
+			</ng-template>
+		
+
+
+		
+		
+
+</div> 
 </nav>
 
 
