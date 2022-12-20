@@ -38,4 +38,9 @@ export class NavBarComponent {
     this.route.navigateByUrl('login')
   }
 
+
+  espaceperso()
+  {
+    this.route.navigateByUrl(`espaceperso/${this.utilisateur.id}`)
+  }
 }
