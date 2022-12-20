@@ -10,6 +10,8 @@ import { Utilisateurs } from '../models/utilisateurs';
 })
 export class AuthentificationService {
 
+  utilisateur!: Utilisateurs
+
   constructor(private http:HttpClient) { }
   
   
@@ -32,4 +34,17 @@ export class AuthentificationService {
   {
     return this.http.get<Role>(`http://localhost:8025/api/utilisateurRole/${username}`);
   }
+
+  getUser():Utilisateurs
+  
+  
+  {
+    
+    if(sessionStorage.getItem("userDetails")){
+       this.utilisateur = JSON.parse(sessionStorage.getItem("userDetails") ?? "")
+     }
+ 
+     return this.utilisateur
+   }
+
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthRequest } from 'src/app/models/auth-request';
 import { Utilisateurs } from 'src/app/models/utilisateurs';
@@ -18,7 +18,9 @@ export class LoginComponent {
   password!:string
 
   authRequest!: AuthRequest
+
   test!:boolean;
+
 
   constructor(private authService:AuthentificationService, private route:Router){}
 
