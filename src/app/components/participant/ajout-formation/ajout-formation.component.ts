@@ -84,7 +84,7 @@ export class AjoutFormationComponent implements OnChanges , OnInit{
   {
   for(let form of this.selectedForms){
     form.participants.push(this.participant)
-    this.formaionServ.add(form).subscribe(
+    this.formaionServ.addLinkedToPart(form, this.idParticipant ).subscribe(
       resp=>{
         this.formToPart.emit(this.TrueOrFalseFormation)
       }

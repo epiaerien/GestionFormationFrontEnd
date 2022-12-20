@@ -30,6 +30,11 @@ export class FormationServiceService {
     return this.http.post(`http://localhost:8025/api/formations`,formation)
   }
 
+  addLinkedToPart(formation:Formation, idPart:number)
+  {
+    return this.http.post(`http://localhost:8025/api/formationsLinkedToPart/${idPart}`,formation)
+  }
+
   chercherParFormation(id:number)
   {
     return this.http.get<Formateur>(`http://localhost:8025/api/formateurParFormation/${id}`)

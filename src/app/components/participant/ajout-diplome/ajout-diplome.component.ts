@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
 import { Diplome } from 'src/app/models/diplome';
+import { Formation } from 'src/app/models/formation';
 import { Participant } from 'src/app/models/participant';
 import { DiplomeServiceService } from 'src/app/service/diplome-service.service';
 import { FormationServiceService } from 'src/app/service/formation-service.service';
@@ -20,8 +22,11 @@ export class AjoutDiplomeComponent {
   TrueOrFalseDiplome!:string;
   participant!:Participant;
   diplomes!:Diplome[];
-  diplomesNonFaits!:Diplome[];
+  diplome!:Diplome;
+  diplomesNonEus!:Diplome[];
   nomDiplParti!:string[];
+  formations!: Formation[];
+  formationNonFaites!: Formation[];
 
   constructor(private partServ:ParticipantServiceService, private diplServ:DiplomeServiceService, private formaionServ:FormationServiceService
     , private router:Router ){}
@@ -31,8 +36,11 @@ export class AjoutDiplomeComponent {
     this.participant = new Participant();
     this.TrueOrFalseDiplome="false";
     this.diplomes = []; 
+    this.diplome = new Diplome(); 
     this.nomDiplParti = [];    
-    this.diplomesNonFaits =[]; 
+    this.diplomesNonEus =[]; 
+    this.formations = [];
+    this.formationNonFaites =[];
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -47,7 +55,7 @@ export class AjoutDiplomeComponent {
   }
 
   afficherDiplomeNonFaits(){
-    this.diplServ.selectAll().subscribe(
+    /*this.diplServ.selectAll().subscribe(
       resp=>{
         this.diplomes = resp;
         for(let form of this.participant.formations){
@@ -62,30 +70,41 @@ export class AjoutDiplomeComponent {
           }
         }        
         }            
-    )   
+    ) */
+    this.formaionServ.selectAll().subscribe(
+      resp=>{
+        this.formations = resp;
+        for(let form of this.formations){
+          if(!this.idFormParti.includes(form.id)){
+            this.formationNonFaites.push(form)
+           }
+          }        
+        }            
+    )        
   }
 
 
-  selectedDipl:Diplome[] = [];  
-  OnCheckboxSelect(dipl:Diplome, event:any) {
+  selectedNameDipl:string[] = [];  
+  OnCheckboxSelect(nom:string, event:any) {
     if (event.target.checked === true) {
-      this.selectedDipl.push(dipl);
-      
+      this.selectedNameDipl.push(nom);      
     }
     if (event.target.checked === false) {
-      this.selectedDipl = this.selectedDipl.filter((item) => item !== dipl);
+      this.selectedNameDipl = this.selectedNameDipl.filter((item) => item !== nom);
       
     }
     
   }
   addDiplomes()
   {
-    
-    this.participant.diplomes = (this.selectedDipl)   
+    for(let nom of this.selectedNameDipl){
+
+    }
+    /*this.participant.diplomes = (this.selectedDipl)   
     this.partServ.add(this.participant).subscribe(response=>
       {      
         this.diplToPart.emit(this.TrueOrFalseDiplome)
-      })
+      })*/
   }
 
   idFormParti:number[] =[];
@@ -97,6 +116,7 @@ export class AjoutDiplomeComponent {
         this.formaionServ.getFormationByParti(this.participant.id).subscribe(Response2=>
           {
             this.participant.formations=Response2
+            this.idFormParti = this.participant.formations.map(forms => forms.id);
             this.afficherDiplomeNonFaits();
             }            
           )          
