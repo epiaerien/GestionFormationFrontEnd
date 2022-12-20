@@ -29,7 +29,7 @@ export class AppelServiceService {
     return this.http.post(`http://localhost:8025/api/appels`,appels)
   }
 
-  getByIdCommercial(id:number){
-    return this.http.get<Appel[]>(`http://localhost:8025/api/appelparcommercials/${id}`)
+  appelparcommercial(id:number){
+    return this.http.get<Appel[]>(`http://localhost:8025/api/appelparcommercial/${id}`)
   }
 }

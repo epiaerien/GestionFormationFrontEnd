@@ -60,23 +60,15 @@ export class GestionAppeletRdvComponent {
 
 addAppel (f: NgForm) {
 
-  this.comService.selectById(this.idCommercial).subscribe(
-    response => {
-      this.appel.commercial = response
-      
-
-      this.appservice.getByIdCommercial(this.idCommercial).subscribe(
-        response2 => { console.log(response.appels)
-        f.resetForm()
-      
-        this.newItemEvent.emit("refresh")}
-      );
-      
-    }
-  )
-  
-
-  
+  {
+    console.log(this.appel)
+    this.appservice.add(this.appel).subscribe(response=>
+      {
+        
+        this.selectAll()
+        
+      })
+  }
 }
 
 supprimerAppel(id:number)

@@ -25,7 +25,16 @@
         <td> {{formateur.mail}}</td>
         <td> <div *ngIf="formateur.dispo==true"><span>Disponible</span> </div> 
             <div *ngIf="formateur.dispo!=true"><span >Non disponible</span> </div></td>
-        <td>{{formation.nom}}</td>
+        <td> <div *ngIf="formateur.formations!=null">
+            {{formation.nom}}
+        </div> 
+        <div *ngIf="formateur.formations==null">
+
+            Pas de formation associée
+
+        </div>
+        
+        </td>
        <!-- <td>
             <div *ngIf="formateur.formations!=null">
                 <ul *ngFor="let form of formateur.formations ">

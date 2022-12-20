@@ -73,7 +73,14 @@
         <td>{{app.prospect}}</td>
         <td>{{app.date}}</td>
         <td>{{app.commentaire}}</td>
-        <td>{{app.commercial}}</td>
+        <td><div *ngIf="app.commercial!=null">
+             {{commercial.nom}} 
+        </div> 
+        <div *ngIf="app.commercial==null">
+
+            Pas de commercial associé
+
+        </div></td>
     
         <td>
 
