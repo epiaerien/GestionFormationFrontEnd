@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { FormationServiceService } from 'src/app/service/formation-service.service';
 import { Formateur } from 'src/app/models/formateur';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
+import { AuthentificationService } from 'src/app/service/authentification.service';
+import { Utilisateurs } from 'src/app/models/utilisateurs';
 
 @Component({
   selector: 'app-liste-formations',
@@ -20,20 +22,37 @@ export class ListeFormationsComponent implements OnInit {
   change!:boolean
   
 
-  constructor(private forService:FormationServiceService, private router:Router)
+  utilisateur !: Utilisateurs
+  
+  constructor(private forService:FormationServiceService, private router:Router, private authService:AuthentificationService)
   {
 
   }
 
   ngOnInit(): void {
+  
+  
 
   this.afficherAll();
   this.formateur=new Formateur();
   this.formation = new Formation()
   this.change = false
+  
   console.log("onInit" + this.change)
   
 }
+
+  showhideComponent():boolean
+  {
+    this.utilisateur = this.authService.getUser()
+    var visible:boolean = false;
+
+    if(this.utilisateur)
+    {
+      visible = true;
+    }
+ return visible
+  }
 
 
   afficherAll()

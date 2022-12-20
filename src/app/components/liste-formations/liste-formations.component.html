@@ -1,6 +1,6 @@
 <body >
 
-    <app-gestion-formation [formation]="formation" (newItemEvent)="onSubmitChange($event)"></app-gestion-formation>
+    <app-gestion-formation *ngIf="showhideComponent()" [formation]="formation" (newItemEvent)="onSubmitChange($event)"></app-gestion-formation>
 
     <h3 style="color: #d9534f;"> Listes des formations</h3>
 <hr> 
@@ -46,7 +46,7 @@
             <div *ngIf="formation.participants != undefined && formation.participants != null">
             <button class="btn btn-info" (click)="participantparformation(formation.id)"> Participants </button>
         </div>
-            <div *ngIf="formation.participants?.length === 0">Pas de participants</div>
+            <div *ngIf="formation.participants?.length === 0"> Pas de participants </div>
         
         </td>
         
