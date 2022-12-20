@@ -8,7 +8,6 @@ export class Diplome {
     nom!:string
     dateOpt!:Date
     formation!:Formation
-
     participant!:Participant
 
 
