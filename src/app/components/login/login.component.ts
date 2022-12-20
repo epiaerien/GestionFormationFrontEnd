@@ -18,7 +18,7 @@ export class LoginComponent {
   password!:string
 
   authRequest!: AuthRequest
-
+  test!:boolean;
 
   constructor(private authService:AuthentificationService, private route:Router){}
 
@@ -52,13 +52,16 @@ export class LoginComponent {
             // header.reload();
 
             this.route.navigateByUrl('formations')
-            
+            this.test = false;
           }
         )
-      }
-
-
-    )
+      },
+     
+     error=>{
+        console.log('cnx non ok')
+        this.test = true;
+  
+      }  )
 
   }
 
