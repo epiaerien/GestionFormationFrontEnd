@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Appel } from 'src/app/models/appel';
+import { Commercial } from 'src/app/models/commercial';
 import { RendezVous } from 'src/app/models/rendez-vous';
 import { AppelServiceService } from 'src/app/service/appel-service.service';
+import { CommercialServiceService } from 'src/app/service/commercial-service.service';
 import { RendezVousServiceService } from 'src/app/service/rendez-vous-service.service';
 
 @Component({
@@ -12,13 +15,21 @@ import { RendezVousServiceService } from 'src/app/service/rendez-vous-service.se
 })
 export class GestionAppeletRdvComponent {
 
-  appel!:Appel;
+
+  @Input() appel!: Appel;
   appels!:Appel [];
+  @Output() newItemEvent = new EventEmitter<string>();
+
 
   rdv! : RendezVous;
   rdvs! : RendezVous[];
 
-  constructor(private appservice:AppelServiceService,private rdvservice:RendezVousServiceService, private route:ActivatedRoute)
+  idCommercial!: number;
+  commercial! : Commercial;
+  commercials! : Commercial [];
+
+
+  constructor(private appservice:AppelServiceService,private rdvservice:RendezVousServiceService, private comService: CommercialServiceService, private route:ActivatedRoute)
   {
     
   }
@@ -27,6 +38,7 @@ export class GestionAppeletRdvComponent {
     this.selectAll()
     this.appel = new Appel();
     this.rdv = new RendezVous()
+    this.selectAllCommercial();
   }
 
   selectAll()
@@ -44,15 +56,27 @@ export class GestionAppeletRdvComponent {
       })
 }
 
-addAppel()
-{
-  console.log(this.appel)
-  this.appservice.add(this.appel).subscribe(response=>
-    {
+
+
+addAppel (f: NgForm) {
+
+  this.comService.selectById(this.idCommercial).subscribe(
+    response => {
+      this.appel.commercial = response
       
-      this.selectAll()
+
+      this.appservice.getByIdCommercial(this.idCommercial).subscribe(
+        response2 => { console.log(response.appels)
+        f.resetForm()
       
-    })
+        this.newItemEvent.emit("refresh")}
+      );
+      
+    }
+  )
+  
+
+  
 }
 
 supprimerAppel(id:number)
@@ -94,5 +118,14 @@ modifierRdv(id:number)
       response=> this.rdv = response
     )
 
+}
+
+selectAllCommercial() {
+
+  this.comService.selectAll().subscribe(
+    response => {
+      this.commercials = response
+    }
+  )
 }
 }
