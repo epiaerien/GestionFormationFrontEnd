@@ -28,7 +28,7 @@ export class EspacePersoComponent implements OnInit{
     this.afficher=false; 
     this.modifok=false; 
     this.id = this.router.snapshot.params['id'];
-    
+    console.log(this.id)
 
     if(this.id!= undefined)
     {

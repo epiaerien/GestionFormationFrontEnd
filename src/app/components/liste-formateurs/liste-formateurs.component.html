@@ -11,7 +11,7 @@
         <th>Email</th>
         <th>Disponibilité</th>
         <th>Formations supervisées</th>
-        <th>Information formation</th>
+    
         
     </tr>
     </thead>
@@ -23,14 +23,19 @@
         <td> {{formateur.nom}}</td>
         <td> {{formateur.prenom}}</td>
         <td> {{formateur.mail}}</td>
-        <td> {{formateur.dispo}}</td>
+        <td> <div *ngIf="formateur.dispo==true"><span>Disponible</span> </div> 
+            <div *ngIf="formateur.dispo!=true"><span >Non disponible</span> </div></td>
         <td>
-            <div *ngIf="formateur.formations!=null"  ><ul *ngFor="let form of formateur.formations "><li>{{form.nom}}</li></ul></div>
-           <div *ngIf="formateur.formations?.length===0">pas de formations réalisées</div>
-           </td>
+            <div *ngIf="formateur.formations!=null">
+                <ul *ngFor="let form of formateur.formations ">
+                    <li>{{form.nom}}</li>
+                </ul>
+            </div>
+            <div *ngIf="formateur.formations?.length===0">pas de formations réalisées</div>
+        </td>
         
-        <div *ngIf="formateur.formations!=null"  ><ul *ngFor="let form of formateur.formations "><button class="btn btn-info" (click)="formationparid(formation.id)" >{{formation.nom}} </button></ul></div>  
-        
+        <!--<div *ngIf="formateur.formations!=null"  ><ul *ngFor="let form of formateur.formations "><button class="btn btn-info" (click)="formationparid(formation.id)" >{{formation.nom}} </button></ul></div>  
+        -->
     </tr>
     </tbody>
 </table>

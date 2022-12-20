@@ -49,6 +49,13 @@ export class FormationServiceService {
   formationparDiplid(id:number)
   {
     return this.http.get<Formation>(`http://localhost:8025/api/formationsbyDipl/${id}`)
+
+  formationparformateur(id:number)
+  {
+    
+    return this.http.get<Formation[]>(`http://localhost:8025/api/formationparformateur/${id}`)
+                                                                
+
   }
 
 }

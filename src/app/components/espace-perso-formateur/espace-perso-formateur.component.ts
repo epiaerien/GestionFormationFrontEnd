@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Formateur } from 'src/app/models/formateur';
 import { Formation } from 'src/app/models/formation';
@@ -13,18 +13,22 @@ import { FormationServiceService } from 'src/app/service/formation-service.servi
 export class EspacePersoFormateurComponent implements OnInit {
   formateur!:Formateur;
   formateurs!:Formateur[]; 
-  idForm!:number; 
+  @Input() idForm!:number;
   formations!:Formation[]; 
-   
+  idformation!:number; 
 
   constructor(private forService:FormateurServiceService, private router:ActivatedRoute, private route:Router, private formationService:FormationServiceService){}
   
 
   ngOnInit(): void {
-    this.idForm= this.router.snapshot.params['id'];
-    
+    console.log("tesssssssssst")
+    console.log("id depuis child" + this.idForm)
+    this.formationparformateur(); 
+    this.formations =[]; 
 
-  
+
+
+
     if(this.idForm!= undefined)
     {
      this.formateurparid();
@@ -33,7 +37,7 @@ export class EspacePersoFormateurComponent implements OnInit {
     {
      this.afficherAll(); 
     }
-
+ 
   }
 
   afficherAll()
@@ -61,8 +65,21 @@ export class EspacePersoFormateurComponent implements OnInit {
     {
       this.formateur.dispo=true; 
     }
-    
-    
+  
+  }
+
+  formationparformateur()
+  {
+    this.formationService.formationparformateur(this.idForm).subscribe(Response=> 
+      {
+        console.log("ooook")
+        this.formations=Response
+        console.log(this.formations[0].nom)
+      },
+      error=>
+      {
+         console.log("non oooooooooook")
+      })
     
   }
 }

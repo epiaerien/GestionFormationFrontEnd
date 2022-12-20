@@ -107,7 +107,6 @@
                     <th scope="col"> Disponibilité</th>
                     <th scope="col"> username </th>
                     <th scope="col"> password  </th>
-                    <th scope="col"> role  </th>
                     
                 </tr>
             </thead>
@@ -120,11 +119,14 @@
         <td>{{form.adresse}}</td>
         <td>{{form.mail}}</td>
         <td>{{form.dateNaissance}}</td>
-        <td>{{form.dispo}}</td>
+        <td> <div *ngIf="form.dispo==true"><span>Disponible</span> </div> 
+            <div *ngIf="form.dispo!=true"><span >Non disponible</span> </div></td>
         <td>{{form.username}}</td>
         <td>{{form.password}}</td>
-        <td>
-
+       
+            <div *ngIf="form.dispo==true"><span>Disponible</span> </div> 
+            <div *ngIf="form.dispo!=true"><span >Non disponible</span> </div>
+            
          
         <td>
 
