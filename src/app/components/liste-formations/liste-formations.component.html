@@ -32,8 +32,23 @@
         <td> {{formation.dateFin | date:'mediumDate'}}</td>
         <td> {{formation.prix}} </td>
         <td> {{formation.lieu}}</td>
-        <td> <button class="btn btn-info" (click)="formateurparid(formation.formateur.id)" > {{formation.formateur.nom}} </button></td>
-        <td> <button class="btn btn-info" (click)="participantparformation(formation.id)"> Participants </button></td>
+        <td> <div *ngIf="formation.formateur!=null">
+            <button class="btn btn-info" (click)="formateurparid(formation.formateur.id)" > {{formation.formateur.nom}} </button>
+        </div> 
+        <div *ngIf="formation.formateur==null">
+
+            Pas de formateur associé
+
+        </div>
+        
+        </td>
+        <td>
+            <div *ngIf="formation.participants != undefined && formation.participants != null">
+            <button class="btn btn-info" (click)="participantparformation(formation.id)"> Participants </button>
+        </div>
+            <div *ngIf="formation.participants?.length === 0">Pas de participants</div>
+        
+        </td>
         
         <td>
             <button (click)="modifier(formation.id)" class="btn btn-outline-warning">

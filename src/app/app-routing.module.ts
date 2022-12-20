@@ -19,12 +19,13 @@ import { GestionAppeletRdvComponent } from './components/gestion-appelet-rdv/ges
 import { ListeAppelComponent } from './components/liste-appel/liste-appel.component';
 import { InfoFormationComponent } from './components/info-formation/info-formation.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuardService } from './service/auth-guard.service';
 
 
 
 const routes:Routes=[
-  {path: 'formations', component:ListeFormationsComponent},
-  {path: 'gestionPayements', component:GestionPayementComponent},
+  {path: 'formations', component:ListeFormationsComponent, },
+  {path: 'gestionPayements', component:GestionPayementComponent, canActivate : [AuthGuardService]},
   {path: 'gestionUtilisateurs', component:GestionUtilisateurComponent},
   {path: 'gestionFormateurs', component:GestionFormateurComponent},
 
