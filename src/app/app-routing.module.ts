@@ -40,8 +40,8 @@ const routes:Routes=[
   {path:'afficherinfoformateur/:id', component:InfoFormateurComponent},
   {path:'afficherAppelParCommercial/:id', component:ListeAppelComponent},
   {path:'espaceperso/:id', component:EspacePersoComponent},
-  {path:'login', component:LoginComponent}
-
+  {path:'login', component:LoginComponent},
+  {path:'afficherinfoformation/:id', component:InfoFormationComponent}
 
 
 ]
