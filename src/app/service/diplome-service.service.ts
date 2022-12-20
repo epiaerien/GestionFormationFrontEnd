@@ -28,4 +28,14 @@ export class DiplomeServiceService {
   {
     return this.http.post(`http://localhost:8025/api/diplomes`,diplome)
   }
+
+  getAllByIdPart(id:number)
+  {
+    return this.http.get<Diplome[]>(`http://localhost:8025/api/diplomesbyPartId/${id}`)
+  }
+
+  getAllByIdForm(id:number)
+  {
+    return this.http.get<Diplome[]>(`http://localhost:8025/api/diplomesbyFormId/${id}`)
+  }
 }

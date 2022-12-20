@@ -7,6 +7,7 @@ import { Participant } from 'src/app/models/participant';
 import { DiplomeServiceService } from 'src/app/service/diplome-service.service';
 import { FormationServiceService } from 'src/app/service/formation-service.service';
 import { ParticipantServiceService } from 'src/app/service/participant-service.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-ajout-diplome',
@@ -24,20 +25,22 @@ export class AjoutDiplomeComponent {
   diplomes!:Diplome[];
   diplome!:Diplome;
   diplomesNonEus!:Diplome[];
-  nomDiplParti!:string[];
+  idDiplParti!:number[];
   formations!: Formation[];
   formationNonFaites!: Formation[];
 
   constructor(private partServ:ParticipantServiceService, private diplServ:DiplomeServiceService, private formaionServ:FormationServiceService
     , private router:Router ){}
 
+   
+    
     
   ngOnInit(): void {
     this.participant = new Participant();
     this.TrueOrFalseDiplome="false";
     this.diplomes = []; 
     this.diplome = new Diplome(); 
-    this.nomDiplParti = [];    
+    this.idDiplParti = [];    
     this.diplomesNonEus =[]; 
     this.formations = [];
     this.formationNonFaites =[];
@@ -50,28 +53,24 @@ export class AjoutDiplomeComponent {
     }  
   }
 
+  
   annuler(){
+    
     this.diplToPart.emit(this.TrueOrFalseDiplome)
   }
 
   afficherDiplomeNonFaits(){
-    /*this.diplServ.selectAll().subscribe(
+    this.diplServ.getAllByIdPart(this.idParticipant).subscribe(
       resp=>{
         this.diplomes = resp;
-        for(let form of this.participant.formations){
-          if(form.diplomes!=null){
-          for(let dipl of form.diplomes){
-          if(!this.nomDiplParti.includes(dipl.nom)){
-            this.diplomesNonFaits.push(dipl)
-            console.log("test")
-            console.log(this.diplomesNonFaits)
-           }
-          }
+        for(let dipl of this.diplomes){
+          if(dipl.dateOpt===null){
+            this.diplomesNonEus.push(dipl)
           }
         }        
         }            
-    ) */
-    this.formaionServ.selectAll().subscribe(
+    ) 
+    /*this.formaionServ.selectAll().subscribe(
       resp=>{
         this.formations = resp;
         for(let form of this.formations){
@@ -80,31 +79,34 @@ export class AjoutDiplomeComponent {
            }
           }        
         }            
-    )        
+    )    */    
   }
 
 
-  selectedNameDipl:string[] = [];  
-  OnCheckboxSelect(nom:string, event:any) {
+  selectedDipl:Diplome[] = [];  
+  OnCheckboxSelect(dipl:Diplome, event:any) {
     if (event.target.checked === true) {
-      this.selectedNameDipl.push(nom);      
+      this.selectedDipl.push(dipl);      
     }
     if (event.target.checked === false) {
-      this.selectedNameDipl = this.selectedNameDipl.filter((item) => item !== nom);
-      
+      this.selectedDipl = this.selectedDipl.filter((item) => item !== dipl);      
     }
     
   }
   addDiplomes()
   {
-    for(let nom of this.selectedNameDipl){
-
-    }
-    /*this.participant.diplomes = (this.selectedDipl)   
-    this.partServ.add(this.participant).subscribe(response=>
-      {      
-        this.diplToPart.emit(this.TrueOrFalseDiplome)
-      })*/
+    let dateTime = new Date();
+    const datepipe: DatePipe = new DatePipe('en-US')
+    let formattedDate = datepipe.transform(dateTime, 'YYYY-MM-dd')
+    for(let dipl of this.selectedDipl){
+      dipl.dateOpt=dateTime;
+      dipl.participant = this.participant
+      this.diplServ.add(dipl).subscribe(
+        resp=>{
+          this.diplToPart.emit(this.TrueOrFalseDiplome)
+        }
+      )
+    } 
   }
 
   idFormParti:number[] =[];
@@ -112,15 +114,20 @@ export class AjoutDiplomeComponent {
     this.partServ.selectById(this.idParticipant).subscribe(
       resp=>{
         this.participant =resp;
-        this.nomDiplParti = this.participant.diplomes.map(dipl => dipl.nom);
-        this.formaionServ.getFormationByParti(this.participant.id).subscribe(Response2=>
-          {
-            this.participant.formations=Response2
-            this.idFormParti = this.participant.formations.map(forms => forms.id);
-            this.afficherDiplomeNonFaits();
-            }            
-          )          
-          
+        this.diplServ.getAllByIdPart(this.idParticipant).subscribe(resp2=>{
+            this.participant.diplomes=resp2;
+            console.log("testpartId")
+            console.log(this.participant.diplomes)
+            this.idDiplParti = this.participant.diplomes.map(dipl => dipl.id); 
+            this.formaionServ.getFormationByParti(this.participant.id).subscribe(Response3=>
+              {
+                this.participant.formations=Response3
+                this.idFormParti = this.participant.formations.map(forms => forms.id);
+                this.afficherDiplomeNonFaits();
+                }            
+              )            
+        }
+          )
         }
     )
   }
