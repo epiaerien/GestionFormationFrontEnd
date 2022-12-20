@@ -27,6 +27,8 @@ export class ListeFormateursComponent implements OnInit
   ngOnInit(): void {
     this.selectAll();
     this.formation = new Formation;
+    this.formateur = new Formateur;
+
 
   }
 
@@ -48,10 +50,10 @@ export class ListeFormateursComponent implements OnInit
       })
   }
 
-  formationparid(id:number)
+  formationparformateur(id:number)
   {
-    this.router.navigateByUrl(`afficherinfoformation/${id}`); 
+    this.router.navigateByUrl(`formationparformateur/${id}`); 
   }
-
+  
   }
 

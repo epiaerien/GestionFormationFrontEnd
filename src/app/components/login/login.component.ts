@@ -19,7 +19,7 @@ export class LoginComponent {
 
   authRequest!: AuthRequest
 
-  @Output() newItemEvent = new EventEmitter<string>();
+  test!:boolean;
 
 
   constructor(private authService:AuthentificationService, private route:Router){}
@@ -54,13 +54,16 @@ export class LoginComponent {
             // header.reload();
 
             this.route.navigateByUrl('formations')
-            
+            this.test = false;
           }
         )
-      }
-
-
-    )
+      },
+     
+     error=>{
+        console.log('cnx non ok')
+        this.test = true;
+  
+      }  )
 
   }
 

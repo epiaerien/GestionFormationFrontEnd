@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-</div><form (ngSubmit)="addAppel()">
+</div><form (ngSubmit)="addAppel(f)">
     <fieldset>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
@@ -30,6 +30,18 @@
             </div>
         </div>
 
+        <div class="col-md-3">
+            <div class="form-group">
+                <label name="roles" class="form-label">Attribuer un Commercial:</label> 
+                
+                <select class="form-control" name="idCommercial" [(ngModel)]="idCommercial">
+                        
+                        <option *ngFor="let com of commercials" value="{{com.id}}"> {{com.nom}} </option>
+                    
+                </select>
+            </div>
+            </div>
+    
 
         <div class="row justify-content-md-center">
 
@@ -49,6 +61,7 @@
                     <th scope="col"> Propect</th>
                     <th scope="col"> Date appel </th>
                     <th scope="col"> Commentaire </th>
+                    <th scope="col"> Commercial </th>
                    
                     
                 </tr>
@@ -60,6 +73,7 @@
         <td>{{app.prospect}}</td>
         <td>{{app.date}}</td>
         <td>{{app.commentaire}}</td>
+        <td>{{app.commercial}}</td>
     
         <td>
 

@@ -39,11 +39,11 @@ const routes:Routes=[
   {path: 'test', component:InfoFormationComponent},
 
   {path:'afficherParticipantParFormation/:id', component:ListeParticipantComponent}, 
+
   {path:'afficherinfoformateur/:id', component:InfoFormateurComponent, canActivate : [AuthGuardService]},
   {path:'afficherAppelParCommercial/:id', component:ListeAppelComponent, canActivate : [AuthGuardService]},
   {path:'espaceperso/:id', component:EspacePersoComponent, canActivate : [AuthGuardService]},
   {path:'login', component:LoginComponent}
-
 
 
 ]
