@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { Formateur } from 'src/app/models/formateur';
 import { Formation } from 'src/app/models/formation';
 import { FormateurServiceService } from 'src/app/service/formateur-service.service';
@@ -44,14 +45,15 @@ selectAll()
     })
 
 }
-addFormateur()
+addFormateur(f:NgForm)
 {
   console.log(this.formateur.dateNaissance)
   this.fservice.add(this.formateur).subscribe(response=>
     {
       
       this.selectAll()
-      
+      f.resetForm()
+
     })
 }
 

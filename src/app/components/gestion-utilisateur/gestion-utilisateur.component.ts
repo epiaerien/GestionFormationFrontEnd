@@ -155,10 +155,10 @@ export class GestionUtilisateurComponent implements OnInit{
   }
 
   add(f:NgForm)
-  {
+  { console.log(this.idRole)
     this.utService.selectRoleById(this.idRole).subscribe(
     response2 => {
-      
+      console.log(" sdfds " + response2)
       this.utilisateur.role = response2
       
       this.utService.add(this.utilisateur).subscribe(
@@ -175,13 +175,20 @@ export class GestionUtilisateurComponent implements OnInit{
   }
 
   modifier(id:number)
-  {
-    this.utService.selectById(id).subscribe(
+  {this.utService.selectRoleById(this.idRole).subscribe(
+    response2 => {
+      this.utService.selectById(id).subscribe(
 
-      response=> {this.utilisateur = response
+      response=> {
+        
+        this.utilisateur.role = response2
+        this.utilisateur = response
+
+        //console.log(this.utilisateur.role.nom)
 
         }
     )
+      })
 
 }
 

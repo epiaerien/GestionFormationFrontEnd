@@ -71,8 +71,14 @@
 							<label name="roles" class="form-label">Attribuer Role :</label> 
                             
                             <select class="form-control" name="idRole" [(ngModel)]="idRole">
-      
-                                        <option value="{{utilisateur.role}}" selected>  </option>
+								<ng-container *ngIf="utilisateur.role != null; then role else noRole" class="form-inline my-2 my-lg-0"></ng-container>
+							<ng-template #role>
+								<option selected="{{utilisateur.role.id}}"> {{utilisateur.role.nom}}  </option>
+							</ng-template>
+							<ng-template #noRole><option selected="null"> Pas de roles attribués </option>
+							</ng-template>
+									
+                                        
                                     
 									<option *ngFor="let r of roles" value="{{r.id}}"> {{r.nom}} </option>
                                 

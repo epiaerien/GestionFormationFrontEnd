@@ -17,6 +17,7 @@ import { ListeFormateursComponent } from './components/liste-formateurs/liste-fo
 import { EspacePersoComponent } from './components/espace-perso/espace-perso.component';
 import { GestionAppeletRdvComponent } from './components/gestion-appelet-rdv/gestion-appelet-rdv.component';
 import { ListeAppelComponent } from './components/liste-appel/liste-appel.component';
+import { InfoFormationComponent } from './components/info-formation/info-formation.component';
 
 
 
@@ -31,6 +32,7 @@ const routes:Routes=[
   {path: 'gestionParticipants', component:GestionParticipantComponent},
   {path: 'gestionCommercials', component:GestionCommercialComponent},
   {path: 'gestionAppeletRdv', component:GestionAppeletRdvComponent},
+  {path: 'test', component:InfoFormationComponent},
 
   {path:'afficherParticipantParFormation/:id', component:ListeParticipantComponent}, 
   {path:'afficherinfoformateur/:id', component:InfoFormateurComponent},
