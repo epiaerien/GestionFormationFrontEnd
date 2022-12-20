@@ -39,6 +39,7 @@ import { ListeRdvComponent } from './components/liste-rdv/liste-rdv.component';
 import { EspacePersoCommercialComponent } from './components/espace-perso-commercial/espace-perso-commercial.component';
 
 import { EspacePersoParticipantComponent } from './components/espace-perso-participant/espace-perso-participant.component';
+import { AjoutDiplomeComponent } from './components/participant/ajout-diplome/ajout-diplome.component';
 
 
 
@@ -79,7 +80,8 @@ import { EspacePersoParticipantComponent } from './components/espace-perso-parti
     ListeRdvComponent,
     EspacePersoCommercialComponent,
 
-    EspacePersoParticipantComponent
+    EspacePersoParticipantComponent,
+      AjoutDiplomeComponent
 
 
 

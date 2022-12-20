@@ -110,7 +110,7 @@
                 <div *ngIf="part.diplomes?.length===0">pas de diplomes obtenus</div>
             </td>
 
-            <td><button (click)="ajoutDiplome(part.id)">ajouter Formation </button></td>
+            <td><button (click)="ajoutDiplomeChild(part.id)">ajouter Diplome</button></td>
 
             <td> <button (click)="supprimerParticipant(part.id)">Supprimer</button></td>
         </tr>
@@ -123,5 +123,9 @@
 </div>
 
 <div *ngIf="TrueOrFalsetransaction">
-    <app-ajout-transaction [idParticipant]="idpart" (transToPart)="modTrueFalseTrans($event)"></app-ajout-transaction>
+    <app-ajout-transaction [idParticipant]="idpart" [transaction]="transaction"  (transToPart)="modTrueFalseTrans($event)"></app-ajout-transaction>
+</div>
+
+<div *ngIf="TrueOrFalseDiplome">
+    <app-ajout-diplome [idParticipant]="idpart"  (diplToPart)="modTrueFalseDipl($event)"></app-ajout-diplome>
 </div>
