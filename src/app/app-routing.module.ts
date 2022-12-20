@@ -18,6 +18,7 @@ import { EspacePersoComponent } from './components/espace-perso/espace-perso.com
 import { GestionAppeletRdvComponent } from './components/gestion-appelet-rdv/gestion-appelet-rdv.component';
 import { ListeAppelComponent } from './components/liste-appel/liste-appel.component';
 import { InfoFormationComponent } from './components/info-formation/info-formation.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -37,7 +38,9 @@ const routes:Routes=[
   {path:'afficherParticipantParFormation/:id', component:ListeParticipantComponent}, 
   {path:'afficherinfoformateur/:id', component:InfoFormateurComponent},
   {path:'afficherAppelParCommercial/:id', component:ListeAppelComponent},
-  {path:'espaceperso/:id', component:EspacePersoComponent}
+  {path:'espaceperso/:id', component:EspacePersoComponent},
+  {path:'login', component:LoginComponent}
+
 
 
 ]

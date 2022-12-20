@@ -40,6 +40,8 @@ import { EspacePersoCommercialComponent } from './components/espace-perso-commer
 
 import { EspacePersoParticipantComponent } from './components/espace-perso-participant/espace-perso-participant.component';
 import { AjoutDiplomeComponent } from './components/participant/ajout-diplome/ajout-diplome.component';
+import { LoginComponent } from './components/login/login.component';
+import { InterceptorService } from './service/interceptor.service';
 
 
 
@@ -81,7 +83,8 @@ import { AjoutDiplomeComponent } from './components/participant/ajout-diplome/aj
     EspacePersoCommercialComponent,
 
     EspacePersoParticipantComponent,
-      AjoutDiplomeComponent
+      AjoutDiplomeComponent,
+      LoginComponent
 
 
 
@@ -99,7 +102,11 @@ import { AjoutDiplomeComponent } from './components/participant/ajout-diplome/aj
 
 
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
