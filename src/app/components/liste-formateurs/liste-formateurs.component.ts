@@ -50,9 +50,10 @@ export class ListeFormateursComponent implements OnInit
       })
   }
 
-  formationparformateur(id:number)
+
+  formationparid(id:number)
   {
-    this.router.navigateByUrl(`formationparformateur/${id}`); 
+    this.router.navigateByUrl(`afficherinfoformation/${id}`); 
   }
   
   }

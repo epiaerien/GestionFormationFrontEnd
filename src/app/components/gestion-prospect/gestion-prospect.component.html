@@ -1,0 +1,131 @@
+<div class="container-fluid">
+
+</div><form #f="ngForm" (ngSubmit)="addprospect(f)">
+    <fieldset>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <h3>Ajouter d'un Prospect</h3>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+        <div class="col-md-3">
+            <div class="form-group">
+
+                <label path="nom" class="form-label"> Nom </label>
+                <input type="text" class="form-control" name= "prospect.nom" [(ngModel)]="prospect.nom">
+                
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label path="prenom" class="form-label"> Prénom </label>
+                <input type="text" class="form-control" name="prospect.prenom" [(ngModel)]="prospect.prenom">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label path="adresse" class="form-label"> Adresse</label>
+                <input type="text" class="form-control" name="prospect.adresse" [(ngModel)]="prospect.adresse">
+            </div>
+        </div>
+</div>
+
+<div class="row justify-content-md-center">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label path="mail" class="form-label"> Mail</label>
+                <input type="text" class="form-control" name="prospect.mail" [(ngModel)]="prospect.mail">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label path="dateNaissance"class="form-label"> Date de Naissance</label>
+                <input type="text" class="form-control" name="prospect.dateNaissance" [(ngModel)]="prospect.dateNaissance">
+            </div>
+        </div>
+
+      
+    </div>
+
+    <div class="row justify-content-md-center">
+        
+        <div class="col-md-4">
+            <div class="form-group">
+
+                <label name="username" class="form-label"> Username </label>
+                <input type="text" class="form-control" name="prospect.username" [(ngModel)]="prospect.username">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+
+                <label name="password" class="form-label"> Mot de passe </label>
+                <input type="password" class="form-control" name="prospect.password"  [(ngModel)]="prospect.password">
+            </div>
+        </div>
+    </div>
+    <br>
+        <div class="row justify-content-md-center">
+
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Valider Ajout/Modification</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"> Id </th>
+                    <th scope="col"> Nom </th>
+                    <th scope="col"> Prénom </th>
+                    <th scope="col">Adresse </th>
+                    <th scope="col"> Mail </th>
+                    <th scope="col"> Date de Naissance </th>
+                    <th scope="col"> username </th>
+                    <th scope="col"> password  </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+    <tr *ngFor="let form of prospects">
+        <td>{{form.id}}</td>
+        <td>{{form.nom}}</td>
+        <td>{{form.prenom}}</td>
+        <td>{{form.adresse}}</td>
+        <td>{{form.mail}}</td>
+        <td>{{form.dateNaissance}}</td>
+        
+        <td>{{form.username}}</td>
+        <td>{{form.password}}</td>
+            
+         
+        <td>
+
+            <button (click)="supprimerprospect(form.id)" class="btn btn-outline-primary">
+
+                <i class="bi bi-plus-square-fill"> Supprimer</i>
+            </button>
+        </td>
+
+        <td>
+
+            <button (click)="modifierprospect(form.id)" class="btn btn-outline-primary">
+
+                <i class="bi bi-plus-square-fill"> Modifier </i>
+            </button>
+        </td>
+
+</tr>
+
+
+</tbody>
+
+</table>

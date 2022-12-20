@@ -42,6 +42,7 @@ import { EspacePersoParticipantComponent } from './components/espace-perso-parti
 import { AjoutDiplomeComponent } from './components/participant/ajout-diplome/ajout-diplome.component';
 import { LoginComponent } from './components/login/login.component';
 import { InterceptorService } from './service/interceptor.service';
+import { GestionProspectComponent } from './components/gestion-prospect/gestion-prospect.component';
 
 
 
@@ -84,7 +85,8 @@ import { InterceptorService } from './service/interceptor.service';
 
     EspacePersoParticipantComponent,
       AjoutDiplomeComponent,
-      LoginComponent
+      LoginComponent,
+      GestionProspectComponent
 
 
 

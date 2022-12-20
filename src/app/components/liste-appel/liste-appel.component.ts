@@ -40,7 +40,7 @@ export class ListeAppelComponent implements OnInit{
   }
   appelparcommercial()
   {   
-    this.appservice.getByIdCommercial(this.idCom).subscribe(Response=>this.appels=Response)
+    this.appservice.appelparcommercial(this.idCom).subscribe(Response=>this.appels=Response)
   }
  
 }

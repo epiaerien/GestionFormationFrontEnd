@@ -108,10 +108,10 @@
             <td>
                 <div *ngIf="part.diplomes!=null">
                     <ul *ngFor="let dipl of part.diplomes">
-                        <li>{{dipl.nom}}</li>
+                        <div *ngIf="dipl.dateOpt"><li >{{dipl.nom}} obtenu le {{dipl.dateOpt}}</li></div>
+                        <div *ngIf="!dipl.dateOpt"><li *ngIf="!dipl.dateOpt">diplome pas encore obtenu</li></div>
                     </ul>
                 </div>
-                <div *ngIf="part.diplomes?.length===0">pas de diplomes obtenus</div>
             </td>
 
             <td><button (click)="ajoutDiplomeChild(part.id)">ajouter Diplome</button></td>

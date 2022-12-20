@@ -53,4 +53,9 @@ export class NavBarComponent implements OnChanges{
     this.route.navigateByUrl('login')
   }
 
+
+  espaceperso()
+  {
+    this.route.navigateByUrl(`espaceperso/${this.utilisateur.id}`)
+  }
 }

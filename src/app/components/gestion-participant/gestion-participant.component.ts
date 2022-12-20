@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import { Formation } from 'src/app/models/formation';
 import { Participant } from 'src/app/models/participant';
 import { Transaction } from 'src/app/models/transaction';
+import { DiplomeServiceService } from 'src/app/service/diplome-service.service';
 import { FormationServiceService } from 'src/app/service/formation-service.service';
 import { ParticipantServiceService } from 'src/app/service/participant-service.service';
 
@@ -12,7 +13,8 @@ import { ParticipantServiceService } from 'src/app/service/participant-service.s
 })
 export class GestionParticipantComponent implements OnInit{
 
-  constructor(private partServ:ParticipantServiceService, private formationServ:FormationServiceService){}
+  constructor(private partServ:ParticipantServiceService, private formationServ:FormationServiceService,
+    private diplServ:DiplomeServiceService){}
 
   participants!:Participant[];
   participant!:Participant;
@@ -80,7 +82,14 @@ selectAll()
               part.formations=Response2
               console.log(part.formations)}
             )
-        }      
+            this.diplServ.getAllByIdPart(part.id).subscribe(Resp3=>
+              {
+                part.diplomes=Resp3
+                console.log(part.id)
+                console.log(part.diplomes)
+              })
+        }  
+            
     })
 }
 addParticipant()
