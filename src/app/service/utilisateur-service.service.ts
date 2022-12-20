@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Utilisateurs } from '../models/utilisateurs';
 import { HttpClient } from '@angular/common/http';
 import { Role } from '../models/role';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -40,5 +41,8 @@ selectRoleById(id:number)
 {
   return this.http.get<Role>(`http://localhost:8025/api/roles/${id}`)
 }
+
+
+
 
 }

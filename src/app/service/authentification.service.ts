@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthRequest } from '../models/auth-request';
 import { AuthResponse } from '../models/auth-response';
 import { Role } from '../models/role';
@@ -36,8 +37,6 @@ export class AuthentificationService {
   }
 
   getUser():Utilisateurs
-  
-  
   {
     
     if(sessionStorage.getItem("userDetails")){
@@ -46,5 +45,13 @@ export class AuthentificationService {
  
      return this.utilisateur
    }
+
+  //  getCurrentUser(): Observable<Utilisateurs> {
+  //   if(sessionStorage.getItem("userDetails")){
+  //    this.utilisateur = JSON.parse(sessionStorage.getItem("userDetails") ?? "")
+  //   }
+
+  //   return this.utilisateur
+  // }
 
 }
