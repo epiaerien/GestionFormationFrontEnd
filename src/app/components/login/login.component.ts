@@ -18,7 +18,7 @@ export class LoginComponent {
 
   username!:string
   password!:string
-
+test!:boolean; 
   authRequest!: AuthRequest
 
 
@@ -54,12 +54,20 @@ export class LoginComponent {
             
             this.commonService.sendUpdate('refresh')
 
+            //this.route.navigateByUrl('formations')
+            this.test=false; 
+
             this.route.navigateByUrl(`espaceperso/${this.utilisateur.id}`)
             
+
           }
         )
+      },
+      error=>{
+        console.log('cnx non ok')
+        this.test = true;
+  
       }
-
 
     )
 

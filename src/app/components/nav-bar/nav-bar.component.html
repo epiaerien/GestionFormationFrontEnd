@@ -60,10 +60,12 @@
 			</li>
 			
 
+
 				<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
 
 				
 			</ul>
+
 
 
 
@@ -133,6 +135,10 @@
 			<li class="nav-item"><a class="nav-link" 
 				href="/gestionParticipants"> Gestion Participants </a>
 			</li>
+
+		
+	</ul>
+
 		</ul>
 
 
@@ -200,8 +206,19 @@
 		<ul *ngIf="utilisateur" class="nav navbar-nav navbar-right">
 
 
+		<div *ngIf="utilisateur!=null; then ut else noUt" class="form-inline my-2 my-lg-0"></div>
+			<ng-template #ut>
+			
+				<li  class="nav-item">  <span (click)="espaceperso()" class="navbar-text text-warning" > {{utilisateur.prenom}} {{utilisateur.nom}} Username : {{utilisateur.username}}</span>  
+				
+				
+				</li>
+				<li>
+					<button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="logout()"> Déconnexion </button>
+
 			<li class="nav-item"> <span (click)="espaceperso()" class="nav-link text-warning"> {{utilisateur.prenom}}
 					{{utilisateur.nom}}</span>
+
 
 
 			</li>
@@ -234,6 +251,7 @@
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+
 
 	</nav>
 

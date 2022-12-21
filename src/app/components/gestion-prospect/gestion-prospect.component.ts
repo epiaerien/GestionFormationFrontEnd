@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Prospect } from 'src/app/models/prospect';
 import { ProspectServiceService } from 'src/app/service/prospect-service.service';
 
@@ -13,7 +14,7 @@ prospect!: Prospect;
 prospects!:Prospect[]; 
 
 
-constructor(private pservice:ProspectServiceService){
+constructor(private pservice:ProspectServiceService, private router:Router){
 
 }
   ngOnInit(): void {
@@ -54,4 +55,10 @@ modifierprospect (id:number)
 
     response=> this.prospect = response)
 }
+
+rendezvousparid(id:number)
+{
+  this.router.navigateByUrl(`listeappeletrdvparprospect/${id}`); 
+}
+
 }

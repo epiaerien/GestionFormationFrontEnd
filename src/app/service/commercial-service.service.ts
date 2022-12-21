@@ -33,4 +33,15 @@ export class CommercialServiceService {
   {
     return this.http.get<Commercial>(`http://localhost:8025/api/commercials/${id}`)
   } 
+
+  commercialparappel(id:number)
+  {
+    return this.http.get<Commercial>(`http://localhost:8025/api/commercialparappel/${id}`)
+  }
+
+  commercialparrdv(id:number)
+  {
+    return this.http.get<Commercial>(`http://localhost:8025/api/commercialparrdv/${id}`)
+ 
+  }
 }
