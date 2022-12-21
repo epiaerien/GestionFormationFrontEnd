@@ -174,21 +174,26 @@ export class GestionUtilisateurComponent implements OnInit{
     
   }
 
-  modifier(id:number)
-  {this.utService.selectRoleById(this.idRole).subscribe(
-    response2 => {
+  modifier(id:number, idR:number)
+ 
+  { this.utService.selectRoleById(idR).subscribe(
+
+    responseR => {
+
       this.utService.selectById(id).subscribe(
 
       response=> {
         
-        this.utilisateur.role = response2
+        this.utilisateur.role = responseR
         this.utilisateur = response
+        console.log(this.utilisateur.role)
 
-        //console.log(this.utilisateur.role.nom)
+        
 
         }
     )
-      })
+  }
+  ) 
 
 }
 
