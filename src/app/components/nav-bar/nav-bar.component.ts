@@ -1,61 +1,80 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Utilisateurs } from 'src/app/models/utilisateurs';
 import { AuthentificationService } from 'src/app/service/authentification.service';
+import { CommonServiceService } from 'src/app/service/common-service.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnChanges{
-  
-  utilisateur!:Utilisateurs
 
-  @Input() bool!:string
+export class NavBarComponent implements OnInit {
+
+  utilisateur!: Utilisateurs | null
+
+  isLogged!: boolean;
+
+  constructor(private route: Router, private authService: AuthentificationService, private commonService: CommonServiceService) { }
 
 
-  constructor(private route:Router, private authService:AuthentificationService){}
-  
-  
-  ngOnChanges(changes: SimpleChanges): void {
-    
-      console.log(this.utilisateur.nom)
-    this.authService.getUser();
-    console.log(this.utilisateur.nom)
-  }
 
-  
+
+
   ngOnInit(): void {
-  console.log(this.utilisateur)
 
-  this.getUser()
-    
+    //this.isLogged = false;
+    console.log("islogged  " + this.isLogged)
+    this.getUtilisateur()
+    console.log(this.utilisateur)
+    this.commonService.getUpdate().subscribe(
+      message => {
+
+        this.getUtilisateur()
+      }
+    )
+
   }
 
-  logout()
-  {
+  logout() {
+    this.utilisateur = null
+    this.isLogged = false
     sessionStorage.clear()
+    //this.commonService.sendUpdate('Rerefresh')
     this.route.navigateByUrl('login')
   }
 
-  getUser(){
-    
-   if(sessionStorage.getItem("userDetails")){
+  getUser() {
+
+    if (sessionStorage.getItem("userDetails")) {
       this.utilisateur = JSON.parse(sessionStorage.getItem("userDetails") ?? "")
     }
- 
-    
+
+
   }
 
-  toLogIn(){
-    
+  getUtilisateur(){
+
+    if (sessionStorage.getItem("userDetails")) {
+      console.log('test')
+      let sessionUser = sessionStorage.getItem('userDetails');
+      this.utilisateur = sessionUser != null ? JSON.parse(sessionUser) : this.utilisateur=null;
+      this.isLogged = true;
+    }
+
+
+  }
+
+  toLogIn() {
+
     this.route.navigateByUrl('login')
   }
 
 
-  espaceperso()
-  {
-    this.route.navigateByUrl(`espaceperso/${this.utilisateur.id}`)
+  espaceperso() {
+    if(this.utilisateur){
+    this.route.navigateByUrl(`espaceperso/${this.utilisateur.id}`)}
   }
 }

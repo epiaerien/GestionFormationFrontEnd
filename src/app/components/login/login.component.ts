@@ -4,6 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import { AuthRequest } from 'src/app/models/auth-request';
 import { Utilisateurs } from 'src/app/models/utilisateurs';
 import { AuthentificationService } from 'src/app/service/authentification.service';
+import { CommonServiceService } from 'src/app/service/common-service.service';
 
 @Component({
   selector: 'app-login',
@@ -20,10 +21,8 @@ export class LoginComponent {
 
   authRequest!: AuthRequest
 
-  @Output() activate = new EventEmitter<string>();
 
-
-  constructor(private authService:AuthentificationService, private route:Router){}
+  constructor(private authService:AuthentificationService, private route:Router, private commonService:CommonServiceService){}
 
   
   ngOnInit(): void {
@@ -33,7 +32,6 @@ export class LoginComponent {
   login() {
 
     let req = new AuthRequest();
-
     req.username = this.username
     req.password = this.password
 
@@ -54,9 +52,9 @@ export class LoginComponent {
             //var header: NavbarComponent = new NavbarComponent(this.route);
             // header.reload();
             
-            this.activate.emit("refresh")
+            this.commonService.sendUpdate('refresh')
 
-            //this.route.navigateByUrl('formations')
+            this.route.navigateByUrl(`espaceperso/${this.utilisateur.id}`)
             
           }
         )
@@ -66,6 +64,11 @@ export class LoginComponent {
     )
 
   }
+
+  
+
+
+
 
 //   checkStatus() {
 //     if (localStorage.getItem('token')) {

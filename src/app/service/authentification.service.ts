@@ -5,6 +5,7 @@ import { AuthRequest } from '../models/auth-request';
 import { AuthResponse } from '../models/auth-response';
 import { Role } from '../models/role';
 import { Utilisateurs } from '../models/utilisateurs';
+import { CommonServiceService } from './common-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthentificationService {
 
   utilisateur!: Utilisateurs
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private commonService:CommonServiceService) { }
   
   
   ngOnInit(): void {
@@ -45,6 +46,8 @@ export class AuthentificationService {
  
      return this.utilisateur
    }
+   
+  
 
   //  getCurrentUser(): Observable<Utilisateurs> {
   //   if(sessionStorage.getItem("userDetails")){
