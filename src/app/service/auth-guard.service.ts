@@ -25,12 +25,17 @@ export class AuthGuardService implements CanActivate {
       let sessionUser = sessionStorage.getItem("userDetails");
       let valid: boolean = false;
       const user = sessionUser !== null ? JSON.parse(sessionUser) : new Utilisateurs()
-
+      console.log(" -------------- > " + route.data['role'])
       if (route.data['role']) {
-        if (route.data['role'] === user.role.nom) {
-          valid = true;
-        }
-      }else
+for(let r of route.data['role']){
+  console.log(route + ' ----------- '+ r)
+  if (r === user.role.nom) {
+    valid = true;
+    break;
+  }
+}
+
+  }else
       {
         return true;
       }

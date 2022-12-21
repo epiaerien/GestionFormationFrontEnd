@@ -26,26 +26,26 @@ import { GestionProspectComponent } from './components/gestion-prospect/gestion-
 
 
 const routes:Routes=[
-  {path: 'formations', component:ListeFormationsComponent, },
-  {path: 'gestionPayements', component:GestionPayementComponent, canActivate : [AuthGuardService]},
-  {path: 'gestionUtilisateurs', component:GestionUtilisateurComponent, canActivate : [AuthGuardService], data : {role:'Admin'}},
-  {path: 'gestionFormateurs', component:GestionFormateurComponent, canActivate : [AuthGuardService]},
-  {path: 'gestionFormation', component:GestionFormationComponent, canActivate : [AuthGuardService]},
+  {path: 'formations', component:ListeFormationsComponent},
+  {path: 'gestionPayements', component:GestionPayementComponent, canActivate : [AuthGuardService], data : {role:['Admin','Assistant']}},
+  {path: 'gestionUtilisateurs', component:GestionUtilisateurComponent, canActivate : [AuthGuardService], data : {role: ['Admin']}},
+  {path: 'gestionFormateurs', component:GestionFormateurComponent, canActivate : [AuthGuardService], data : {role:['Admin','Assistant']}},
+  {path: 'gestionFormation', component:GestionFormationComponent, canActivate : [AuthGuardService], data : {role:['Admin','Assistant']}},
 
-  {path: 'formateurs', component:ListeFormateursComponent, canActivate : [AuthGuardService]},
-  {path: 'appels', component: ListeAppelComponent, canActivate : [AuthGuardService]},
-  {path: 'gestionParticipants', component:GestionParticipantComponent, canActivate : [AuthGuardService]},
-  {path: 'gestionCommercials', component:GestionCommercialComponent, canActivate : [AuthGuardService]},
-  {path: 'gestionAppeletRdv', component:GestionAppeletRdvComponent, canActivate : [AuthGuardService]},
+  {path: 'formateurs', component:ListeFormateursComponent, canActivate : [AuthGuardService], data : {role:['Admin','Assistant']}},
+  {path: 'appels', component: ListeAppelComponent, canActivate : [AuthGuardService], data : {role:['Admin','Commercial']}},
+  {path: 'gestionParticipants', component:GestionParticipantComponent, canActivate : [AuthGuardService], data : {role:['Admin','Formateur']}},
+  {path: 'gestionCommercials', component:GestionCommercialComponent, canActivate : [AuthGuardService], data : {role:['Admin']}},
+  {path: 'gestionAppeletRdv', component:GestionAppeletRdvComponent, canActivate : [AuthGuardService], data : {role:['Admin','Commercial']}},
   {path: 'test', component:InfoFormationComponent},
 
-  {path:'afficherParticipantParFormation/:id', component:ListeParticipantComponent}, 
+  {path:'afficherParticipantParFormation/:id', component:ListeParticipantComponent, data : {role:['Admin','Formateur']}}, 
 
-  {path:'afficherinfoformateur/:id', component:InfoFormateurComponent, canActivate : [AuthGuardService]},
-  {path:'afficherAppelParCommercial/:id', component:ListeAppelComponent, canActivate : [AuthGuardService]},
-  {path:'espaceperso/:id', component:EspacePersoComponent, canActivate : [AuthGuardService]},
+  {path:'afficherinfoformateur/:id', component:InfoFormateurComponent, canActivate : [AuthGuardService], data : {role:['Admin']}},
+  {path:'afficherAppelParCommercial/:id', component:ListeAppelComponent, canActivate : [AuthGuardService], data : {role:['Admin','Commercial']}},
+  {path:'espaceperso/:id', component:EspacePersoComponent, canActivate : [AuthGuardService], data : {role:['Admin','Commercial','Participant','Formateur','Assistant']}},
   {path:'login', component:LoginComponent},
-  {path:'gestionProspect', component:GestionProspectComponent}
+  {path:'gestionProspect', component:GestionProspectComponent, canActivate : [AuthGuardService], data : {role:['Admin','Commercial']}}
 
 
 ]
