@@ -72,21 +72,18 @@ modTrueFalseDipl(bool:string){
 selectAll()
 {
   this.partServ.selectAll().subscribe(response=>
-    {
-      console.log(response.length)
+    {      
       this.participants=response
       for(let part of this.participants)
         {
           this.formationServ.getFormationByParti(part.id).subscribe(Response2=>
             {
               part.formations=Response2
-              console.log(part.formations)}
+            }
             )
             this.diplServ.getAllByIdPart(part.id).subscribe(Resp3=>
               {
                 part.diplomes=Resp3
-                console.log(part.id)
-                console.log(part.diplomes)
               })
         }  
             
@@ -94,7 +91,6 @@ selectAll()
 }
 addParticipant()
 {
-  console.log(this.participant.dateNaissance)
   this.partServ.add(this.participant).subscribe(response=>
     {      
       this.selectAll()

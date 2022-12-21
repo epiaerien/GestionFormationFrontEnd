@@ -12,13 +12,6 @@
 
           <div class="col-md-2">
               <div class="form-group">
-                  <label path="Date" class="form-label"> Date </label> <br>
-                  <input type="date" name="transaction.date" [(ngModel)]="transaction.date">
-              </div>
-          </div>
-
-          <div class="col-md-2">
-              <div class="form-group">
                   <label path="Montant" class="form-label"> Montant </label>
                   <input type="text" name="transaction.montant" [(ngModel)]="transaction.montant">
               </div>
@@ -27,8 +20,8 @@
           <div class="col-md-2" *ngIf="participant.transactions?.length!=0">
             
               <div class="form-group">
-                  <label path="payement" class="form-label"> payement </label>
-                  <input type="text" name="transactionParti.payement" [(ngModel)]="transactionParti.payement">
+                  <label path="payement" class="form-label"> transaction dans payement n°{{transactionParti.payement.id}} </label>
+                  <input type="hidden" name="transactionParti.payement" [(ngModel)]="transactionParti.payement.id">
               </div>
             
           </div>

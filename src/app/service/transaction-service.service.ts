@@ -28,4 +28,11 @@ export class TransactionServiceService {
   {
     return this.http.post(`http://localhost:8025/api/transactions`,transaction)
   }
+  
+
+    getAllByIdPart(id:number)
+  {
+    return this.http.get<Transaction[]>(`http://localhost:8025/api/transbyPartId/${id}`)
+  }
+  
 }
