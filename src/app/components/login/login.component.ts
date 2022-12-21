@@ -17,7 +17,7 @@ export class LoginComponent {
 
   username!:string
   password!:string
-
+test!:boolean; 
   authRequest!: AuthRequest
 
   @Output() activate = new EventEmitter<string>();
@@ -57,11 +57,15 @@ export class LoginComponent {
             this.activate.emit("refresh")
 
             //this.route.navigateByUrl('formations')
-            
+            this.test=false; 
           }
         )
+      },
+      error=>{
+        console.log('cnx non ok')
+        this.test = true;
+  
       }
-
 
     )
 

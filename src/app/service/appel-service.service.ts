@@ -32,4 +32,9 @@ export class AppelServiceService {
   appelparcommercial(id:number){
     return this.http.get<Appel[]>(`http://localhost:8025/api/appelparcommercial/${id}`)
   }
+
+  appelparprospect(id:number)
+  {
+    return this.http.get<Appel[]>(`http://localhost:8025/api/appelparprospect/${id}`)
+  }
 }

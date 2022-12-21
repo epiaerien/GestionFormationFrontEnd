@@ -1,0 +1,60 @@
+<h2 style="color:#5bc0de">{{prospect.nom}} {{prospect.prenom}}   </h2> 
+
+
+<hr>
+
+
+<h3 style="color: #d9534f;"> Listes des appels</h3> 
+
+<table class="table table-hover">
+
+
+    <thead>
+        <tr>
+          
+            <th>Id </th>
+            <th> Date</th>
+            <th> Commentaire </th>
+              <th>Nom du commercial </th>
+        </tr>
+        </thead>
+    
+        <tbody>
+        <tr *ngFor="let f of prospect.appels ">
+    
+            <td> {{f.id}} </td>
+            
+            <td> {{f.date | date:'mediumDate'}}</td>
+           
+            <td> {{f.commentaire}}</td>
+            <td> {{f.commercial}} </td>
+        </tr>
+        </tbody>
+</table>
+ <hr> 
+<h3 style="color: #d9534f;"> Listes des rendez vous</h3> 
+<hr>
+
+<table class="table table-hover">
+
+<thead>
+    <tr>
+        <th>Id </th>
+        <th> Date</th>
+        <th> Lieu </th>
+          <th>Nom du commercial </th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let f of prospect.rdv ">
+
+        <td> {{f.id}} </td>
+        
+        <td> {{f.date | date:'mediumDate'}}</td>
+       
+        <td> {{f.lieu}}</td>
+        <td> {{f.commercial}} </td>
+    </tr>
+    </tbody>
+</table>

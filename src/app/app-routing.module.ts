@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { GestionFormationComponent } from './components/gestion-formation/gestion-formation.component';
 import { GestionProspectComponent } from './components/gestion-prospect/gestion-prospect.component';
+import { ListeappelrendezvousComponent } from './components/listeappelrendezvous/listeappelrendezvous.component';
 
 
 
@@ -45,7 +46,8 @@ const routes:Routes=[
   {path:'afficherAppelParCommercial/:id', component:ListeAppelComponent, canActivate : [AuthGuardService]},
   {path:'espaceperso/:id', component:EspacePersoComponent, canActivate : [AuthGuardService]},
   {path:'login', component:LoginComponent},
-  {path:'gestionProspect', component:GestionProspectComponent}
+  {path:'gestionProspect', component:GestionProspectComponent}, 
+  {path:'listeappeletrdvparprospect/:id', component:ListeappelrendezvousComponent}
 
 
 ]
