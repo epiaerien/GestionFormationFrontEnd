@@ -54,8 +54,8 @@ constructor(private partServ:ParticipantServiceService, private formaionServ:For
 
   addTansaction()
   {
-    
-    this.transaction.payement = this.transactionParti.payement
+    let dateTime = new Date();
+    this.transaction.date = dateTime;
     this.participant.transactions.push(this.transaction)   
     this.partServ.add(this.participant).subscribe(response=>
       {      
@@ -74,18 +74,13 @@ constructor(private partServ:ParticipantServiceService, private formaionServ:For
               this.transServ.selectById(this.participant.transactions[0].id).subscribe(
                 resp3=>{
                   this.transactionParti = resp3;  
-                  console.log("avant ajout transaction")
-                  console.log(this.transactionParti)      
-                },
-               
+                  }               
               )
-            }
-            
-            
+            }           
           }
         )
-        }
+      }
     )
   }
-
+  
 }

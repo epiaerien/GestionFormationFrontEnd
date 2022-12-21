@@ -15,7 +15,8 @@
       <div   class="row justify-content-md-center">
          <form (ngSubmit)="addDiplomes()">                     
               <div *ngFor="let dipl of diplomesNonEus">
-                  <input type="checkbox" name="item-{{dipl}}" (change)="OnCheckboxSelect(dipl, $event)"> Diplome de {{dipl.nom}}<br>
+                  <input type="checkbox" name="item-{{dipl}}" (change)="OnCheckboxSelect(dipl, $event)"> Diplome de {{dipl.nom}}
+                  <br>
               </div>
   
               <div class="row justify-content-md-center">

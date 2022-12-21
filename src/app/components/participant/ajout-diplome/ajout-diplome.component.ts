@@ -96,8 +96,7 @@ export class AjoutDiplomeComponent {
   addDiplomes()
   {
     let dateTime = new Date();
-    const datepipe: DatePipe = new DatePipe('en-US')
-    let formattedDate = datepipe.transform(dateTime, 'YYYY-MM-dd')
+    
     for(let dipl of this.selectedDipl){
       dipl.dateOpt=dateTime;
       dipl.participant = this.participant

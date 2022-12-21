@@ -54,10 +54,17 @@
 						<span class="sr-only">(current)</span>
 				</a></li> -->
 
+
+			<li class="nav-item"><a class="nav-link" 
+				href="/gestionProspect"> Gestion Prospects</a>
+			</li>
+			
+
 				<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
 
 				
 			</ul>
+
 
 
 			<div class="dropdown">
@@ -83,6 +90,51 @@
 				<!-- <li class="nav-item active"><a class="nav-link" href="#">
 						<span class="sr-only">(current)</span>
 				</a></li> -->
+
+	
+				<li class="nav-item"><a class="nav-link"
+					href="/formations"> Formations </a></li>
+			
+			
+                <li class="nav-item"><a class="nav-link" 
+                    href="/gestionFormateurs"> Gestion Formateurs </a>
+                </li>
+
+
+				<li class="nav-item"><a class="nav-link"
+					href="/formateurs"> Formateurs </a></li>
+
+          <div *ngIf="utilisateur!=null; then ut else noUt" class="form-inline my-2 my-lg-0"></div>
+                <ng-template #ut>
+                
+                    <li  class="nav-item">  <span (click)="espaceperso()" class="navbar-text text-warning" > {{utilisateur.prenom}} {{utilisateur.nom}} Username : {{utilisateur.username}}</span>  
+                    
+                    
+                    </li>
+                    <li>
+                        <button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="logout()"> Déconnexion </button>
+
+                    </li>
+
+                
+            </ng-template>
+
+                <ng-template #noUt>
+              
+                        
+                        <li>
+                            <button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="toLogIn()"> Connexion </button>
+    
+                        </li>
+
+					</ng-template>
+
+			
+			<li class="nav-item"><a class="nav-link" 
+				href="/gestionParticipants"> Gestion Participants </a>
+			</li>
+		</ul>
+
 
 				<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
 
@@ -125,6 +177,7 @@
 				<li class="nav-item"><a class="nav-link" href="/gestionParticipants"> Gestion Participants </a>
 				</li>
 			</ul>
+
 
 		</div>
 

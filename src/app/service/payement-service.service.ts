@@ -28,5 +28,12 @@ export class PayementServiceService {
   {
     return this.http.post(`http://localhost:8025/api/payements`,payement)
   }
+
+
+  selectByIdTrans(idTrans:number)
+  {
+    return this.http.get<Payement>(`http://localhost:8025/api/payementsByIdTrans/${idTrans}`)
+  }
+  
 }
 
