@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
-import { jsPDF } from 'jspdf'; 
+
 import { Diplome } from 'src/app/models/diplome';
 import { Participant } from 'src/app/models/participant';
 import { DiplomeServiceService } from 'src/app/service/diplome-service.service';
@@ -39,15 +39,7 @@ export class GenerationDiplomeComponent implements OnInit, OnChanges {
     }  
   }
 
-  @ViewChild('content') content!:ElementRef; 
-  public SavePDF():void{  
-    let content=this.content.nativeElement;  
-    let doc = new jsPDF();        
-    doc.html(content); 
-    
-    doc.save('test.pdf');
-    doc.output('dataurlnewwindow');   
-  }
+
   
   idFormParti:number[] =[];
   ParticipantByid(){    

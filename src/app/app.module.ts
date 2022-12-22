@@ -48,7 +48,7 @@ import { GenerationDiplomeComponent } from './components/generation-diplome/gene
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import jsPDF from 'jspdf';
+
 
 
 
