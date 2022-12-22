@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Form, NgForm } from '@angular/forms';
 
 import { ActivatedRoute, createUrlTreeFromSnapshot, Router } from '@angular/router';
+import { variationPlacements } from '@popperjs/core';
 import { Assistant } from 'src/app/models/assistant';
 import { Commercial } from 'src/app/models/commercial';
 import { Formateur } from 'src/app/models/formateur';
@@ -218,7 +219,7 @@ export class GestionUtilisateurComponent implements OnInit {
   }
 
   delete(id: number) {
-    let utType = "";
+    let utType = "Utilisateur";
 
     this.utMap.forEach((value, key) => {
 
@@ -266,6 +267,130 @@ export class GestionUtilisateurComponent implements OnInit {
 
       }
     )
+  }
+
+  addAllUser(f: NgForm) {
+    
+    let utType = "Utilisateur";
+
+    this.utMap.forEach((value, key) => {
+
+      if (value.some(item => item == this.utilisateur.id)) { utType = key }
+    }
+    )
+
+    switch (utType) {
+
+      case "Commercial":
+        this.utService.selectRoleById(this.idRole).subscribe(
+          response2 => {
+            console.log(" sdfds " + response2)
+
+            let Com = this.utilisateur as Commercial
+
+            this.utilisateur.role = response2
+    
+            this.comService.add(Com).subscribe(
+    
+              response => {
+                this.selectAll();
+    
+                f.resetForm();
+              }
+    
+            )
+          }
+        )
+        break;
+
+      case "Participant":
+        this.utService.selectRoleById(this.idRole).subscribe(
+          response2 => {
+            
+
+            let Com = this.utilisateur as Participant
+
+            this.utilisateur.role = response2
+            console.log(Com.transactions)
+            this.partService.add(Com).subscribe(
+    
+              response => {
+                this.selectAll();
+    
+                f.resetForm();
+              }
+    
+            )
+          }
+        )
+        break;
+
+      case "Formateur":
+        this.utService.selectRoleById(this.idRole).subscribe(
+          response2 => {
+            
+
+            let Com = this.utilisateur as Formateur
+
+            this.utilisateur.role = response2
+    
+            this.formService.add(Com).subscribe(
+    
+              response => {
+                this.selectAll();
+    
+                f.resetForm();
+              }
+    
+            )
+          }
+        )
+        break;
+
+      case "Assistant":
+        this.utService.selectRoleById(this.idRole).subscribe(
+          response2 => {
+            
+
+            let Com = this.utilisateur as Assistant
+
+            this.utilisateur.role = response2
+    
+            this.assistService.add(Com).subscribe(
+    
+              response => {
+                this.selectAll();
+    
+                f.resetForm();
+              }
+    
+            )
+          }
+        )
+        break;
+
+      case "Utilisateur":
+        this.utService.selectRoleById(this.idRole).subscribe(
+          response2 => {
+
+            this.utilisateur.role = response2
+    
+            this.utService.add(this.utilisateur).subscribe(
+    
+              response => {
+                this.selectAll();
+    
+                f.resetForm();
+              }
+    
+            )
+          }
+        )
+        break;
+    }
+    
+   
+
   }
 
 

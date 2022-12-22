@@ -59,8 +59,8 @@ export class ListeFormationsComponent implements OnInit {
   {
     this.forService.selectAll().subscribe(
       Response=>
-      {this.formations= Response
-        for(let f of this.formations)
+      {this.formations = Response
+        for(let f of Response)
         {
           this.forService.chercherParFormation(f.id).subscribe(Response2=>
             {
@@ -87,6 +87,9 @@ export class ListeFormationsComponent implements OnInit {
 
   }
   delete(id:number){
+    this.forService.delete(id).subscribe(
+      response => this.afficherAll()
+    )
     
   }
 
