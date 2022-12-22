@@ -40,6 +40,22 @@ this.TrueOrFalseFormation=(bool== "true");
 this.selectAll();
 }
 
+idDipl:number=0;
+TrueOrFalseGenerationDipl:Boolean=false
+generationDipl(id:number, idDipl:number){  
+  this.TrueOrFalsetransaction=false
+  this.TrueOrFalseDiplome=false
+  this.idpart = id;
+  this.idDipl = idDipl;
+  this.TrueOrFalseGenerationDipl=!this.TrueOrFalseGenerationDipl; 
+}
+
+modTrueOrFalseGenerationDipl(bool:string){
+this.TrueOrFalseGenerationDipl=(bool== "true");
+this.selectAll();
+}
+
+
 TrueOrFalsetransaction:Boolean =false;
 ajoutTransactionChild(id:number){
   this.TrueOrFalseFormation=false

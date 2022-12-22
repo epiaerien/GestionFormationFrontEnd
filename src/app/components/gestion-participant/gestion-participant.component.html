@@ -77,6 +77,7 @@
                 <th scope="col"> Ajouter Formations  </th>
                 <th scope="col"> Réaliser un Transaction  </th>
                 <th scope="col"> Diplomes  </th>
+                <th scope="col"> Diplomes en PDF </th>
                 <th scope="col"> Ajouter Diplomes  </th>
                 <th scope="col"> Supprimer le participant  </th>
                 
@@ -104,7 +105,7 @@
                     formation</button></td>
 
             <td><button (click)="ajoutTransactionChild(part.id)">Faire une transaction </button></td>
-
+            
             <td>
                 <div *ngIf="part.diplomes!=null">
                     <ul *ngFor="let dipl of part.diplomes">
@@ -113,6 +114,17 @@
                     </ul>
                 </div>
             </td>
+
+            <td>
+                <div *ngIf="part.diplomes!=null">
+                    <ul *ngFor="let dipl of part.diplomes">
+                        <div *ngIf="dipl.dateOpt"><li ><button (click)="generationDipl(part.id, dipl.id)">Telecharger votre diplome de {{dipl.nom}} </button></li></div>
+                        <div *ngIf="!dipl.dateOpt"><li *ngIf="!dipl.dateOpt">diplome pas encore obtenu</li></div>
+                    </ul>
+                </div>
+            </td>
+
+          
 
             <td><button (click)="ajoutDiplomeChild(part.id)">ajouter Diplome</button></td>
 
@@ -132,4 +144,8 @@
 
 <div *ngIf="TrueOrFalseDiplome">
     <app-ajout-diplome [idParticipant]="idpart"  (diplToPart)="modTrueFalseDipl($event)"></app-ajout-diplome>
+</div>
+
+<div *ngIf="TrueOrFalseGenerationDipl">
+    <app-generation-diplome [idParticipant]="idpart" [idDipl]="idDipl"  (generationDiplToPart)="modTrueOrFalseGenerationDipl($event)"></app-generation-diplome>
 </div>

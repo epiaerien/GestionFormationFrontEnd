@@ -44,6 +44,11 @@ import { LoginComponent } from './components/login/login.component';
 import { InterceptorService } from './service/interceptor.service';
 import { GestionProspectComponent } from './components/gestion-prospect/gestion-prospect.component';
 import { ListeappelrendezvousComponent } from './components/listeappelrendezvous/listeappelrendezvous.component';
+import { GenerationDiplomeComponent } from './components/generation-diplome/generation-diplome.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import jsPDF from 'jspdf';
 
 
 
@@ -88,7 +93,9 @@ import { ListeappelrendezvousComponent } from './components/listeappelrendezvous
       AjoutDiplomeComponent,
       LoginComponent,
       GestionProspectComponent,
-      ListeappelrendezvousComponent
+      ListeappelrendezvousComponent,
+      GenerationDiplomeComponent,
+      
 
 
 
@@ -102,7 +109,11 @@ import { ListeappelrendezvousComponent } from './components/listeappelrendezvous
     HttpClientModule,
     NgbModule, 
 
-    HttpClientModule, NgbModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatButtonModule,
+    
+
 
 
   ],

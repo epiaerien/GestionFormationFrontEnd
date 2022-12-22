@@ -23,6 +23,7 @@ import { AuthGuardService } from './service/auth-guard.service';
 import { GestionFormationComponent } from './components/gestion-formation/gestion-formation.component';
 import { GestionProspectComponent } from './components/gestion-prospect/gestion-prospect.component';
 import { ListeappelrendezvousComponent } from './components/listeappelrendezvous/listeappelrendezvous.component';
+import { GenerationDiplomeComponent } from './components/generation-diplome/generation-diplome.component';
 
 
 
@@ -50,7 +51,8 @@ const routes:Routes=[
   {path:'gestionProspect', component:GestionProspectComponent}, 
   {path:'listeappeletrdvparprospect/:id', component:ListeappelrendezvousComponent},
 
-  {path:'gestionProspect', component:GestionProspectComponent, canActivate : [AuthGuardService], data : {role:['Admin','Commercial']}}
+  {path:'gestionProspect', component:GestionProspectComponent, canActivate : [AuthGuardService], data : {role:['Admin','Commercial']}},
+  {path:'creationPDF', component:GenerationDiplomeComponent,  canActivate : [AuthGuardService], data : {role:['Admin']}}
 
 
 
