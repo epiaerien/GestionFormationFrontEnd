@@ -2,6 +2,7 @@
     <a class="navbar-brand" href="#"> App Formations </a>
 
 
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <!-- <li class="nav-item active"><a class="nav-link" href="#">
@@ -9,6 +10,7 @@
             </a></li> -->
 
             <li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
+
 
         </ul>
         <!-- ADMIN   -->
@@ -19,7 +21,9 @@
                 </a></li> -->
 
 
+
                 <li class="nav-item"><a class="nav-link" href="/formateurs"> Formateurs </a>
+
 
                 <li class="nav-item">
             <div class="dropdown">
@@ -55,6 +59,7 @@
         </ul>
 
 
+
         </div>
 
         <!-- COMMERCIAL -->
@@ -87,6 +92,7 @@
                 <!-- <li class="nav-item active"><a class="nav-link" href="#">
                         <span class="sr-only">(current)</span>
                 </a></li> -->
+
 
                 
 
@@ -131,13 +137,16 @@
 
 
 
+
         <!-- RIGHT SIDE NAV BAR  - ESPACE PERSO  -->
 
         <ul *ngIf="utilisateur" class="nav navbar-nav navbar-right">
 
 
+
             <li class="nav-item"> <span (click)="espaceperso()" class="nav-link text-warning"> {{utilisateur.prenom}}
                     {{utilisateur.nom}}</span>
+
 
 
             </li>
@@ -148,6 +157,7 @@
 
             </li>
         </ul>
+
 
 
 
@@ -162,6 +172,7 @@
         </ul>
 
 
+
     </div>
     <nav>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -169,6 +180,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+
     </nav>
+
 
 </nav>
