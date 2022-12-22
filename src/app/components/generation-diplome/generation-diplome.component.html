@@ -1,0 +1,18 @@
+
+<div class="container" id="content" #content>  
+<div class="map" >    
+    <div  class="pin" style="left:400px;top:276px;"> 
+        <h1>Diplome de :</h1> <br>
+    <h1>{{diplome.nom}}</h1>
+    </div>
+    <div class="pin" style="left:400px;top:500px;">
+        <h1>Obtenu par :</h1><br>
+        <h1>{{participant.nom}} {{participant.prenom}}</h1></div>
+    <div class="petiteinfo" style="left:1000px;top:800px;">
+    <h3>obtenu le :</h3>
+    <h3>{{diplome.dateOpt}}</h3></div>
+</div>
+</div>
+
+<input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">  
+
