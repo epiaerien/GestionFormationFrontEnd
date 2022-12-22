@@ -20,31 +20,46 @@
 						<span class="sr-only">(current)</span>
 				</a></li> -->
 
-				<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
-
-				<li class="nav-item"><a class="nav-link" href="/gestionPayements"> Gestion Payements </a></li>
-
-				<li class="nav-item"><a class="nav-link" href="/gestionFormateurs"> Gestion Formateurs </a>
-				</li>
-
-				<li class="nav-item"><a class="nav-link" href="/formateurs"> Formateurs </a></li>
 
 
-				<li class="nav-item"><a class="nav-link" href="/gestionUtilisateurs"> Gestion Utilisateurs </a>
-				</li>
+				<li class="nav-item"><a class="nav-link" href="/formateurs"> Formateurs </a>
 
 
-				<li class="nav-item"><a class="nav-link" href="/gestionParticipants"> Gestion Participants </a>
-				</li>
+				<li class="nav-item">
+			<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+					data-bs-target="#dropdownMenuButton1" aria-expanded="false">
+					Gestion
+				</button>
+				<ul class="dropdown-menu" id="dropdownMenuButton1">
+					<li><a href="/gestionPayements"> Gestion Payements </a></li>
+
+					<li ><a href="/gestionFormateurs"> Gestion Formateurs </a>
+					</li>
+
+					<li><a href="/gestionProspect"> Gestion Prospects</a>
+					</li>
+					<li ><a href="/gestionParticipants"> Gestion Participants </a>
+					</li>
+
+					<li><a href="/gestionCommercials"> Gestion commercial</a>
+					</li>
+
+					<li><a  href="/gestionAppeletRdv"> Gestion appels et rdv</a>
+					</li>
+	
+					<li><a href="/gestionUtilisateurs"> Gestion Utilisateurs </a>
+					</li>
+	
+					<li><a href="/gestionAppeletRdv"> Gestion appels et rdv</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+		</ul>
 
 
 
-				<li class="nav-item"><a class="nav-link" href="/gestionCommercials"> Gestion commercial</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="/gestionAppeletRdv"> Gestion appels et rdv</a>
-				</li>
-
-			</ul>
 		</div>
 
 		<!-- COMMERCIAL -->
@@ -54,38 +69,23 @@
 						<span class="sr-only">(current)</span>
 				</a></li> -->
 
-
-			<li class="nav-item"><a class="nav-link" 
-				href="/gestionProspect"> Gestion Prospects</a>
-			</li>
-			
-
-
-				<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
-
-				
 			</ul>
 
-
-
-
 			<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" type="button" 
-					data-bs-toggle="dropdown" data-bs-target="#dropdownMenuButton1" aria-expanded="false">
-					Dropdown button
+				<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+					data-bs-target="#dropdownMenuButton1" aria-expanded="false">
+					Gestion
 				</button>
 				<ul class="dropdown-menu" id="dropdownMenuButton1">
 					<li class="nav-item"><a class="nav-link" href="/gestionProspect"> Gestion Prospects</a>
 					</li>
 
-	
-					<li class="nav-item"><a class="nav-link" href="/gestionCommercials"> Gestion commercial</a>
-					</li>
 					<li class="nav-item"><a class="nav-link" href="/gestionAppeletRdv"> Gestion appels et rdv</a>
 					</li>
 				</ul>
 			</div>
 		</div>
+
 		<!-- FORMATEUR -->
 		<div *ngIf="utilisateur && utilisateur.role.nom==='Formateur'">
 			<ul class="navbar-nav mr-auto">
@@ -93,98 +93,29 @@
 						<span class="sr-only">(current)</span>
 				</a></li> -->
 
-	
-				<li class="nav-item"><a class="nav-link"
-					href="/formations"> Formations </a></li>
-			
-			
-                <li class="nav-item"><a class="nav-link" 
-                    href="/gestionFormateurs"> Gestion Formateurs </a>
-                </li>
 
-
-				<li class="nav-item"><a class="nav-link"
-					href="/formateurs"> Formateurs </a></li>
-
-          <div *ngIf="utilisateur!=null; then ut else noUt" class="form-inline my-2 my-lg-0"></div>
-                <ng-template #ut>
-                
-                    <li  class="nav-item">  <span (click)="espaceperso()" class="navbar-text text-warning" > {{utilisateur.prenom}} {{utilisateur.nom}} Username : {{utilisateur.username}}</span>  
-                    
-                    
-                    </li>
-                    <li>
-                        <button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="logout()"> Déconnexion </button>
-
-                    </li>
-
-                
-            </ng-template>
-
-                <ng-template #noUt>
-              
-                        
-                        <li>
-                            <button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="toLogIn()"> Connexion </button>
-    
-                        </li>
-
-					</ng-template>
-
-			
-			<li class="nav-item"><a class="nav-link" 
-				href="/gestionParticipants"> Gestion Participants </a>
-			</li>
-
-		
-	</ul>
-
-		</ul>
-
-
-				<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
-
-
-				<li class="nav-item"><a class="nav-link" href="/gestionFormateurs"> Gestion Formateurs </a>
-				</li>
-
+				
 
 				<li class="nav-item"><a class="nav-link" href="/formateurs"> Formateurs </a></li>
 
-				<div *ngIf="utilisateur!=null; then ut else noUt" class="form-inline my-2 my-lg-0"></div>
-				<ng-template #ut>
+			
 
-					<li class="nav-item"> <span (click)="espaceperso()" class="navbar-text text-warning">
-							{{utilisateur.prenom}} {{utilisateur.nom}} Username : {{utilisateur.username}}</span>
+			<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+					data-bs-target="#dropdownMenuButton1" aria-expanded="false">
+					Gestion
+				</button>
+				<ul class="dropdown-menu" id="dropdownMenuButton1">
 
-
+					<li ><a  href="/gestionFormateurs"> Gestion Formateurs </a>
 					</li>
-					<li>
-						<button class="btn btn-warning" style=" --bs-btn-font-size: .75rem;" (click)="logout()">
-							Déconnexion </button>
-
-					</li>
-
-
-				</ng-template>
-
-				<ng-template #noUt>
-
-
-					<li>
-						<button class="btn btn-warning" style=" --bs-btn-font-size: .75rem;" (click)="toLogIn()">
-							Connexion </button>
-
-					</li>
-
-
-				</ng-template>
-
-				<li class="nav-item"><a class="nav-link" href="/gestionParticipants"> Gestion Participants </a>
+	
+					<li ><a href="/gestionParticipants"> Gestion Participants </a>
 				</li>
-			</ul>
 
-
+				</ul>
+			</div>
+		</ul>
 		</div>
 
 		<!-- PARTICIPANT	 -->
@@ -196,25 +127,22 @@
 
 				<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
 
-				<li class="nav-item"><a class="nav-link" href="/gestionPayements"> Gestion Payements </a></li>
-
+	
+					
+				
 			</ul>
 		</div>
 	</div>
 	<div class="collapse navbar-collapse">
 
+
+
+
+		<!-- RIGHT SIDE NAV BAR  - ESPACE PERSO  -->
+
 		<ul *ngIf="utilisateur" class="nav navbar-nav navbar-right">
 
 
-		<div *ngIf="utilisateur!=null; then ut else noUt" class="form-inline my-2 my-lg-0"></div>
-			<ng-template #ut>
-			
-				<li  class="nav-item">  <span (click)="espaceperso()" class="navbar-text text-warning" > {{utilisateur.prenom}} {{utilisateur.nom}} Username : {{utilisateur.username}}</span>  
-				
-				
-				</li>
-				<li>
-					<button class="btn btn-warning"  style=" --bs-btn-font-size: .75rem;" (click)="logout()"> Déconnexion </button>
 
 			<li class="nav-item"> <span (click)="espaceperso()" class="nav-link text-warning"> {{utilisateur.prenom}}
 					{{utilisateur.nom}}</span>
@@ -247,7 +175,7 @@
 
 	</div>
 	<nav>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
