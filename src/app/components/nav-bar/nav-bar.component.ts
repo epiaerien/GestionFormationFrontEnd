@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Utilisateurs } from 'src/app/models/utilisateurs';
 import { AuthentificationService } from 'src/app/service/authentification.service';
 import { CommonServiceService } from 'src/app/service/common-service.service';
-import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,8 +17,6 @@ export class NavBarComponent implements OnInit {
   isLogged!: boolean;
 
   constructor(private route: Router, private authService: AuthentificationService, private commonService: CommonServiceService) { }
-
-
 
 
 
