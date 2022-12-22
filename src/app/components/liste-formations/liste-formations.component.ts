@@ -103,7 +103,11 @@ export class ListeFormationsComponent implements OnInit {
   
     if(bool=="refresh"){
     this.afficherAll()}
+  }
 
+
+  getUser(){
+    
 
   }
 
