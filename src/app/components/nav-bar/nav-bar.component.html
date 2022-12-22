@@ -1,24 +1,24 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="#"> App Formations </a>
+    <a class="navbar-brand" href="#"> App Formations </a>
 
 
 
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<!-- <li class="nav-item active"><a class="nav-link" href="#">
-					<span class="sr-only">(current)</span>
-			</a></li> -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item active"><a class="nav-link" href="#">
+                    <span class="sr-only">(current)</span>
+            </a></li> -->
 
-			<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
+            <li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
 
 
-		</ul>
-		<!-- ADMIN	 -->
-		<div *ngIf="utilisateur && utilisateur.role.nom==='Admin'">
-			<ul class="navbar-nav mr-auto">
-				<!-- <li class="nav-item active"><a class="nav-link" href="#">
-						<span class="sr-only">(current)</span>
-				</a></li> -->
+        </ul>
+        <!-- ADMIN   -->
+        <div *ngIf="utilisateur && utilisateur.role.nom==='Admin'">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active"><a class="nav-link" href="#">
+                        <span class="sr-only">(current)</span>
+                </a></li> -->
 
 
 
@@ -61,13 +61,9 @@
 
 
 		</div>
+                <li class="nav-item"><a class="nav-link" href="/gestionParticipants"> Gestion Participants </a>
+                </li>
 
-		<!-- COMMERCIAL -->
-		<div *ngIf="utilisateur && utilisateur.role.nom==='Commercial'">
-			<ul class="navbar-nav mr-auto">
-				<!-- <li class="nav-item active"><a class="nav-link" href="#">
-						<span class="sr-only">(current)</span>
-				</a></li> -->
 
 			</ul>
 
@@ -118,14 +114,103 @@
 		</ul>
 		</div>
 
-		<!-- PARTICIPANT	 -->
-		<div *ngIf="utilisateur &&  utilisateur.role.nom==='Participant'">
-			<ul class="navbar-nav mr-auto">
-				<!-- <li class="nav-item active"><a class="nav-link" href="#">
-						<span class="sr-only">(current)</span>
-				</a></li> -->
 
-				<li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
+                <li class="nav-item"><a class="nav-link" href="/gestionCommercials"> Gestion commercial</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/gestionAppeletRdv"> Gestion appels et rdv</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- COMMERCIAL -->
+        <div *ngIf="utilisateur && utilisateur.role.nom==='Commercial'">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active"><a class="nav-link" href="#">
+                        <span class="sr-only">(current)</span>
+                </a></li> -->
+
+
+            <li class="nav-item"><a class="nav-link" 
+                href="/gestionProspect"> Gestion Prospects</a>
+            </li>
+            
+
+
+                <li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
+
+                
+            </ul>
+
+
+
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" 
+                    data-bs-toggle="dropdown" data-bs-target="#dropdownMenuButton1" aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu" id="dropdownMenuButton1">
+                    <li class="nav-item"><a class="nav-link" href="/gestionProspect"> Gestion Prospects</a>
+                    </li>
+
+    
+                    <li class="nav-item"><a class="nav-link" href="/gestionCommercials"> Gestion commercial</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/gestionAppeletRdv"> Gestion appels et rdv</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- FORMATEUR -->
+        <div *ngIf="utilisateur && utilisateur.role.nom==='Formateur'">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active"><a class="nav-link" href="#">
+                        <span class="sr-only">(current)</span>
+                </a></li> -->
+
+    
+                <li class="nav-item"><a class="nav-link"
+                    href="/formations"> Formations </a></li>
+            
+            
+                <li class="nav-item"><a class="nav-link" 
+                    href="/gestionFormateurs"> Gestion Formateurs </a>
+                </li>
+
+
+                <li class="nav-item"><a class="nav-link"
+                    href="/formateurs"> Formateurs </a></li>
+
+            
+            <li class="nav-item"><a class="nav-link" 
+                href="/gestionParticipants"> Gestion Participants </a>
+            </li>
+
+        
+    </ul>
+
+        <ul>
+
+
+                <li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
+
+
+                <li class="nav-item"><a class="nav-link" href="/gestionFormateurs"> Gestion Formateurs </a>
+                </li>
+
+
+                <li class="nav-item"><a class="nav-link" href="/formateurs"> Formateurs </a></li>
+
+
+                <li class="nav-item"><a class="nav-link" href="/gestionParticipants"> Gestion Participants </a>
+                </li>
+            </ul>
+
+
+
+        </div>
+
 
 	
 					
@@ -138,38 +223,57 @@
 
 
 
+        <!-- PARTICIPANT     -->
+        <div *ngIf="utilisateur &&  utilisateur.role.nom==='Participant'">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active"><a class="nav-link" href="#">
+                        <span class="sr-only">(current)</span>
+                </a></li> -->
+
+                <li class="nav-item"><a class="nav-link" href="/formations"> Formations </a></li>
+
+                <li class="nav-item"><a class="nav-link" href="/gestionPayements"> Gestion Payements </a></li>
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse">
+
+
+
 		<!-- RIGHT SIDE NAV BAR  - ESPACE PERSO  -->
-
-		<ul *ngIf="utilisateur" class="nav navbar-nav navbar-right">
-
+        <ul *ngIf="utilisateur" class="nav navbar-nav navbar-right">
 
 
-			<li class="nav-item"> <span (click)="espaceperso()" class="nav-link text-warning"> {{utilisateur.prenom}}
-					{{utilisateur.nom}}</span>
-
-
-
-			</li>
-
-			<li class="nav-item">
-				<button class="btn btn-warning" style=" --bs-btn-font-size: .75rem;" (click)="logout()"> Déconnexion
-				</button>
-
-			</li>
-		</ul>
+            
+                
+                <li class="nav-item"> <span (click)="espaceperso()" class="nav-link text-warning"> {{utilisateur.prenom}}
+                    {{utilisateur.nom}}</span>
 
 
 
+            </li>
 
-		<ul *ngIf="utilisateur === null || utilisateur == undefined" class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <button class="btn btn-warning" style=" --bs-btn-font-size: .75rem;" (click)="logout()"> Déconnexion
+                </button>
 
-			<li>
-				<button class="btn btn-warning" style=" --bs-btn-font-size: .75rem;" (click)="toLogIn()"> Connexion
-				</button>
+            </li>
+        </ul>
 
-			</li>
 
-		</ul>
+
+
+        <ul *ngIf="utilisateur === null || utilisateur == undefined" class="nav navbar-nav navbar-right">
+
+            <li>
+                <button class="btn btn-warning" style=" --bs-btn-font-size: .75rem;" (click)="toLogIn()"> Connexion
+                </button>
+
+            </li>
+
+        </ul>
 
 
 
@@ -181,7 +285,8 @@
 		</button>
 
 
-	</nav>
+
+    </nav>
 
 
 </nav>
